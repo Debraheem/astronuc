@@ -18,17 +18,17 @@ credit: ESO/L. Calçada
 
 This session will cover basic usage of the MESA software instrument in the context of nuclear astrophysics. The session will focus on demonstrating how a user can setup a MESA stellar model, alter specific nuclear reaction rates, evolve the stellar model, and interpret the results in the context of stellar evolutionary theory and observational constraints.
 
-## Setting up a MESA binary run
+## Setting up a MESA Stellar Model
 
-To begin, please download a copy of the desired [Lab1_binary](https://drive.google.com/file/d/1p7A4C0r1Be3CPxPLLIVNXZTVtVWccvze/view?usp=share_link) MESA work directory.
-This work directory is a slightly modified version of the `$MESA_DIR/binary/test_suite/evolve_both_stars` test_suite.
+To begin, please download a copy of the desired [Lab1](https://drive.google.com/file/d/1p7A4C0r1Be3CPxPLLIVNXZTVtVWccvze/view?usp=share_link) MESA work directory.
+This work directory is a slightly modified version of the `$MESA_DIR/star/test_suite/20M_pre_ms_to_cc` test_suite.
 
 Once downloaded, you can decompress the file by
 ```shell-session
-$ unzip Lab1_binary.zip
+$ unzip Lab1.zip
 ```
 
-To get an idea of what is inside `Lab1_binary` we can use the `tree` command.
+To get an idea of what is inside `Lab1` we can use the `tree` command.
 
 The `tree` command shows the files contained in the `Lab1_binary` directory and its subdirectories.
 
@@ -43,7 +43,7 @@ $ sudo apt-get install tree # on linux
 ```
 It's alright if you don't have `tree` or cannot download it, `ls` should suffice.
 
-`tree ./Lab1_binary` should return the following.
+`tree ./Lab1` should return the following.
 
 ```shell-session
 ├── clean
@@ -72,7 +72,7 @@ It's alright if you don't have `tree` or cannot download it, `ls` should suffice
 
 All files are briefly described in the table below
 
-### MESA BINARY work directory
+### MESA STAR work directory
 
 | Filename                | Description       |
 |:------------------------|:------------------|
