@@ -32,3 +32,133 @@
   display: table;
   width: 100%;
 }
+
+/* Dark-first theme with readable contrast for text and code. */
+body {
+  background: #0f1115;
+  color: #e8edf2;
+}
+
+a {
+  color: #89c4ff;
+}
+
+a:hover {
+  color: #b5dbff;
+}
+
+.side-bar,
+.site-header,
+.main,
+.search-input-wrap,
+.main-content-wrap {
+  background: #151922;
+}
+
+.main-content h1,
+.main-content h2,
+.main-content h3,
+.main-content h4,
+.main-content h5,
+.main-content h6 {
+  color: #f7fbff;
+}
+
+.main-content p,
+.main-content li,
+.main-content td,
+.main-content th,
+.main-content blockquote {
+  color: #dbe3ea;
+}
+
+.main-content blockquote {
+  border-left: 4px solid #3f5168;
+}
+
+.main-content hr {
+  border-color: #2d3442;
+}
+
+.main-content table th,
+.main-content table td {
+  border-color: #2f3b4f;
+}
+
+.main-content thead {
+  background: #202a38;
+}
+
+pre,
+.main-content pre,
+code,
+.main-content code,
+.highlighter-rouge .highlight {
+  background: #0b0f16;
+  color: #e7f1ff;
+  border: 1px solid #293241;
+}
+
+/* Keep a non-dark option automatically for users with light-mode system preference. */
+@media (prefers-color-scheme: light) {
+  body {
+    background: #f7f9fc;
+    color: #1f2731;
+  }
+
+  a {
+    color: #1358c8;
+  }
+
+  .side-bar,
+  .site-header,
+  .main,
+  .search-input-wrap,
+  .main-content-wrap {
+    background: #ffffff;
+  }
+
+  .main-content h1,
+  .main-content h2,
+  .main-content h3,
+  .main-content h4,
+  .main-content h5,
+  .main-content h6 {
+    color: #16202b;
+  }
+
+  .main-content p,
+  .main-content li,
+  .main-content td,
+  .main-content th,
+  .main-content blockquote {
+    color: #2b3542;
+  }
+
+  .main-content blockquote {
+    border-left-color: #c6d1df;
+  }
+
+  .main-content hr {
+    border-color: #d4ddea;
+  }
+
+  .main-content table th,
+  .main-content table td {
+    border-color: #d8e0ec;
+  }
+
+  .main-content thead {
+    background: #eef3fa;
+  }
+
+  pre,
+  .main-content pre,
+  code,
+  .main-content code,
+  .highlighter-rouge .highlight {
+    background: #f3f6fb;
+    color: #1c2735;
+    border-color: #d1dae8;
+  }
+}
