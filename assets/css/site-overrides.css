@@ -36,16 +36,12 @@ a:hover {
 
 /* Center the reading column and prevent right-biased layout. */
 @media (min-width: 66.5rem) {
-  .main {
-    max-width: none;
-  }
-
   .main-content-wrap {
-    max-width: 76rem;
+    max-width: 72rem;
     margin-left: auto;
     margin-right: auto;
-    padding-left: 2.25rem;
-    padding-right: 2.25rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
   }
 }
 
@@ -97,10 +93,19 @@ a:hover {
   padding-left: 0.7rem;
 }
 
-.main-content img {
+.main-content img:not(.emoji) {
   display: block;
   margin: 1rem auto 1.5rem;
   border-radius: 0.4rem;
+}
+
+.main-content img.emoji {
+  display: inline-block;
+  width: 1.1em;
+  height: 1.1em;
+  margin: 0 0.35rem 0 0;
+  vertical-align: -0.12em;
+  border-radius: 0;
 }
 
 .main-content table {
@@ -127,12 +132,20 @@ a:hover {
 }
 
 .main-content table:has(> tbody > tr > td:only-child) thead th {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.45rem;
   text-align: left;
   font-size: 1.06rem;
   font-weight: 700;
   letter-spacing: 0.02em;
-  padding: 0.9rem 1rem;
+  padding: 0.8rem 1rem;
   background: var(--panel-2);
+}
+
+.main-content table:has(> tbody > tr > td:only-child) thead th p {
+  margin: 0;
 }
 
 .main-content table:has(> tbody > tr > td:only-child) tbody td {
