@@ -3,6 +3,8 @@ remote_theme: pmarsceill/just-the-docs #jekyll-theme-yat #pages-themes/modernist
 
 title: "Thursday: Massive Stars in Binaries"
 description: Jan Eldridge, Ryosuke Hirai, Sohan Ghodla, Ebraheem Farag
+url: "https://debraheem.github.io"
+baseurl: "/astronuc"
 
 
 
