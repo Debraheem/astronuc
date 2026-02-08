@@ -51,7 +51,10 @@ a:hover {
   }
 
   .main {
+    max-width: none;
+    width: auto;
     margin-left: var(--sidebar-w);
+    margin-right: 0;
   }
 
   .main-content-wrap {
@@ -80,6 +83,12 @@ a:hover {
   background: var(--panel);
   text-align: left;
   justify-content: flex-start;
+}
+
+.side-bar .site-header {
+  height: auto;
+  max-height: none;
+  overflow: visible;
 }
 
 .site-title {
