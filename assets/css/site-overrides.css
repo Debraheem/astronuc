@@ -59,8 +59,8 @@ a:hover {
     width: 100%;
     margin-left: 0;
     margin-right: 0;
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
+    padding-left: 0.9rem;
+    padding-right: 0.9rem;
   }
 }
 
@@ -71,11 +71,26 @@ a:hover {
   box-shadow: 10px 0 30px rgba(0, 0, 0, 0.25);
 }
 
+.site-header {
+  height: auto;
+  max-height: none;
+  min-height: 0;
+  padding: 0.9rem 1.1rem 0.75rem;
+  border-bottom: 1px solid #223047;
+  background: var(--panel);
+  text-align: left;
+  justify-content: flex-start;
+}
+
 .site-title {
+  display: block;
   font-size: 2rem;
   line-height: 1.2;
   font-weight: 700;
   letter-spacing: 0.01em;
+  margin: 0;
+  white-space: normal;
+  text-align: left;
 }
 
 .nav-list .nav-list-link {
@@ -120,6 +135,13 @@ a:hover {
 .main-content blockquote {
   color: var(--text-muted);
   line-height: 1.65;
+}
+
+.main-content {
+  max-width: none;
+  margin-left: 0;
+  margin-right: 0;
+  text-align: left;
 }
 
 .main-content h2,
