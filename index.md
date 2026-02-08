@@ -14,9 +14,9 @@ credit: ESO/L. Calçada
 
 [Link to Lab Solutions](https://drive.google.com/drive/folders/11WEpwn17_XuxKugH0B57OHMjby-jomUj?usp=share_link)
 
-## Goal of this introduction
+## Goal of this Session
 
-There is a crucial bug in the `pgbinary` module that disrupts the simulation in some machines when plotting things on the fly. Before we start our labs, we will fix this bug in the source code to make sure we can run the following labs smoothly.
+This session will cover basic usage of the MESA software instrument in the context of nuclear astrophysics. The session will focus on demonstrating how a user can setup a MESA stellar model, alter specific nuclear reaction rates, evolve the stellar model, and interpret the results in the context of stellar evolutionary theory and observational constraints.
 
 ## Setting up a MESA binary run
 

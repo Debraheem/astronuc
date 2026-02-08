@@ -1,0 +1,34 @@
+/* Use more horizontal space on desktop while preserving readability on smaller screens. */
+@media (min-width: 66.5rem) {
+  .main {
+    max-width: calc(100% - 16.5rem);
+  }
+
+  .main-content-wrap {
+    max-width: 74rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+.main-content h1,
+.main-content h2,
+.main-content h3 {
+  line-height: 1.25;
+}
+
+.main-content p,
+.main-content li {
+  line-height: 1.65;
+}
+
+.main-content img {
+  display: block;
+  margin: 1rem auto 1.5rem;
+  border-radius: 0.4rem;
+}
+
+.main-content table {
+  display: table;
+  width: 100%;
+}
