@@ -1,38 +1,77 @@
-/* Guaranteed custom styles loaded via _includes/head_custom.html */
-
-@media (min-width: 66.5rem) {
-  .main {
-    max-width: calc(100% - 16.5rem);
-  }
-
-  .main-content-wrap {
-    max-width: 74rem;
-    padding-left: 2rem;
-    padding-right: 2rem;
-  }
+/* Custom theme overrides: dark-first, readable, and simple to maintain. */
+:root {
+  --bg: #0f1115;
+  --panel: #151b26;
+  --panel-2: #1b2331;
+  --text: #e8edf2;
+  --text-muted: #d0d8e0;
+  --border: #2f3b4f;
+  --link: #89c4ff;
+  --link-hover: #b5dbff;
+  --code-bg: #0b0f16;
+  --code-border: #2b3647;
+  --task: #f0a647;
+  --tip: #57b5ff;
+  --question: #6fd68a;
+  --answer: #49c172;
 }
 
-body {
-  background: #0f1115;
-  color: #e8edf2;
+body,
+.site-header,
+.side-bar,
+.search-input-wrap,
+.main,
+.main-content-wrap {
+  background: var(--bg);
+  color: var(--text);
 }
 
 a {
-  color: #89c4ff;
+  color: var(--link);
 }
 
 a:hover {
-  color: #b5dbff;
+  color: var(--link-hover);
 }
 
-.side-bar,
-.site-header,
-.main,
-.search-input-wrap,
-.main-content-wrap {
-  background: #151922;
+/* Center the reading column and prevent right-biased layout. */
+@media (min-width: 66.5rem) {
+  .main {
+    max-width: none;
+  }
+
+  .main-content-wrap {
+    max-width: 76rem;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 2.25rem;
+    padding-right: 2.25rem;
+  }
 }
 
+/* Improve nav readability. */
+.side-bar {
+  background: var(--panel);
+}
+
+.site-title {
+  font-size: 2rem;
+  line-height: 1.2;
+}
+
+.nav-list .nav-list-link {
+  font-size: 1.08rem;
+  line-height: 1.5;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+.nav-list .nav-list-item > .nav-list-link.active {
+  background: #1f2a3a;
+  border-left: 3px solid var(--link);
+}
+
+/* Core content readability. */
 .main-content h1,
 .main-content h2,
 .main-content h3,
@@ -40,6 +79,7 @@ a:hover {
 .main-content h5,
 .main-content h6 {
   color: #f7fbff;
+  line-height: 1.25;
 }
 
 .main-content p,
@@ -47,18 +87,14 @@ a:hover {
 .main-content td,
 .main-content th,
 .main-content blockquote {
-  color: #dbe3ea;
+  color: var(--text-muted);
+  line-height: 1.65;
 }
 
-.main-content h1,
 .main-content h2,
 .main-content h3 {
-  line-height: 1.25;
-}
-
-.main-content p,
-.main-content li {
-  line-height: 1.65;
+  border-left: 4px solid #314058;
+  padding-left: 0.7rem;
 }
 
 .main-content img {
@@ -68,25 +104,90 @@ a:hover {
 }
 
 .main-content table {
-  display: table;
   width: 100%;
-}
-
-.main-content blockquote {
-  border-left: 4px solid #3f5168;
-}
-
-.main-content hr {
-  border-color: #2d3442;
 }
 
 .main-content table th,
 .main-content table td {
-  border-color: #2f3b4f;
+  border-color: var(--border);
 }
 
 .main-content thead {
   background: #202a38;
+}
+
+/* Task/Tip/Question callout tables: one-column two-row blocks used in lab pages. */
+.main-content table:has(> tbody > tr > td:only-child) {
+  margin: 1.5rem 0;
+  border: 1px solid var(--border);
+  border-left: 6px solid var(--tip);
+  border-radius: 8px;
+  overflow: hidden;
+  background: var(--panel);
+}
+
+.main-content table:has(> tbody > tr > td:only-child) thead th {
+  text-align: left;
+  font-size: 1.06rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  padding: 0.9rem 1rem;
+  background: var(--panel-2);
+}
+
+.main-content table:has(> tbody > tr > td:only-child) tbody td {
+  font-size: 1.05rem;
+  padding: 0.95rem 1rem;
+}
+
+.main-content table:has(img.emoji[title*="clipboard"]),
+.main-content table:has(img.emoji[alt*="clipboard"]) {
+  border-left-color: var(--task);
+}
+
+.main-content table:has(img.emoji[title*="information_source"]),
+.main-content table:has(img.emoji[alt*="information_source"]) {
+  border-left-color: var(--tip);
+}
+
+.main-content table:has(img.emoji[title*="question"]),
+.main-content table:has(img.emoji[alt*="question"]) {
+  border-left-color: var(--question);
+}
+
+/* Make answer blocks obvious and clearly clickable. */
+.main-content details {
+  margin: 1.4rem 0;
+  border: 1px solid var(--border);
+  border-left: 6px solid var(--answer);
+  border-radius: 8px;
+  background: var(--panel);
+}
+
+.main-content details > summary {
+  cursor: pointer;
+  list-style: none;
+  font-size: 1.08rem;
+  font-weight: 700;
+  padding: 0.85rem 1rem;
+  background: #1d2c22;
+  color: #f2f6ff;
+}
+
+.main-content details > summary::-webkit-details-marker {
+  display: none;
+}
+
+.main-content details > summary::before {
+  content: "▶ ";
+}
+
+.main-content details[open] > summary::before {
+  content: "▼ ";
+}
+
+.main-content details > *:not(summary) {
+  padding: 0.9rem 1rem;
 }
 
 pre,
@@ -94,70 +195,23 @@ pre,
 code,
 .main-content code,
 .highlighter-rouge .highlight {
-  background: #0b0f16;
+  background: var(--code-bg);
   color: #e7f1ff;
-  border: 1px solid #293241;
+  border: 1px solid var(--code-border);
 }
 
+/* Optional light mode for users that prefer it at OS/browser level. */
 @media (prefers-color-scheme: light) {
-  body {
-    background: #f7f9fc;
-    color: #1f2731;
-  }
-
-  a {
-    color: #1358c8;
-  }
-
-  .side-bar,
-  .site-header,
-  .main,
-  .search-input-wrap,
-  .main-content-wrap {
-    background: #ffffff;
-  }
-
-  .main-content h1,
-  .main-content h2,
-  .main-content h3,
-  .main-content h4,
-  .main-content h5,
-  .main-content h6 {
-    color: #16202b;
-  }
-
-  .main-content p,
-  .main-content li,
-  .main-content td,
-  .main-content th,
-  .main-content blockquote {
-    color: #2b3542;
-  }
-
-  .main-content blockquote {
-    border-left-color: #c6d1df;
-  }
-
-  .main-content hr {
-    border-color: #d4ddea;
-  }
-
-  .main-content table th,
-  .main-content table td {
-    border-color: #d8e0ec;
-  }
-
-  .main-content thead {
-    background: #eef3fa;
-  }
-
-  pre,
-  .main-content pre,
-  code,
-  .main-content code,
-  .highlighter-rouge .highlight {
-    background: #f3f6fb;
-    color: #1c2735;
-    border-color: #d1dae8;
+  :root {
+    --bg: #f7f9fc;
+    --panel: #ffffff;
+    --panel-2: #eef3fa;
+    --text: #1f2731;
+    --text-muted: #2b3542;
+    --border: #d8e0ec;
+    --link: #1358c8;
+    --link-hover: #0c47a8;
+    --code-bg: #f3f6fb;
+    --code-border: #d1dae8;
   }
 }
