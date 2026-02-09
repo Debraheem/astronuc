@@ -1,6 +1,9 @@
 ---
+layout: default
 title: Installation
 parent: Resources
 nav_order: 2
-nav_external_link: https://docs.mesastar.org/en/25.12.1/installation.html
 ---
+<meta http-equiv="refresh" content="0; url=https://docs.mesastar.org/en/25.12.1/installation.html">
+<script>window.location.replace("https://docs.mesastar.org/en/25.12.1/installation.html");</script>
+[Open Installation](https://docs.mesastar.org/en/25.12.1/installation.html)
