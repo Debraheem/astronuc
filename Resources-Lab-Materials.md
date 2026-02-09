@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "🔗 Lab Materials"
+title: "Lab Materials ↗"
 parent: Resources
 nav_order: 1
 ---

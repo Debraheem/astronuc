@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "🔗 Installation"
+title: "Installation ↗"
 parent: Resources
 nav_order: 2
 ---

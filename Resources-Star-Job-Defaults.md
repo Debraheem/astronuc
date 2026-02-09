@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "🔗 Star_job Defaults"
+title: "Star_job Defaults ↗"
 parent: Resources
 nav_order: 3
 ---
