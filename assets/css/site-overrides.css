@@ -1,12 +1,12 @@
 /* Custom theme overrides: dark-first, readable, and simple to maintain. */
 :root {
   --sidebar-w: 16.5rem;
-  --bg: #0f1115;
-  --panel: #151b26;
-  --panel-2: #1b2331;
+  --bg: #1f242b;
+  --panel: #272d36;
+  --panel-2: #303845;
   --text: #e8edf2;
   --text-muted: #d0d8e0;
-  --border: #2f3b4f;
+  --border: #455062;
   --link: #89c4ff;
   --link-hover: #b5dbff;
   --code-bg: #0b0f16;
