@@ -1,6 +1,6 @@
 ---
 layout: default
-title: MESA Docs
+title: "🔗 MESA Docs"
 parent: More about MESA
 nav_order: 2
 ---

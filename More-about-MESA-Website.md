@@ -1,6 +1,6 @@
 ---
 layout: default
-title: MESA STAR Website
+title: "🔗 MESA STAR Website"
 parent: More about MESA
 nav_order: 1
 ---

@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Control Defaults
+title: "🔗 Control Defaults"
 parent: Resources
 nav_order: 4
 ---
