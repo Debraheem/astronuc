@@ -65,7 +65,7 @@ a:hover {
     margin-left: 0;
     margin-right: 0;
     padding-left: clamp(0.75rem, 5vw, 10rem);
-    padding-right: clamp(0.75rem, 5vw, 10rem);
+    padding-right: clamp(0.75rem, 10vw, 20rem);
   }
 
   .main-header,
