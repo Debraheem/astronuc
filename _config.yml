@@ -8,6 +8,21 @@ color_scheme: dark
 url: "https://debraheem.github.io"
 baseurl: "/astronuc"
 
+# Sidebar resources section (separate external links block)
+nav_external_links:
+  - title: "Lab Materials"
+    url: "https://drive.google.com/drive/folders/1yFy2I7kBh6UZPYmhFxkZswQVPI0Qavjc?usp=share_link"
+  - title: "MESA Docs"
+    url: "https://docs.mesastar.org/en/25.12.1/"
+  - title: "MESA Instrument Papers"
+    url: "https://docs.mesastar.org/en/25.12.1/reference.html"
+  - title: "Installation"
+    url: "https://docs.mesastar.org/en/25.12.1/installation.html"
+  - title: "Star_job Defaults"
+    url: "https://docs.mesastar.org/en/25.12.1/reference/star_job.html"
+  - title: "Control Defaults"
+    url: "https://docs.mesastar.org/en/25.12.1/reference/controls.html"
+
 
 
 # Kramdown with MathJax Configuration
