@@ -50,23 +50,26 @@ a:hover {
     left: 0;
   }
 
-  .main {
+  .main,
+  .side-bar + .main {
     max-width: none;
     width: auto;
     margin-left: var(--sidebar-w);
     margin-right: 0;
   }
 
-  .main-content-wrap {
+  .main-content-wrap,
+  .main .main-content-wrap {
     max-width: none;
     width: 100%;
     margin-left: 0;
     margin-right: 0;
-    padding-left: 0.35rem;
+    padding-left: 0;
     padding-right: 0.75rem;
   }
 
-  .main-header {
+  .main-header,
+  .main .main-header {
     padding-left: 0.35rem;
     padding-right: 0.75rem;
   }
