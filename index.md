@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Introduction
+nav_order: 1
 ---
 ![](Figures/contact_binary_image.jpg)
 

@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Lab3
+nav_order: 4
 ---
 
 <script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax:{inlineMath:[['\$','\$'],['\\(','\\)']],processEscapes:true},CommonHTML: {matchFontHeight:false}});</script>
@@ -414,7 +415,6 @@ Kip S. Thorne. Disk-Accretion onto a Black Hole. II. Evolution of the Hole. The 
 Roger Penrose. Gravitational Collapse: the Role of General Relativity. Nuovo Cimento Rivista Serie, 1:252, January 1969.
 
 James M. Bardeen. Kerr Metric Black Holes. Nature, 226(5240):64–65, April 1970.
-
 
 
 

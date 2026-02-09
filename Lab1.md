@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Lab1
+nav_order: 2
 ---
 
 <script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax:{inlineMath:[['\$','\$'],['\\(','\\)']],processEscapes:true},CommonHTML: {matchFontHeight:false}});</script>

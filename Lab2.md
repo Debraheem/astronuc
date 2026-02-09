@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Lab2
+nav_order: 3
 ---
 
 <script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax:{inlineMath:[['\$','\$'],['\\(','\\)']],processEscapes:true},CommonHTML: {matchFontHeight:false}});</script>
@@ -486,4 +487,3 @@ As in Lab1, try adopting the following nonconservative Mass transfer controls an
 |:question: DISCUSSION|
 |:--|
 |Do your answers to any of the aforementioned questions change? Discuss with your group|
-
