@@ -23,14 +23,14 @@
       new_v_flag = .true.
 
       ! If using a big network, comment out and used a local rate_tables directory
-      num_special_rate_factors = 2
-      reaction_for_special_factor(1) = 'r_c12_ag_o16'
-      special_rate_factor(1) = 1
-      filename_of_special_rate(1) = 'c12ag_deboer_sigma_0p0_2000_Tgrid.dat'
+      !num_special_rate_factors = 2
+      !reaction_for_special_factor(1) = 'r_c12_ag_o16'
+      !special_rate_factor(1) = 1
+      !filename_of_special_rate(1) = 'c12ag_deboer_sigma_0p0_2000_Tgrid.dat'
 
-      reaction_for_special_factor(2) = 'r_he4_he4_he4_to_c12'
-      special_rate_factor(2) = 1
-      filename_of_special_rate(2) = 'r_he4_he4_he4_to_c12_cf88.txt'
+      !reaction_for_special_factor(2) = 'r_he4_he4_he4_to_c12'
+      !special_rate_factor(2) = 1
+      !filename_of_special_rate(2) = 'r_he4_he4_he4_to_c12_cf88.txt'
 
       show_retry_counts_when_terminate = .true.
       show_timestep_limit_counts_when_terminate = .true.
@@ -214,12 +214,12 @@
       dX_decreases_only(4) = .true.
 
 ! mesh
-      max_dq= 1d-3 ! or lower
-      mesh_delta_coeff = 1d0 ! try 1.0 or below in production run
-      mesh_delta_coeff_for_highT = 1d0 ! try 1.0 or below in production run
+      !max_dq= 1d-3 ! or lower
+      mesh_delta_coeff = 2d0 ! try 1.0 or below in production run
+      mesh_delta_coeff_for_highT = 1.5d0 ! try 1.0 or below in production run
       logT_max_for_standard_mesh_delta_coeff = 9.0
       logT_min_for_highT_mesh_delta_coeff = 9.5
-      min_dq_for_xa = 1d-4 avoid over resolving composition changes
+      min_dq_for_xa = 1d-4 !avoid over resolving composition changes
       !min_dq_for_xa_convective = 1d-4
       !remesh_dt_limit = 1728000 ! 20 days. turn off remesh when dt smaller than this
 

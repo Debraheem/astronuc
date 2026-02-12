@@ -21,19 +21,29 @@
 
 &controls
 
-      set_min_D_mix = .true.
-      min_D_mix = 1d-2
+! stopping conditions
+      
+      ! stop at He-core depletion
+      xa_central_lower_limit_species(1) = 'he4'
+      xa_central_lower_limit(1) = 1d-6
 
+      ! stop at CC.
       fe_core_infall_limit = 1d8
+
 
       delta_lg_XH_cntr_min   = 0.5d0
       delta_lg_XO_cntr_min   = 0.5d0
       delta_lg_XC_cntr_min   = 0.5d0
       delta_lg_XHe_cntr_min   = 0.5d0
 
+
 ! wind
 
 ! atmosphere
+      ! let's change the outer BC to a momemtum BC to stabalize the surface on our way to cc.
+      ! we also change Pextra_factor to 1 since the timescales are shorter.
+      use_momentum_outer_BC = .true.
+      Pextra_factor = 1 
 
 ! rotation
 
@@ -41,9 +51,10 @@
 
 ! mixing
 
+      set_min_D_mix = .true.
+      min_D_mix = 1d-2
+
 ! timesteps
-      !limit_for_rel_error_in_energy_conservation = 1d-3
-      !hard_limit_for_rel_error_in_energy_conservation = 1d-2
 
       delta_XSi_cntr_limit = 0.0025
 
@@ -81,7 +92,7 @@
 
 Profile_Panels3_xaxis_name = 'mass'
 Profile_Panels3_xmin = 0 ! -101d0
-Profile_Panels3_xmax =  5 !
+Profile_Panels3_xmax =  -101d0 ! 5d0 !
 Profile_Panels3_xaxis_reversed = .false.
 
 
