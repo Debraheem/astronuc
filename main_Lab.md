@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Lab1
+title: main_Lab
 nav_order: 2
 ---
 
@@ -10,7 +10,7 @@ nav_order: 2
 In this section, you will continue with the `Lab1_binary` directory from the introduction. You can also re-download a copy of the desired [Lab1_binary](https://drive.google.com/file/d/1p7A4C0r1Be3CPxPLLIVNXZTVtVWccvze/view?usp=share_link) MESA work directory, but make sure `pgbinary_flag` is set to true in `inlist_project` as we did in the introduction.
 
 
-# Lab1 - Modeling a star through envelope stripping
+# Main Lab - Modeling a star through envelope stripping
 
 
 ## Science goal

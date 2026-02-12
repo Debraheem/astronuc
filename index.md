@@ -3,9 +3,9 @@ layout: default
 title: Introduction
 nav_order: 1
 ---
-![](Figures/contact_binary_image.jpg)
+![](Figures/star_image.jpg)
 
-credit: ESO/L. Calçada
+credit: [Chiavassa et al. 2022](https://ui.adsabs.harvard.edu/abs/2022A%26A...661L...1C/abstract)
 
 # Introduction
 
@@ -48,25 +48,40 @@ It's alright if you don't have `tree` or cannot download it, `ls` should suffice
 
 ```shell-session
 ├── clean
+├── history_columns.list
 ├── inlist
-├── inlist1
-├── inlist2
-├── inlist_pgbinary
+├── inlist_common
+├── inlist_make_late_pre_zams
+├── inlist_make_late_pre_zams_header
+├── inlist_mass_Z_wind_rotation
 ├── inlist_pgstar
-├── inlist_project
+├── inlist_to_cc
+├── inlist_to_cc_header
+├── inlist_to_zams
+├── inlist_to_zams_header
 ├── make
 │   └── makefile
 ├── mk
-├── history_columns.list
 ├── profile_columns.list
+├── rate_tables
+│   ├── c12ag_deboer_sigma_0p0_2000_Tgrid.dat
+│   ...
 ├── re
+├── re_nomodfiles
+├── README.rst
 ├── rn
-└── src
-    ├── binary_run.f90
-    ├── run_binary_extras.f90
-    └── run_star_extras.f90
-
-3 directories, 16 files
+├── rn_all
+├── rn_lab
+├── rn_nomodfiles
+├── rn_standard
+├── rn1
+├── run_all
+├── src
+│   ├── run_star_extras.f90
+│   └── run.f90
+├── standard_late_pre_zams.mod
+├── standard_zams.mod
+└── zams.mod
 ```
 
 
@@ -101,7 +116,7 @@ All files are briefly described in the table below
 
 ### Binary parameters
 
-The primary file you will be modifying is `inlist_project` - which is relevant for binary parameters -  will look something like this
+The primary file you will be modifying is `inlist_to_cc` - which is relevant for binary parameters -  will look something like this
 
 ```plaintext
 &binary_job
@@ -321,176 +336,3 @@ This model directory "should" return a nice pgbinary plot showing the evolution 
 Now let's try to reproduce a similar pgbinary plot. We can `./mk` and `./rn` our binary directory to watch the evolution of a 15Msun star orbiting a point mass. Run your model and take note of what happens to your model and/or the models of the others at your table. Only run your model for a several tens of timesteps to see what happens. 
 
 Discuss what happened with the the others at your table. Take note of what kind of computer are each of you using.
-
-
-# Finding and fixing a bug in MESA (see [gh-issue-634](https://github.com/MESAHub/mesa/issues/634))
-
-
-If you're running on an apple arm cpu (e.g. M1), there should be no issue.
-However, if you're running using the intel cpus, chances are that pgbinary probably crashed your simulation with the following error:
-
-```
-Program received signal SIGSEGV: Segmentation fault - invalid memory reference.
-
-Backtrace for this error:
-#0  0x1550fd0437f2 in ???
-#1  0x1550fd042985 in ???
-#2  0x1550fc470acf in ???
-#3  0x1550fc4f21e9 in ???
-#4  0x1550fd350a33 in ???
-#5  0x1550fd351163 in ???
-#6  0x1550fd306679 in ???
-#7  0x1550fd3094df in ???
-#8  0x1550fd3096e8 in ???
-#9  0x1550fd3091cb in ???
-#10  0x1550fd30975e in ???
-#11  0x1550fd344b8a in ???
-#12  0x49658c in __pgbinary_orbit_MOD_orbit_panel
-	at ../private/pgbinary_orbit.f90:240
-#13  0x48f539 in __pgbinary_grid_MOD_grid_plot
-	at ../private/pgbinary_grid.f90:537
-#14  0x4929f5 in __pgbinary_grid_MOD_grid1_plot
-	at ../private/pgbinary_grid.f90:61
-#15  0x42a767 in __pgbinary_MOD_onscreen_plots
-	at /home1/rhirai/MESA/mesa-r24.03.1/binary/make/pgbinary.f90:878
-#16  0x42a96d in __pgbinary_MOD_do_pgbinary_plots
-	at /home1/rhirai/MESA/mesa-r24.03.1/binary/make/pgbinary.f90:764
-#17  0x42d5a6 in __pgbinary_MOD_update_pgbinary_plots
-	at /home1/rhirai/MESA/mesa-r24.03.1/binary/make/pgbinary.f90:85
-#18  0x428efa in __run_binary_support_MOD_do_run1_binary
-	at ../private/run_binary_support.f90:712
-#19  0x40926c in __binary_lib_MOD_run1_binary
-	at ../public/binary_lib.f90:72
-#20  0x408bb8 in __run_binary_MOD_do_run_binary
-	at /home1/rhirai/MESA/mesa-r24.03.1/binary/job/run_binary.f90:7
-#21  0x408bd4 in binary_run
-	at ../src/binary_run.f90:4
-#22  0x408c0b in main
-	at ../src/binary_run.f90:2
-./rn1: line 6: 49640 Segmentation fault      (core dumped) ./binary
-DATE: 2024-04-04
-TIME: 12:48:18
-finished 
-```
-
-### How do we fix this bug? 
-
-Notice that the fortran backtrace error we are recieving points to `../private/pgbinary_orbit.f90:240`. Using this information open `$MESA_DIR/binary/private/pgbinary_orbit.f90` with your favorate text editor and find line near line 240, which should read
-
-```fortran
-call pgline(2 * num_points + 1, x2s_RL, y2s_RL)
-```
-
-### What seems to be happening?
-
-When MESA binary runs in single star mode, it appears that `x2s_RL` and `y2s_RL` are unset in the `pgbinary_orbit` panel.
-To solve this issue, we can set these variables by adding the following few lines just below line 205 in `pgbinary_orbit.f90`.
-
-```diff
-       do i = 1, num_points	 ! displace the xs
-          x2s_RL(i) = -(x2s_RL(i) - a2 * (1 - e))  ! flip x for 2nd star!
-          x2s_RL(2 * num_points - i + 1) = x2s_RL(i)
-       end do
-       x2s_RL(2 * num_points + 1) = x2s_RL(1)
-       y2s_RL(2 * num_points + 1) = y2s_RL(1)
-       x2max = maxval(abs(x2s_RL))
-       xmax = max(x2max, xmax)
-+    else
-+       x2s_RL = 0d0
-+       y2s_RL = 0d0
-    end if
- else if (b% pg% Orbit_show_RL .and. abs(log10(q)) > 2) then
-    write(*, 1) "pgbinary: Not plotting RL, q too extreme: abs(log(q)) = ", abs(log10(q))
- end if
-```
-
-Save the file and navigate backward into the `$MESA_DIR/binary` directory. Next, let's recompile MESA binary and export our changes with the following commands.
-
-```shell-session
-$ cd $MESA_DIR/binary
-$ ./mk
-$ ./export
-```
-or
-
-```shell-session
-$ cd $MESA_DIR/binary
-$ ./install
-```
-
-|:information_source: INFO|
-|:--|
-|If you are having trouble correctly modifying `pgbinary.f90`, feel free to download the [`pgbinary.f90` solution here](https://drive.google.com/file/d/1r-AA9a-MjCdpmw3QaMxfVrqTEMv0NMqK/view?usp=share_link), and replace the file.|
-
-Now let's navigate back into our Lab1_binary directory, recompile MESA star, and run our binary model again.
-
-```shell-session
-$ ./clean
-$ ./mk
-$ ./rn
-```
-
-pgbinary should no longer crash! You can now continue on to [Lab1](./Lab1), where we will continue using and modifying this same `Lab1_binary` directory.
-
-
-### Bonus: Another bug fix while you're on it
-
-The bug fix above is crucial for many of you, as the simulation won't even run with pgbinary switched on. There is another small bug that prevents the mass of the secondary to be outputted when it is treated as a point mass. That can be fixed by changing the output formatting style. In line 206 and 225 of `$MESA_DIR/binary/private/pgbinary_star.f90`, change the formatting to something like this.
-
-
-```diff
-      select case(star_number)
-      case(1)
-         if (b% pg% do_star1_box) then
-            call pgsvp(xleft + b% pg% Star1_box_pad_left, &
-               xright + b% pg% Star1_box_pad_right, &
-               ybot + b% pg% Star1_box_pad_bot, ytop + b% pg% Star1_box_pad_top)
-            call draw_rect()
-            call pgsvp(xleft, xright, ybot, ytop)
-         end if
-         if (b% point_mass_i /= 1) then
-            call read_pgstar_inlist(b% s1, b% job% inlist_names(1), ierr)
-            call update_pgstar_data(b% s1, ierr)
-            call plot_case(b% s1, b% star_ids(1))
-            call update_pgstar_history_file(b% s1, ierr)
-         else
--            write(mass, '(f3.2)') b% m(1) / Msun
-+            write(mass, '(f0.2)') b% m(1) / Msun
-            call pgmtxt('T', -2.0, 0.5, 0.5, 'Star 1 not simulated')
-            call pgmtxt('T', -3.0, 0.5, 0.5, 'point mass of ' // trim(adjustl(mass)) // ' M\d\(2281)')
-         end if
-      case(2)
-         if (b% pg% do_star2_box) then
-            call pgsvp(xleft + b% pg% Star2_box_pad_left, &
-               xright + b% pg% Star2_box_pad_right, &
-               ybot + b% pg% Star2_box_pad_bot, ytop + b% pg% Star2_box_pad_top)
-            call draw_rect()
-            call pgsvp(xleft, xright, ybot, ytop)
-         end if
-         if (b% point_mass_i /= 2) then
-
-            call read_pgstar_inlist(b% s2, b% job% inlist_names(2), ierr)
-            call update_pgstar_data(b% s2, ierr)
-            call plot_case(b% s2, b% star_ids(2))
-            call update_pgstar_history_file(b% s2, ierr)
-         else
--            write(mass, '(f3.2)') b% m(2) / Msun
-+            write(mass, '(f0.2)') b% m(2) / Msun
-            call pgmtxt('T', -2.0, 0.5, 0.5, 'Star 2 not simulated')
-            call pgmtxt('T', -3.0, 0.5, 0.5, 'point mass of ' // trim(adjustl(mass)) // ' M\d\(2281)')
-         end if
-      end select
-```
-
-After editing, make sure to compile the code again.
-
-```shell-session
-$ cd $MESA_DIR/binary
-$ ./install
-$ cd [working_directory]/Lab1_binary
-$ ./clean
-$ ./mk
-$ ./rn
-```
-
-With this fix, the secondary mass should also be outputted appropriately.
