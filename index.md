@@ -3,7 +3,7 @@ layout: default
 title: Introduction
 nav_order: 1
 ---
-![](Figures/star_image.jpg)
+![](Figures/star_image.png)
 
 credit: [Chiavassa et al. 2022](https://ui.adsabs.harvard.edu/abs/2022A%26A...661L...1C/abstract)
 
