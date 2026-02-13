@@ -86,7 +86,7 @@ It's alright if you don't have `tree` or cannot download it, `ls` should suffice
 
 
 
-All files are briefly described in the table below
+All relevent files are briefly described in the table below
 
 ### MESA STAR work directory
 
@@ -94,6 +94,10 @@ All files are briefly described in the table below
 |:------------------------|:------------------|
 | `clean`                 | A bash file for cleaning the model directory.       |
 | `inlist`                | The header inlist which points to all other inlists to determine which inlists are read and in what order. |
+| `inlist`                | The header inlist which points to all other inlists to determine which inlists are read and in what order. |
+| `inlist`                | The header inlist which points to all other inlists to determine which inlists are read and in what order. |
+| `inlist`                | The header inlist which points to all other inlists to determine which inlists are read and in what order. |
+
 | `inlist1`               | The main inlist which contains controls for the stellar evolution of the `m1`  |
 | `inlist2`               | The main inlist which contains controls for the stellar evolution of the `m2`     |
 | `inlist_pgbinary`       | The inlist which controls the pgstar output for the binary evolution.      |
@@ -106,8 +110,6 @@ All files are briefly described in the table below
 | `re`                    | A bash file for restarting the binary/star model executable from photos      |
 | `rn`                    | A bash file for running the binary/star model executable.      |
 | `src/`                   | A directory containing the three files listed below.      |
-| `binary_run.f90`        | A fortran file for running the binary model.      |
-| `run_binary_extras.f90` | A fortran file which can be modified to agument the binary evolution routines.      |
 | `run_star_extras.f90`   | A fortran file which can be modified to agument the stellar evolution routines.     |
 
 `inlist_project`, `inlist1`, and `inlist2` are the three main files that contain the microphysics information of our binary stellar evolution simulation.
