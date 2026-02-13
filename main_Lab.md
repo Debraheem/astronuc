@@ -31,6 +31,71 @@ Since here we are primarily interested in the evolution of the primary, to save 
 
 Let's begin by using the downloaded `Lab1_binary` directory from the introduction. We will begin by modeling this system as a star + point mass. To do this, open `inlist_project` and make sure to set `evolve_both_stars = .false.`.
 
+
+To begin, please download a copy of the desired [Lab1](https://drive.google.com/file/d/1p7A4C0r1Be3CPxPLLIVNXZTVtVWccvze/view?usp=share_link) MESA work directory.
+This work directory is a slightly modified version of the `$MESA_DIR/star/test_suite/20M_pre_ms_to_cc` test_suite.
+
+Once downloaded, you can decompress the file by
+```shell-session
+$ unzip Lab1.zip
+
+
+`tree ./Lab1` should return the following.
+
+```shell-session
+├── clean
+├── history_columns.list
+├── profile_columns.list
+├── inlist
+├── inlist_common
+├── inlist_mass_Z_wind_rotation
+├── inlist_pgstar
+├── inlist_project
+├── make
+│   └── makefile
+├── mk
+├── rate_tables
+│   ├── c12ag_deboer_sigma_0p0_2000_Tgrid.dat
+│   ...
+├── re
+├── re_nomodfiles
+├── README.rst
+├── rn_nomodfiles
+├── run_lab
+├── src
+│   ├── run_star_extras.f90
+│   └── run.f90
+└── zams.mod
+
+```
+
+
+
+All relevent files are briefly described in the table below
+
+### MESA STAR work directory
+
+| Filename                | Description       |
+|:------------------------|:------------------|
+| `clean`                 | A bash file for cleaning the model directory.       |
+| `inlist`                | The header inlist which points to all other inlists to determine which inlists are read and in what order. |
+| `inlist_mass_Z_wind_rotation`                | The header inlist which points to all other inlists to determine which inlists are read and in what order. |
+| `inlist_project`               | The main inlist which contains controls for the stellar evolution of the `m1`  |
+| `inlist_common`               | The main inlist which contains controls for the stellar evolution of the `m2`     |
+| `inlist_pgstar`         | The inlist which controls the pgstar output for each single star.      |
+| `make/`                  | A directory containing the makefile.   |
+| `mk`                    | A bash file for compiling MESA binary and Star in the model directory.      |
+| `history_columns.list`  | A log file which determines which history values are saved in data files as a function of model timestep. |
+| `profile_columns.list`  | A log file which determines which profiles values are saved in data files as a function of Mass/radius.     |
+| `re`                    | A bash file for restarting the binary/star model executable from photos      |
+| `run_lab`                    | A bash file for running the star model executable.      |
+| `src/`                   | A directory containing the three files listed below.      |
+| `run_star_extras.f90`   | A fortran file which can be modified to agument the stellar evolution routines.     |
+
+`inlist_project`, `inlist_common`, and `inlist_mass_Z_wind_rotation` are the three main files that contain the microphysics information of our stellar evolution simulation.
+
+
+
 In the `&binary_controls`, you should see the following lines:
 
 ```
