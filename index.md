@@ -49,39 +49,28 @@ It's alright if you don't have `tree` or cannot download it, `ls` should suffice
 ```shell-session
 ├── clean
 ├── history_columns.list
+├── profile_columns.list
 ├── inlist
 ├── inlist_common
-├── inlist_make_late_pre_zams
-├── inlist_make_late_pre_zams_header
 ├── inlist_mass_Z_wind_rotation
 ├── inlist_pgstar
-├── inlist_to_cc
-├── inlist_to_cc_header
-├── inlist_to_zams
-├── inlist_to_zams_header
+├── inlist_project
 ├── make
 │   └── makefile
 ├── mk
-├── profile_columns.list
 ├── rate_tables
 │   ├── c12ag_deboer_sigma_0p0_2000_Tgrid.dat
 │   ...
 ├── re
 ├── re_nomodfiles
 ├── README.rst
-├── rn
-├── rn_all
-├── rn_lab
 ├── rn_nomodfiles
-├── rn_standard
-├── rn1
-├── run_all
+├── run_lab
 ├── src
 │   ├── run_star_extras.f90
 │   └── run.f90
-├── standard_late_pre_zams.mod
-├── standard_zams.mod
 └── zams.mod
+
 ```
 
 
@@ -94,25 +83,20 @@ All relevent files are briefly described in the table below
 |:------------------------|:------------------|
 | `clean`                 | A bash file for cleaning the model directory.       |
 | `inlist`                | The header inlist which points to all other inlists to determine which inlists are read and in what order. |
-| `inlist`                | The header inlist which points to all other inlists to determine which inlists are read and in what order. |
-| `inlist`                | The header inlist which points to all other inlists to determine which inlists are read and in what order. |
-| `inlist`                | The header inlist which points to all other inlists to determine which inlists are read and in what order. |
-
-| `inlist1`               | The main inlist which contains controls for the stellar evolution of the `m1`  |
-| `inlist2`               | The main inlist which contains controls for the stellar evolution of the `m2`     |
-| `inlist_pgbinary`       | The inlist which controls the pgstar output for the binary evolution.      |
+| `inlist_mass_Z_wind_rotation`                | The header inlist which points to all other inlists to determine which inlists are read and in what order. |
+| `inlist_project`               | The main inlist which contains controls for the stellar evolution of the `m1`  |
+| `inlist_common`               | The main inlist which contains controls for the stellar evolution of the `m2`     |
 | `inlist_pgstar`         | The inlist which controls the pgstar output for each single star.      |
-| `inlist_project`        | The main inlist which contains controls for the evolution of the binary |
 | `make/`                  | A directory containing the makefile.   |
 | `mk`                    | A bash file for compiling MESA binary and Star in the model directory.      |
 | `history_columns.list`  | A log file which determines which history values are saved in data files as a function of model timestep. |
-| `profile_columns.list`       | A log file which determines which profiles values are saved in data files as a function of Mass/radius.     |
+| `profile_columns.list`  | A log file which determines which profiles values are saved in data files as a function of Mass/radius.     |
 | `re`                    | A bash file for restarting the binary/star model executable from photos      |
-| `rn`                    | A bash file for running the binary/star model executable.      |
+| `run_lab`                    | A bash file for running the star model executable.      |
 | `src/`                   | A directory containing the three files listed below.      |
 | `run_star_extras.f90`   | A fortran file which can be modified to agument the stellar evolution routines.     |
 
-`inlist_project`, `inlist1`, and `inlist2` are the three main files that contain the microphysics information of our binary stellar evolution simulation.
+`inlist_project`, `inlist_common`, and `inlist_mass_Z_wind_rotation` are the three main files that contain the microphysics information of our stellar evolution simulation.
 
 ## Setting the stellar parameters
 
