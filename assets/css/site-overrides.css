@@ -4,8 +4,8 @@
   --bg: #e8e8e8;
   --panel: #272d36;
   --panel-2: #303845;
-  --text: #000000;
-  --text-muted: #000000;
+  --text: #e8edf2;
+  --text-muted: #d0d8e0;
   --border: #455062;
   --link: #89c4ff;
   --link-hover: #b5dbff;
@@ -136,7 +136,7 @@ a:hover {
 .main-content h4,
 .main-content h5,
 .main-content h6 {
-  color: #f7fbff;
+  color: #000000;
   line-height: 1.25;
 }
 
@@ -150,7 +150,7 @@ a:hover {
 .main-content td,
 .main-content th,
 .main-content blockquote {
-  color: var(--text-muted);
+  color: #000000;
   line-height: 1.65;
 }
 
@@ -226,6 +226,12 @@ a:hover {
 .main-content table:has(> tbody > tr > td:only-child) tbody td {
   font-size: 1.05rem;
   padding: 0.95rem 1rem;
+  color: #f7fbff;
+}
+
+.main-content table:has(> tbody > tr > td:only-child) thead th,
+.main-content table:has(> tbody > tr > td:only-child) thead th p {
+  color: #f7fbff;
 }
 
 .main-content table:has(img.emoji[title*="clipboard"]),
@@ -277,6 +283,13 @@ a:hover {
 
 .main-content details > *:not(summary) {
   padding: 0.9rem 1rem;
+  color: #f7fbff;
+}
+
+.main-content details > *:not(summary) p,
+.main-content details > *:not(summary) li,
+.main-content details > *:not(summary) blockquote {
+  color: #f7fbff;
 }
 
 pre,
@@ -300,8 +313,8 @@ code,
     --bg: #f7f9fc;
     --panel: #ffffff;
     --panel-2: #eef3fa;
-    --text: #000000;
-    --text-muted: #000000;
+    --text: #1f2731;
+    --text-muted: #2b3542;
     --border: #d8e0ec;
     --link: #1358c8;
     --link-hover: #0c47a8;

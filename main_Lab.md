@@ -10,7 +10,7 @@ nav_order: 2
 In this section, we will graduate from using our `Intro_MESA_model` model directory, and instead use the provided work directory.  [Changing_rates](https://drive.google.com/file/d/1p7A4C0r1Be3CPxPLLIVNXZTVtVWccvze/view?usp=share_link) MESA work directory, but make sure `pgbinary_flag` is set to true in `inlist_project` as we did in the introduction.
 
 
-# Main Lab - Modeling a star through envelope stripping
+# Main Lab - Modeling a star through Core-Helium Burning with Different Nuclear Reaction Rates
 
 
 ## Science goal
