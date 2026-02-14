@@ -9,12 +9,6 @@ nav_order: 4
 
 # 3. Evolving to Core-collapse
 
-## On this page
-{: .no_toc }
-
-- TOC
-{:toc}
-
 This lab will continue using the downloaded `Lab1_binary` directory from Lab1 where we are modeling our system as a star + point mass. Let's copy over the directory with a new name or redownload it from here: [Lab1_binary](https://drive.google.com/file/d/1p7A4C0r1Be3CPxPLLIVNXZTVtVWccvze/view?usp=share_link),but make sure pgbinary_flag is set to true in inlist_project as we did in the introduction.
 ```shell-session
 $ cp -r Lab1_binary Lab2_binary

@@ -13,12 +13,6 @@ credit: [Chiavassa et al. 2022](https://ui.adsabs.harvard.edu/abs/2022A%26A...66
 
 # 1. Changing Nuclear Reaction Networks
 
-## On this page
-{: .no_toc }
-
-- TOC
-{:toc}
-
 <!-- [HELP LINK for website building](./help.html) -->
 
 [Google drive link to download Lab materials Materials](https://drive.google.com/drive/folders/1yFy2I7kBh6UZPYmhFxkZswQVPI0Qavjc?usp=share_link)

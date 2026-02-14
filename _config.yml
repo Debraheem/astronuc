@@ -2,7 +2,7 @@ remote_theme: pmarsceill/just-the-docs #jekyll-theme-yat #pages-themes/modernist
 #theme: jekyll-theme-minimal
 
 title: "Astronuc: Nuclear Reactions and Networks in Stars with MESA"
-logo: "https://debraheem.github.io/astronuc/Figures/MESA_logo.png"
+logo: "/Figures/MESA_logo.png"
 description:  Ebraheem Farag
 footer_content: ""
 color_scheme: dark

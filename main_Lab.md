@@ -12,13 +12,6 @@ In this section, we will graduate from using our `Intro_MESA_model` model direct
 
 # 2. Changing Nuclear Reaction Rates
 
-## On this page
-{: .no_toc }
-
-- TOC
-{:toc}
-
-
 ## Science goal
 
 In this lab, we will look at how stars stripped by binary interactions evolve compared to their single star counterparts. We will look at how the appearance (e.g. luminosity, temperature), structure (e.g. core mass) of the *donor star* changes depending on the binary orbital parameters and mass transfer efficiency. These properties are very important when we compare stellar models to observed pre-supernova progenitors.

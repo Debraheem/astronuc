@@ -116,21 +116,23 @@ a:hover {
   color: #e8edf2;
 }
 
-.site-title .site-logo {
+.side-bar .site-title::before {
+  content: "";
   display: block;
+  width: min(100%, 14rem);
+  aspect-ratio: 1024 / 250;
+  margin: 0 0 0.65rem;
+  background-image: url("/astronuc/Figures/MESA_logo.png");
+  background-size: contain;
+  background-position: left center;
+  background-repeat: no-repeat;
+}
+
+.site-title .site-logo {
+  display: none;
   width: min(100%, 14rem);
   height: auto;
   margin: 0 0 0.65rem;
-}
-
-.side-bar .site-title::after {
-  content: "Astronuc: Nuclear Reactions and Networks in Stars with MESA";
-  display: block;
-  margin-top: 0.15rem;
-  font-size: 0.92rem;
-  font-weight: 700;
-  line-height: 1.2;
-  color: #e8edf2;
 }
 
 .nav-list .nav-list-link {
@@ -150,6 +152,30 @@ a:hover {
   background: #1f2a3a;
   border-left: 3px solid var(--link);
   box-shadow: inset 0 0 0 1px #314866;
+}
+
+.side-bar .sidebar-page-toc {
+  margin: 0.3rem 0 0.5rem 0.65rem;
+  padding-left: 0.2rem;
+  border-left: 1px solid #314866;
+}
+
+.side-bar .sidebar-page-toc .nav-list-link {
+  font-size: 0.92rem;
+  line-height: 1.35;
+  padding: 0.22rem 0.45rem;
+  color: #a6cfff;
+}
+
+.side-bar .sidebar-page-toc-item-h3 .nav-list-link {
+  padding-left: 1.2rem;
+  font-size: 0.86rem;
+}
+
+.side-bar .sidebar-page-toc .nav-list-link.active {
+  color: #d7ebff;
+  background: #1f2a3a;
+  border-left: 2px solid var(--link);
 }
 
 /* Core content readability. */
