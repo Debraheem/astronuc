@@ -1,11 +1,11 @@
 /* Custom theme overrides: dark-first, readable, and simple to maintain. */
 :root {
   --sidebar-w: 16.5rem;
-  --bg: #f2f2f2;
+  --bg: #e8e8e8;
   --panel: #272d36;
   --panel-2: #303845;
-  --text: #e8edf2;
-  --text-muted: #d0d8e0;
+  --text: #000000;
+  --text-muted: #000000;
   --border: #455062;
   --link: #89c4ff;
   --link-hover: #b5dbff;
@@ -300,8 +300,8 @@ code,
     --bg: #f7f9fc;
     --panel: #ffffff;
     --panel-2: #eef3fa;
-    --text: #1f2731;
-    --text-muted: #2b3542;
+    --text: #000000;
+    --text-muted: #000000;
     --border: #d8e0ec;
     --link: #1358c8;
     --link-hover: #0c47a8;
