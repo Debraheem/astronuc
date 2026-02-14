@@ -283,7 +283,7 @@ Add the following to `&pgstar` inside `inlist_pgstar`
    Power_win_flag = .true. ! turn on Power window
 ```
 
-![pgstar of core-Hydrogen burning](Figures/intro_hr2.png)
+![pgstar of Hydrogen burning](Figures/intro_hr.png)
 
 
 
