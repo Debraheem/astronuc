@@ -214,12 +214,7 @@ On executing the above commands, MESA will print the model output on the termina
 
 ![An example of the output printed on the terminal](Figures/terminal_output.png)
 
-one of the first things you should see is 
-
-```shell-session
-                                          species  mass           8    1.5000000000000002D+01
-```
-Indicating the Stellar model is 15 Solar masses (to double precision), and the nuclear reaction network MESA has adopted contains 8 isotopes. The model should begin with a numerical relaxation routine to generate the intial model, and then be followed by periodic terminal output describing global properties of the stellar model as it evolves and contracts.  
+Notice one of the first things you should see is a line indicating the stellar model is 15 M$_{\odot}$ (to double precision), and the nuclear reaction network MESA has adopted contains 8 isotopes. The model should begin with a numerical relaxation routine to generate the intial model, and then be followed by periodic terminal output describing global properties of the stellar model as it evolves and contracts.  
 
 
 ### Pgstar Output
@@ -237,7 +232,7 @@ The model should return two figures, one showing the evolution of the stellar mo
 
 ![pgstar](Figures/intro_hr.png)
 
-The model should evolve until reaching the stopping condition set inside the `inlist_project`, specifically
+The model should evolve until reaching the stopping condition set inside `inlist_project`, specifically
 
 ```plaintext
    ! stop when the star nears ZAMS (Lnuc/L > 0.99)
@@ -247,6 +242,7 @@ The model should evolve until reaching the stopping condition set inside the `in
 
 ![An example of the output printed at the stopping condition](Figures/terminal_output3.png)
 
+We want the stellar model to evolve through core-Hydrogen burning, and we want to visualize the evolution of the composition! To do that we'll need to change a few things in our model directory.
 
 |:clipboard: TASK|
 |:--|
@@ -255,12 +251,18 @@ The model should evolve until reaching the stopping condition set inside the `in
 |Add a power plot to `&pgstar`, See [MESA &pgstar documentation: Power window](https://docs.mesastar.org/en/25.12.1/reference/pgstar.html#power-window).|
 |Run the model again!|
 
+
+|:information_source: HINT|
+|:--|
+|instead of running your model from the beginning with ``, try restarting from the last binary photo, with `./re x207`|
+
 | :question: Below are some questions to think about and discuss while your model evolves | 
 | :--- |
-| 1. Which isotopes or reactions dominate the energy production in the star?|
-| 2. What burns first?|
+| 1. Which isotopes or reactions dominate the energy production in the stellar model during core-Hydrogen burning?|
 | 3. How do these reactions alter the central composition?|
 | 4. Do we miss any reactions with our simplified 8 isotope network?|
+
+
 
 
 <details markdown="block">
@@ -283,9 +285,16 @@ Add the following to `&pgstar` inside `inlist_pgstar`
 
 </details>
 
-### Changing networks
+## Nuclear Reaction Networks for core-Hydrogen burning
 
-The Basic network might not be capturing all the nucleosynthetic processes we are trying to study, let's investigate what reactions and isotopes are involved in this network, and if we should switch to a more detailed network? 
+The `net` module in MESA  implements nuclear reaction networks and is derived from publicly available code (made available thanks to [Frank Timmes](https://cococubed.com/code_pages/burn.shtml)). It includes a "basic" network of 8 isotopes: $^{1}$H, $^{3}$Не, $^{4}$He, $^{12}$C, $^{14}$N, $^{16}$O, $^{20}$Ne, and $^{24}$Mg. MESA also provides extended networks for more detailed calculations including coverage of hot CNO reactions, a-capture chains, (a,p) +(p, y) reactions, and heavy-ion reactions (See [Timmes 1999](https://ui.adsabs.harvard.edu/abs/1999ApJS..124..241T/abstract)). In addition to using existing networks, the user can create a new network by listing the desired isotopes and reactions in a data file that is read at run time, the `.net` file. 
+
+   Further details on the net modeule in MESA, see [MESA neuclear reaction network documentation](https://docs.mesastar.org/en/25.12.1/net/nets.html), and information on [nuclear reaction rates](https://docs.mesastar.org/en/25.12.1/rates/overview.html), and the MESA instrument papers (linked on the sidebar). 
+
+<!--The amount of heat deposited in the plasma by reactions is derived from the nuclear masses in chem, taken from the JINA Reaclib database (Rauscher & Thielemann-->
+<!--2000; Sakharuk et al. 2006; Cyburt et al. 2010), and accounts for positron annihilations and energy lost to weak neutrinos, using Bahcall (1997, 2002) for the hydrogen burning reactions. The list of approximately 350 reactions is stored in a data file that catalogs the reaction name, the input and output species, and their heat release. (lines from paxton et al. 2011) -->
+
+By default MESA adopts the `basic.net` approximate network. Let's investigate more closely what reactions and isotopes are involved in this network. 
 
 Navigate to `$MESA_DIR/data/net_data/nets/.` and open `basic.net`, it should read
 
@@ -359,7 +368,37 @@ Navigate to `$MESA_DIR/data/net_data/nets/.` and open `basic.net`, it should rea
          )     
 ```
 
-Inspect the folder, look at some of the other network files. Since we are only evolving our stellar model through core-Hydrogen burning, perhaps we should select a network that is more specific to this phase of evolution?  
+Core-Hydrogen burning is characterized by two key processes:
+
+
+The proton-proton chain:
+ 
+![PP I, II, II, and pep chains are visualized here](Figures/pp_chains.svg)
+ 
+and the Carbon-Nitrogen-Oxygen (CNO) Cyles:
+ 
+![CNO I, II, III, and IV cycles visualized here](Figures/cno_cycles_white.svg)
+
+
+Because the temperature sensitivity of the CNO cycle nuclear reactions increase more steeply with temperature $\epsilon_{CNO} \propto T^{17}$, as opposed to $\epsilon_{pp} \propto T^{4}$, Hotter stellar models are dominated by CNO cycle nuclear reactions. 
+
+| :question: Where does our 15 M$_{\odot}$ stellar model lie in the diagram below?| 
+![PP versus CNO energy generation rates](Figures/ppcno_sdot.svg)
+
+
+<details markdown="block">
+<summary>Answers: Where does our model live in the diagram </summary>
+Our model lives far to the right at high core temperatures $T \sim 30 $ MK, and is dominated by CNO cycle nuclear reactions.
+</details>
+
+### The Basic.net network might not be capturing all the nucleosynthetic processes we are trying to study, 
+
+| :question: Which isotopes in the four CNO cycles visualized above are missing from our `basic.net`?|
+| Which isotopes in the four CNO cycles visualized above are missing from our `basic.net`?|
+| If we wanted to switch to a slightly more detailed network, how would we do it?|
+
+
+Let's inspect some of the other network files available in MESA `$MESA_DIR/data/net_data/nets/`. Since we are only evolving our stellar model through core-Hydrogen burning, perhaps we should select a network that is more specific to this phase of evolution?  
 
 Looking inside `pp_and_cno_extras.net`, we find that this network adopts `basic.net` as before but adds in additional isotopes and reactions to resolve pp and cno burning.
 
@@ -374,22 +413,47 @@ Looking inside `pp_and_cno_extras.net`, we find that this network adopts `basic.
 |:clipboard: TASK|
 |:--|
 |Look at 'add_pp_extras' and 'add_pp_extras'.|
-|change the nuclear reaction network in `&starjob` to adopt `pp_and_cno_extras.net`!See [MESA &starjob documentation: When to stop](https://docs.mesastar.org/en/25.12.1/reference/star_job.html#change-initial-net).|
+|change the nuclear reaction network in `&star_job` to adopt `pp_and_cno_extras.net`!See [MESA &starjob documentation: When to stop](https://docs.mesastar.org/en/25.12.1/reference/star_job.html#change-initial-net).|
 |Run the model again!|
 
+Are there any notable changes in your model's properties or behavior? How does the run time of your MESA Calculation change?
 
+### Generalized Networks
 
-Now let's try to reproduce a similar pgbinary plot. We can `./mk` and `./rn` our binary directory to watch the evolution of a 15Msun star orbiting a point mass. Run your model and take note of what happens to your model and/or the models of the others at your table. Only run your model for a several tens of timesteps to see what happens. 
-
-Discuss what happened with the the others at your table. Take note of what kind of computer are each of you using.
-
-
-
-| :question: How do you adopt a general network?| 
+| :question: How do you adopt a general network? See[MESA neuclear reaction network documentation](https://docs.mesastar.org/en/25.12.1/net/nets.html)| 
 
 
 |:clipboard: Bonus TASK|
 |:--|
-|How would one at 'add_pp_extras' and 'add_pp_extras'.|
-|change the nuclear reaction network in `&starjob` to adopt `pp_and_cno_extras.net`!See [MESA &starjob documentation: When to stop](https://docs.mesastar.org/en/25.12.1/reference/star_job.html#change-initial-net).|
-|Run the model again!|
+|Try switching to a generalized network.|
+|change the nuclear reaction network in `&starjob` to adopt `mesa_28.net`!See [MESA &starjob documentation: When to stop](https://docs.mesastar.org/en/25.12.1/reference/star_job.html#change-initial-net).|
+|Run the model again, and take note of the run time difference!|
+
+Below are the contents of `mesa_28.net`.
+```plaintext
+
+add_isos_and_reactions(
+   neut
+    h  1  2 ! hydrogen
+   he  3  4 ! helium
+   li7      ! lithium
+   be7
+   be  9 10 ! berylium
+    b8      ! boron
+    c 12 13 ! carbon
+    n 13 15 ! nitrogen
+    o 14 18 ! oxygen
+    f 17 19 ! fluorine
+   ne 18 22 ! neon
+   )
+```
+
+
+|:information_source: Building your own network file|
+|:--|
+| If you make your own network, the .net file can be does not need to live inside `$MESA_DIR/nets/data/net_data`. You can place the network file inside your local MESA model directory.|
+
+![The mesa_206.net isotope network visualized](Figures/farag_206_network_plot.pdf)
+
+For modeling more complex nuclear reaction, during advanced burning stages, refer to [Farmer et al. 2016](https://ui.adsabs.harvard.edu/abs/2016ApJS..227...22F/abstract)
+
