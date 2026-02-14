@@ -135,6 +135,16 @@ a:hover {
   margin: 0 0 0.65rem;
 }
 
+.side-bar .site-title::after {
+  content: "Astronuc: Nuclear Reactions and Networks in Stars with MESA";
+  display: block;
+  margin-top: 0.15rem;
+  font-size: 0.92rem;
+  font-weight: 700;
+  line-height: 1.2;
+  color: #e8edf2;
+}
+
 .nav-list .nav-list-link {
   font-size: 1.08rem;
   line-height: 1.5;

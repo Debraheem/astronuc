@@ -375,18 +375,20 @@ Navigate to `$MESA_DIR/data/net_data/nets/.` and open `basic.net`, it should rea
 Core-Hydrogen burning is characterized by two key processes:
 
 
-The proton-proton chain:
+The proton-proton chain: 
  
+PP I, II, II, and pep chains are visualized here
 ![PP I, II, II, and pep chains are visualized here](Figures/pp_chains.svg)
  
 and the Carbon-Nitrogen-Oxygen (CNO) Cyles:
  
+CNO I, II, III, and IV cycles visualized here
 ![CNO I, II, III, and IV cycles visualized here](Figures/cno_cycles_white.svg)
 
 
 Because the temperature sensitivity of the CNO cycle nuclear reactions increase more steeply with temperature $\epsilon_{CNO} \propto T^{17}$, as opposed to $\epsilon_{pp} \propto T^{4}$, Hotter stellar models are dominated by CNO cycle nuclear reactions. 
 
-|| :question: Where does our 15 M$_{\odot}$ stellar model lie in the diagram below?| 
+| :question: Where does our 15 M$_{\odot}$ stellar model lie in the diagram below?| 
 ![PP versus CNO energy generation rates](Figures/ppcno_sdot.svg)
 
 

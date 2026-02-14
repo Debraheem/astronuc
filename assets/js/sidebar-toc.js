@@ -3,24 +3,61 @@
     return (node.textContent || "").replace(/\s+/g, " ").trim();
   }
 
+  function slugify(text) {
+    return text
+      .toLowerCase()
+      .replace(/[`~!@#$%^&*()+=[\]{}|\\;:'",.<>/?]/g, "")
+      .replace(/\s+/g, "-")
+      .replace(/-+/g, "-")
+      .replace(/^-|-$/g, "");
+  }
+
+  function samePath(a, b) {
+    const norm = (s) => s.replace(/\/+$/, "") || "/";
+    return norm(a) === norm(b);
+  }
+
   function buildSidebarToc() {
     const sidebar = document.querySelector(".side-bar");
     const content = document.querySelector(".main-content");
     if (!sidebar || !content) return;
 
-    const activeLink = sidebar.querySelector(".nav-list .nav-list-link.active");
+    const currentPath = window.location.pathname;
+    const navLinks = Array.from(sidebar.querySelectorAll(".nav-list a.nav-list-link[href]"));
+    const activeLink =
+      navLinks.find((a) => {
+        try {
+          const u = new URL(a.getAttribute("href"), window.location.origin);
+          return samePath(u.pathname, currentPath);
+        } catch (_err) {
+          return false;
+        }
+      }) || sidebar.querySelector(".nav-list .nav-list-link.active");
     if (!activeLink) return;
 
     const activeItem = activeLink.closest(".nav-list-item");
     if (!activeItem) return;
 
-    const existing = activeItem.querySelector(".sidebar-page-toc");
-    if (existing) existing.remove();
+    const existing = sidebar.querySelectorAll(".sidebar-page-toc");
+    existing.forEach((node) => node.remove());
 
+    const seenIds = new Set();
     const headings = Array.from(content.querySelectorAll("h2, h3")).filter((h) => {
-      if (!h.id) return false;
       if (h.classList.contains("no_toc")) return false;
-      return textOf(h).length > 0;
+      const txt = textOf(h);
+      if (!txt) return false;
+      if (!h.id) {
+        let base = slugify(txt) || "section";
+        let id = base;
+        let i = 2;
+        while (seenIds.has(id) || document.getElementById(id)) {
+          id = `${base}-${i}`;
+          i += 1;
+        }
+        h.id = id;
+      }
+      seenIds.add(h.id);
+      return true;
     });
     if (!headings.length) return;
 
@@ -56,7 +93,11 @@
       toc.appendChild(li);
     });
 
-    activeItem.appendChild(toc);
+    const anchorPoint =
+      activeLink.nextElementSibling && activeLink.nextElementSibling.classList.contains("nav-list-expander")
+        ? activeLink.nextElementSibling
+        : activeLink;
+    anchorPoint.insertAdjacentElement("afterend", toc);
 
     const tocLinks = Array.from(toc.querySelectorAll("a.nav-list-link"));
     const linkById = new Map(tocLinks.map((a) => [decodeURIComponent(a.hash.slice(1)), a]));
