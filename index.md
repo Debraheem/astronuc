@@ -254,7 +254,7 @@ We want the stellar model to evolve through core-Hydrogen burning, and we want t
 
 |:information_source: HINT|
 |:--|
-|instead of running your model from the beginning with ``, try restarting from the last binary photo, with `./re x207`|
+|instead of running your model from the beginning with `./rn`, try restarting from the last binary photo, with `./re x207`|
 
 | :question: Below are some questions to think about and discuss while your model evolves | 
 | :--- |
