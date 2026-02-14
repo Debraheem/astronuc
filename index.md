@@ -1,7 +1,7 @@
 ---
 layout: default
-title: Introduction
-nav_order: 1
+title: "1. Changing Nuclear Reaction Networks"
+nav_order: 2
 ---
 
 <script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax:{inlineMath:[['\$','\$'],['\\(','\\)']],processEscapes:true},CommonHTML: {matchFontHeight:false}});</script>
@@ -11,7 +11,7 @@ nav_order: 1
 
 credit: [Chiavassa et al. 2022](https://ui.adsabs.harvard.edu/abs/2022A%26A...661L...1C/abstract)
 
-# Introduction
+# 1. Changing Nuclear Reaction Networks
 
 <!-- [HELP LINK for website building](./help.html) -->
 
@@ -460,4 +460,3 @@ add_isos_and_reactions(
 ![The mesa_206.net isotope network visualized](Figures/farag_206_network_plot.png)
 
 For modeling more complex nuclear reaction, during advanced burning stages, refer to [Farmer et al. 2016](https://ui.adsabs.harvard.edu/abs/2016ApJS..227...22F/abstract)
-

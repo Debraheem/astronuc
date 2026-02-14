@@ -2,7 +2,7 @@
 layout: default
 title: "Control Defaults ↗"
 parent: Resources
-nav_order: 4
+nav_order: 2
 ---
 <meta http-equiv="refresh" content="0; url=https://docs.mesastar.org/en/25.12.1/reference/controls.html">
 <script>window.location.replace("https://docs.mesastar.org/en/25.12.1/reference/controls.html");</script>

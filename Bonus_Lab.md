@@ -1,13 +1,13 @@
 ---
 layout: default
-title: Bonus_Lab
-nav_order: 3
+title: "3. Evolving to Core-collapse"
+nav_order: 4
 ---
 
 <script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax:{inlineMath:[['\$','\$'],['\\(','\\)']],processEscapes:true},CommonHTML: {matchFontHeight:false}});</script>
 <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 
-# Bonus Lab - Evolve the stellar model to core-collapse
+# 3. Evolving to Core-collapse
 
 This lab will continue using the downloaded `Lab1_binary` directory from Lab1 where we are modeling our system as a star + point mass. Let's copy over the directory with a new name or redownload it from here: [Lab1_binary](https://drive.google.com/file/d/1p7A4C0r1Be3CPxPLLIVNXZTVtVWccvze/view?usp=share_link),but make sure pgbinary_flag is set to true in inlist_project as we did in the introduction.
 ```shell-session
