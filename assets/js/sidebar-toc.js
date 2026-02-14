@@ -17,6 +17,11 @@
     return norm(a) === norm(b);
   }
 
+  function extractSectionNumber(text) {
+    const m = (text || "").match(/^\s*(\d+)\./);
+    return m ? Number.parseInt(m[1], 10) : null;
+  }
+
   function buildSidebarToc() {
     const sidebar = document.querySelector(".side-bar");
     const content = document.querySelector(".main-content");
@@ -37,6 +42,7 @@
 
     const activeItem = activeLink.closest(".nav-list-item");
     if (!activeItem) return;
+    const mainSection = extractSectionNumber(textOf(activeLink));
 
     const existing = sidebar.querySelectorAll(".sidebar-page-toc");
     existing.forEach((node) => node.remove());
@@ -77,11 +83,11 @@
       if (level === "h2") {
         h2Count += 1;
         h3Count = 0;
-        prefix = `${h2Count}.`;
+        prefix = mainSection ? `${mainSection}.${h2Count}` : `${h2Count}.`;
       } else if (level === "h3") {
         if (h2Count === 0) h2Count = 1;
         h3Count += 1;
-        prefix = `${h2Count}.${h3Count}`;
+        prefix = mainSection ? `${mainSection}.${h2Count}.${h3Count}` : `${h2Count}.${h3Count}`;
       }
 
       const a = document.createElement("a");
