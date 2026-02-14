@@ -12,6 +12,12 @@ In this section, we will graduate from using our `Intro_MESA_model` model direct
 
 # 2. Changing Nuclear Reaction Rates
 
+## On this page
+{: .no_toc }
+
+- TOC
+{:toc}
+
 
 ## Science goal
 
