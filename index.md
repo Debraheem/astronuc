@@ -3,6 +3,10 @@ layout: default
 title: Introduction
 nav_order: 1
 ---
+
+<script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax:{inlineMath:[['\$','\$'],['\\(','\\)']],processEscapes:true},CommonHTML: {matchFontHeight:false}});</script>
+<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
 ![](Figures/star_image.png)
 
 credit: [Chiavassa et al. 2022](https://ui.adsabs.harvard.edu/abs/2022A%26A...661L...1C/abstract)
@@ -382,7 +386,7 @@ and the Carbon-Nitrogen-Oxygen (CNO) Cyles:
 
 Because the temperature sensitivity of the CNO cycle nuclear reactions increase more steeply with temperature $\epsilon_{CNO} \propto T^{17}$, as opposed to $\epsilon_{pp} \propto T^{4}$, Hotter stellar models are dominated by CNO cycle nuclear reactions. 
 
-| :question: Where does our 15 M$_{\odot}$ stellar model lie in the diagram below?| 
+|| :question: Where does our 15 M$_{\odot}$ stellar model lie in the diagram below?| 
 ![PP versus CNO energy generation rates](Figures/ppcno_sdot.svg)
 
 
@@ -453,7 +457,7 @@ add_isos_and_reactions(
 |:--|
 | If you make your own network, the .net file can be does not need to live inside `$MESA_DIR/nets/data/net_data`. You can place the network file inside your local MESA model directory.|
 
-![The mesa_206.net isotope network visualized](Figures/farag_206_network_plot.pdf)
+![The mesa_206.net isotope network visualized](Figures/farag_206_network_plot.png)
 
 For modeling more complex nuclear reaction, during advanced burning stages, refer to [Farmer et al. 2016](https://ui.adsabs.harvard.edu/abs/2016ApJS..227...22F/abstract)
 
