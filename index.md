@@ -298,6 +298,7 @@ The `net` module in MESA  implements nuclear reaction networks and is derived fr
 
 ### Basic.net
 
+![The basic.net isotope network visualized](Figures/approx8.svg)
 
 By default MESA adopts the `basic.net` approximate network. Let's investigate more closely what reactions and isotopes are involved in this network. 
 
@@ -422,7 +423,7 @@ Looking inside `pp_and_cno_extras.net`, we find that this network adopts `basic.
 |:clipboard: TASK|
 |:--|
 |Look at 'add_pp_extras' and 'add_pp_extras'.|
-|change the nuclear reaction network in `&star_job` to adopt `pp_and_cno_extras.net`!See [MESA &starjob documentation: changing networks](https://docs.mesastar.org/en/25.12.1/reference/star_job.html#change-initial-net).|
+|change the nuclear reaction network in `&star_job` to adopt `pp_and_cno_extras.net`! See [MESA &starjob documentation: changing networks](https://docs.mesastar.org/en/25.12.1/reference/star_job.html#change-initial-net).|
 |Run the model again!|
 
 Are there any notable changes in your model's properties or behavior? How does the run time of your MESA Calculation change?
@@ -430,13 +431,13 @@ Are there any notable changes in your model's properties or behavior? How does t
 
 ### Generalized Networks
 
-| :question: How do you adopt a general network? See[MESA neuclear reaction network documentation](https://docs.mesastar.org/en/25.12.1/net/nets.html)| 
+| :question: How do you adopt a general network? See[MESA nuclear reaction network documentation](https://docs.mesastar.org/en/25.12.1/net/nets.html)| 
 
 
 |:clipboard: Bonus TASK|
 |:--|
 |Try switching to a generalized network.|
-|change the nuclear reaction network in `&starjob` to adopt `mesa_28.net`!See [MESA &starjob documentation: When to stop](https://docs.mesastar.org/en/25.12.1/reference/star_job.html#change-initial-net).|
+|change the nuclear reaction network in `&starjob` to adopt `mesa_28.net`!See [MESA &star_job nuclear reaction network documentation](https://docs.mesastar.org/en/25.12.1/reference/star_job.html#change-initial-net).|
 |Run the model again, and take note of the run time difference!|
 
 Below are the contents of `mesa_28.net`.
@@ -463,6 +464,42 @@ add_isos_and_reactions(
 |:--|
 | If you make your own network, the .net file can be does not need to live inside `$MESA_DIR/nets/data/net_data`. You can place the network file inside your local MESA model directory.|
 
-![The mesa_206.net isotope network visualized](Figures/farag_206_network_plot.png)
+When building a network file for your stellar evolution model, one should always consider specific processes you are trying to resolve, as larger networks are more time consuming and numerically challenging to solve. 
 
-For modeling more complex nuclear reaction, during advanced burning stages, refer to [Farmer et al. 2016](https://ui.adsabs.harvard.edu/abs/2016ApJS..227...22F/abstract)
+When MESA solves the stellar structure equations, each equation is discretized and solved by forming a jacobian matrix for each stellar model zone. The tridiagonal block matrix is then solved implicitly using as a multidimensional Newton Raphson solve.
+
+The struture of MESA's jacobian matrix is shown below for the case of the `basic.net` nuclear reaction network.
+![The mesa_206.net isotope network visualized](Figures/mesa_jacobian_illustrated.pdf)
+
+
+Each additional isotope adds an additional equation that must be solved, and hence another row and column to the matrix in each stellar model zone. For $n_{iso}$ isotopes, the total jacobian size therefore scales with $n_{iso}^{2}$. 
+
+Below the Jacobian matrix for a single zone 127 isotope network is visualized. Notice how the sparisty in the matrix grows with an increasing number of isotopes, leading to larger condition numbers, hence a more numerically stiff nonlinear system. Therefore, the increase in computational time associated with solving large nuclear reaction networks not only comes from the size of the jacobian matrix, but also the difficulity with which it is solved. All things being equal,a larger nuclear reaction network by nature of being more numerically stiff, tends to take extra newton iterations to solve inside MESA.  
+![The mesa_206.net isotope network visualized](Figures/torch127_jac.pdf)
+
+
+### Network choice during advanced burning
+
+
+For later phases of stellar evolution, such as silicon burning in a massive stellar core, the temperature sensitivity of specific nuclear reaction rates can also grow substantially. For example, during Silicon burning the temperature sensitivity for energy generation is orders of magnitude larger, $\epsilon_{Si} \propto T^{47}$.
+
+ The large temperature sensitivity and sparsity in the matrix, can make accurate calculations of massive star evolution extremely challenging and prone to a variety of numerical pitfalls.
+
+
+For this reason, MESA also contains approximate networks for late burning phases. Below we highlight `approx21.net`, which includes all the necessary alpha chain reactions up through $^{56}$ Fe. This network is the workhorse network that MESA more or less uses everywhere by default, and is an extension of `basic.net`.
+
+![The approx21.net isotope network visualized](Figures/approx21.svg)
+
+
+However, for accurately modeling advanced burning phases of stellar evolution, and properly capturing nucleosynthetic processes such as s-process, larger networks are needed. Likewise, the `approx21.net` does not contain many of the weak reactions necessary for capturing the $\beta$ processes, and electron captures. More extended generalized networks are need. 
+
+An exploration of a variety of networks and their impact on massive star evolution and uncertainties was conducted in [Farmer et al. 2016](https://ui.adsabs.harvard.edu/abs/2016ApJS..227...22F/abstract). We show the networks they explored below.
+
+
+![farmer networks](Figures/farmer_network.png)
+
+
+While 127 isotopes seems to be the benchmark for simulating massive stars evolving to core-collapse. For studying neutrino emission and capturing the energy generation rate correctly, even larger networks such as the 206 isotope network provide even more fidelity, and might even be necessary for finding convergence in model behavior. An illustration of the `mesa_206.net` network (my usual workhorse) is shown below.
+<!--![The mesa_206.net isotope network visualized](Figures/farag_206_network_plot.png)-->
+<img src="Figures/farag_206_network_plot.png" alt="The mesa_206.net isotope network visualized" width="50%">
+
