@@ -81,8 +81,8 @@ All relevent files are briefly described in the table below
 | `inlist_project`               | The main inlist which contains controls for the stellar evolution of the `m1`  |
 | `inlist_pgstar`         | The inlist which controls the pgstar output for the star.      |
 | `make/`                  | A directory containing the makefile.   |
-| `mk`                    | A bash file for compiling MESA binary and Star in the model directory.      |
-| `re`                    | A bash file for restarting the binary/star model executable from photos      |
+| `mk`                    | A bash file for compiling MESA Star executable in the model directory.      |
+| `re`                    | A bash file for restarting the star model executable from photos      |
 | `rn`                    | A bash file for running the star model executable.      |
 | `src/`                   | A directory containing the three files listed below.      |
 | `run_star_extras.f90`   | A fortran file which can be modified to agument the stellar evolution routines.     |
@@ -388,6 +388,7 @@ Because the temperature sensitivity of the CNO cycle nuclear reactions increase 
 |&#10067; Question|
 |---|
 |Where does our stellar model lie in the diagram below?|
+
 ![PP versus CNO energy generation rates](Figures/ppcno_sdot.svg)
 
 
