@@ -77,10 +77,8 @@ It's alright if you don't have `tree` or cannot download it, `ls` should suffice
 ```
 
 
-
-All relevent files are briefly described in the table below
-
 ### MESA STAR work directory
+All relevent files are briefly described in the table below
 
 | Filename                | Description       |
 |:------------------------|:------------------|
@@ -97,11 +95,11 @@ All relevent files are briefly described in the table below
 
 `inlist_project` is the main files that contain the microphysics information of our stellar evolution simulation.
 
-## Setting the stellar parameters
+## Running MESA
 
-### Binary parameters
+### Setting inlist parameters
 
-The primary file you will be modifying is `inlist_to_cc` - which is relevant for binary parameters -  will look something like this
+The primary file you will be modifying is `inlist_project`
 
 ```plaintext
 ! inlist to evolve a 15 solar mass star
@@ -298,6 +296,9 @@ The `net` module in MESA  implements nuclear reaction networks and is derived fr
 <!--The amount of heat deposited in the plasma by reactions is derived from the nuclear masses in chem, taken from the JINA Reaclib database (Rauscher & Thielemann-->
 <!--2000; Sakharuk et al. 2006; Cyburt et al. 2010), and accounts for positron annihilations and energy lost to weak neutrinos, using Bahcall (1997, 2002) for the hydrogen burning reactions. The list of approximately 350 reactions is stored in a data file that catalogs the reaction name, the input and output species, and their heat release. (lines from paxton et al. 2011) -->
 
+### Basic.net
+
+
 By default MESA adopts the `basic.net` approximate network. Let's investigate more closely what reactions and isotopes are involved in this network. 
 
 Navigate to `$MESA_DIR/data/net_data/nets/.` and open `basic.net`, it should read
@@ -388,7 +389,7 @@ CNO I, II, III, and IV cycles visualized here
 
 Because the temperature sensitivity of the CNO cycle nuclear reactions increase more steeply with temperature $\epsilon_{CNO} \propto T^{17}$, as opposed to $\epsilon_{pp} \propto T^{4}$, Hotter stellar models are dominated by CNO cycle nuclear reactions. 
 
-| :question: Where does our 15 M$_{\odot}$ stellar model lie in the diagram below?| 
+|:question: Where does our stellar model lie in the diagram below?| 
 ![PP versus CNO energy generation rates](Figures/ppcno_sdot.svg)
 
 
@@ -397,7 +398,9 @@ Because the temperature sensitivity of the CNO cycle nuclear reactions increase 
 Our model lives far to the right at high core temperatures $T \sim 30 $ MK, and is dominated by CNO cycle nuclear reactions.
 </details>
 
-### The Basic.net network might not be capturing all the nucleosynthetic processes we are trying to study, 
+### Other Hardwired networks
+
+The Basic.net network might not be capturing all the nucleosynthetic processes we are trying to study, 
 
 | :question: Which isotopes in the four CNO cycles visualized above are missing from our `basic.net`?|
 | Which isotopes in the four CNO cycles visualized above are missing from our `basic.net`?|
@@ -423,6 +426,7 @@ Looking inside `pp_and_cno_extras.net`, we find that this network adopts `basic.
 |Run the model again!|
 
 Are there any notable changes in your model's properties or behavior? How does the run time of your MESA Calculation change?
+
 
 ### Generalized Networks
 
