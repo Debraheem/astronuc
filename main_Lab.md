@@ -178,9 +178,9 @@ Below are profiles of the same stellar model at core-Helium depletion, with diff
 
 ## Connecting to Population synthesis models
 
-Population-synthesis calculations usually do not evolve full stellar structure for every binary. Instead, they map pre-collapse core properties to compact-remnant masses using analytic prescriptions. Here we connect our MESA models to the smooth remnant-mass prescription in [Fryer et al. 2022](https://ui.adsabs.harvard.edu/abs/2022ApJ...931...94F/abstract), which is also used in population-synthesis studies such as [Olejak et al. 2022](https://ui.adsabs.harvard.edu/abs/2022MNRAS.516.2252O/abstract).
+Population-synthesis calculations usually do not evolve full stellar structure for every stellar model. Instead, they map pre-collapse core properties to compact-remnant masses using analytic prescriptions. Here we connect our MESA models to the smooth remnant-mass prescription in [Fryer et al. 2022](https://ui.adsabs.harvard.edu/abs/2022ApJ...931...94F/abstract), which is also used in population-synthesis studies such as [Olejak et al. 2022](https://ui.adsabs.harvard.edu/abs/2022MNRAS.516.2252O/abstract).
 
-Define:
+Definitions:
 
 - $M_{\mathrm{CO}}$: CO-core mass at collapse (from your MESA model),
 - $f_{\mathrm{mix}}$: mixing parameter in the Fryer+2022 fit,
@@ -189,22 +189,11 @@ Define:
 
 Using Fryer+2022, the baryonic remnant mass is
 
-$$
-M_{\mathrm{rem,bar}}^{(\mathrm{raw})}
-=
-1.2
-+0.05\,f_{\mathrm{mix}}
-+0.01\left(\frac{M_{\mathrm{CO}}}{f_{\mathrm{mix}}}\right)^2
-+\exp\!\left[f_{\mathrm{mix}}(M_{\mathrm{CO}}-M_{\mathrm{crit}})\right],
-$$
+$$M_{\mathrm{rem,bar}}^{(\mathrm{raw})} = 1.2 + 0.05\,f_{\mathrm{mix}} + 0.01\left(\frac{M_{\mathrm{CO}}}{f_{\mathrm{mix}}}\right)^2 + \exp\!\left[f_{\mathrm{mix}}(M_{\mathrm{CO}}-M_{\mathrm{crit}})\right]$$
 
 and then
 
-$$
-M_{\mathrm{rem,bar}}
-=
-\min\!\left(M_{\mathrm{rem,bar}}^{(\mathrm{raw})},\,M_{\mathrm{collapse}}\right).
-$$
+$$M_{\mathrm{rem,bar}} = \min\!\left(M_{\mathrm{rem,bar}}^{(\mathrm{raw})},\,M_{\mathrm{collapse}}\right)$$
 
 This is the quantity we plot below. In this lab, changing the $^{12}$C$(\alpha,\gamma)^{16}$O rate shifts the final core structure (especially $M_{\mathrm{CO}}$), which then shifts $M_{\mathrm{rem,bar}}$. That is the direct link from reaction-rate uncertainty to compact-remnant predictions used in population synthesis.
 
@@ -217,5 +206,4 @@ This is the quantity we plot below. In this lab, changing the $^{12}$C$(\alpha,\
 |Briefly discuss what this implies for NS/BH outcomes in population-synthesis models.|
 
 ![Fryer_plot](Figures/sigma_vs_Mrem_Fryer2022.png)
-
 
