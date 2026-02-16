@@ -205,5 +205,9 @@ This is the quantity we plot below. In this lab, changing the $^{12}$C$(\alpha,\
 |Plot $M_{\mathrm{rem,bar}}$ vs. $\sigma_{C12}$ and compare how the trend changes with $f_{\mathrm{mix}}$.|
 |Briefly discuss what this implies for NS/BH outcomes in population-synthesis models.|
 
+
+<details markdown="block">
+<summary>Answers: $M_{\mathrm{rem,bar}}$ for $^{12}$C$(\alpha,\gamma)^{16}$O reaction rate</summary>
 ![Fryer_plot](Figures/sigma_vs_Mrem_Fryer2022.png)
+</details>
 
