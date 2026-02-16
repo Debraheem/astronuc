@@ -211,6 +211,20 @@ a:hover {
   line-height: 1.65;
 }
 
+/* Keep MathJax readable in light main-content areas. */
+.main-content .MathJax,
+.main-content .MathJax_Display,
+.main-content mjx-container {
+  color: #000000 !important;
+}
+
+/* Preserve contrast inside dark answer/details panels. */
+.main-content details .MathJax,
+.main-content details .MathJax_Display,
+.main-content details mjx-container {
+  color: #f7fbff !important;
+}
+
 .main-content {
   max-width: none;
   margin-left: 0;
