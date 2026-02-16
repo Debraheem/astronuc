@@ -258,11 +258,12 @@ We want the stellar model to evolve through core-Hydrogen burning, and we want t
 |:--|
 |instead of running your model from the beginning with `./rn`, try restarting from the last binary photo, with `./re x207`|
 
-| :question: Below are some questions to think about and discuss while your model evolves | 
-| :--- |
-| 1. Which isotopes or reactions dominate the energy production in the stellar model during core-Hydrogen burning?|
-| 3. How do these reactions alter the central composition?|
-| 4. Do we miss any reactions with our simplified 8 isotope network?|
+|&#10067; Question|
+|---|
+|Below are some questions to think about and discuss while your model evolves.|
+|1. Which isotopes or reactions dominate the energy production in the stellar model during core-Hydrogen burning?|
+|2. How do these reactions alter the central composition?|
+|3. Do we miss any reactions with our simplified 8 isotope network?|
 
 
 
@@ -390,8 +391,8 @@ CNO I, II, III, and IV cycles visualized here
 
 Because the temperature sensitivity of the CNO cycle nuclear reactions increase more steeply with temperature $\epsilon_{CNO} \propto T^{17}$, as opposed to $\epsilon_{pp} \propto T^{4}$, Hotter stellar models are dominated by CNO cycle nuclear reactions. 
 
-|:question: Question|
-|:--|
+|&#10067; Question|
+|---|
 |Where does our stellar model lie in the diagram below?|
 ![PP versus CNO energy generation rates](Figures/ppcno_sdot.svg)
 
@@ -405,8 +406,8 @@ Our model lives far to the right at high core temperatures $T \sim 30 $ MK, and 
 
 The Basic.net network might not be capturing all the nucleosynthetic processes we are trying to study, 
 
-|:question: Question|
-|:--|
+|&#10067; Question|
+|---|
 |Which isotopes in the four CNO cycles visualized above are missing from our `basic.net`?|
 |If we wanted to switch to a slightly more detailed network, how would we do it?|
 
@@ -434,8 +435,8 @@ Are there any notable changes in your model's properties or behavior? How does t
 
 ### Generalized Networks
 
-|:question: Question|
-|:--|
+|&#10067; Question|
+|---|
 |How do you adopt a general network? See [MESA nuclear reaction network documentation](https://docs.mesastar.org/en/25.12.1/net/nets.html).|
 
 
@@ -474,17 +475,22 @@ When building a network file for your stellar evolution model, one should always
 When MESA solves the stellar structure equations, each equation is discretized and solved by forming a jacobian matrix for each stellar model zone. The tridiagonal block matrix is then solved implicitly using as a multidimensional Newton Raphson solve.
 
 The struture of MESA's jacobian matrix is shown below for the case of the `basic.net` nuclear reaction network.
-<object data="Figures/mesa_jacobian_illustrated.pdf" type="application/pdf" width="100%" height="700">
-  <a href="Figures/mesa_jacobian_illustrated.pdf">Open `mesa_jacobian_illustrated.pdf`</a>
-</object>
+![The mesa jacobian visualized](Figures/mesa_jacobian_illustrated.png)
+
+<!--<object data="Figures/mesa_jacobian_illustrated.pdf" type="application/pdf" width="100%" height="700">-->
+<!--  <a href="Figures/mesa_jacobian_illustrated.pdf">Open `mesa_jacobian_illustrated.pdf`</a>-->
+<!--</object>-->
 
 
 Each additional isotope adds an additional equation that must be solved, and hence another row and column to the matrix in each stellar model zone. For $n_{iso}$ isotopes, the total jacobian size therefore scales with $n_{iso}^{2}$. 
 
 Below the Jacobian matrix for a single zone 127 isotope network is visualized. Notice how the sparisty in the matrix grows with an increasing number of isotopes, leading to larger condition numbers, hence a more numerically stiff nonlinear system. Therefore, the increase in computational time associated with solving large nuclear reaction networks not only comes from the size of the jacobian matrix, but also the difficulity with which it is solved. All things being equal,a larger nuclear reaction network by nature of being more numerically stiff, tends to take extra newton iterations to solve inside MESA.  
-<object data="Figures/torch127_jac.pdf" type="application/pdf" width="100%" height="700">
-  <a href="Figures/torch127_jac.pdf">Open `torch127_jac.pdf`</a>
-</object>
+![127 isotope jacobian visualized](Figures/torch127_jac.png)
+
+<!---->
+<!--<object data="Figures/torch127_jac.pdf" type="application/pdf" width="100%" height="700">-->
+<!--  <a href="Figures/torch127_jac.pdf">Open `torch127_jac.pdf`</a>-->
+<!--</object>-->
 
 
 ### Network choice during advanced burning
@@ -508,6 +514,6 @@ An exploration of a variety of networks and their impact on massive star evoluti
 ![farmer networks](Figures/farmer_network.jpg)
 
 
-While 127 isotopes seems to be the benchmark for simulating massive stars evolving to core-collapse. For studying neutrino emission and capturing the energy generation rate correctly, even larger networks such as the 206 isotope network provide even more fidelity, and might even be necessary for finding convergence in model behavior. An illustration of the `mesa_206.net` network (my usual workhorse) is shown below.
+While 127 isotopes seems to be the benchmark for simulating massive stars evolving to core-collapse. For studying neutrino emission and capturing the energy generation rate correctly, even larger networks such as the 206 isotope network provide even more fidelity, and might even be necessary for finding convergence in model behavior. Similar to `mesa_204.net`, an illustration of the `mesa_206.net` network (my usual workhorse) is shown below.
 <!--![The mesa_206.net isotope network visualized](Figures/farag_206_network_plot.png)-->
 <img src="Figures/farag_206_network_plot.png" alt="The mesa_206.net isotope network visualized" width="50%">
