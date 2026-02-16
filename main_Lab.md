@@ -189,11 +189,15 @@ Definitions:
 
 Using Fryer+2022, the baryonic remnant mass is
 
-$M_{\mathrm{rem,bar}}^{(\mathrm{raw})} = 1.2 + 0.05\,f_{\mathrm{mix}} + 0.01\left(\frac{M_{\mathrm{CO}}}{f_{\mathrm{mix}}}\right)^2 + \exp\!\left[f_{\mathrm{mix}}(M_{\mathrm{CO}}-M_{\mathrm{crit}})\right]$
+\[
+M_{\mathrm{rem,bar}}^{(\mathrm{raw})} = 1.2 + 0.05\,f_{\mathrm{mix}} + 0.01\left(\frac{M_{\mathrm{CO}}}{f_{\mathrm{mix}}}\right)^2 + \exp\!\left[f_{\mathrm{mix}}(M_{\mathrm{CO}}-M_{\mathrm{crit}})\right]
+\]
 
 and then
 
-$M_{\mathrm{rem,bar}} = \min\!\left(M_{\mathrm{rem,bar}}^{(\mathrm{raw})},\,M_{\mathrm{collapse}}\right)$
+\[
+M_{\mathrm{rem,bar}} = \min\!\left(M_{\mathrm{rem,bar}}^{(\mathrm{raw})},\,M_{\mathrm{collapse}}\right)
+\]
 
 This is the quantity we plot below. In this lab, changing the $^{12}$C$(\alpha,\gamma)^{16}$O rate shifts the final core structure (especially $M_{\mathrm{CO}}$), which then shifts $M_{\mathrm{rem,bar}}$. That is the direct link from reaction-rate uncertainty to compact-remnant predictions used in population synthesis.
 
@@ -210,4 +214,3 @@ This is the quantity we plot below. In this lab, changing the $^{12}$C$(\alpha,\
 <summary>Answers: $M_{\mathrm{rem,bar}}$ for $^{12}$C$(\alpha,\gamma)^{16}$O reaction rate</summary>
 ![Fryer_plot](Figures/sigma_vs_Mrem_Fryer2022.png)
 </details>
-
