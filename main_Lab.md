@@ -132,7 +132,7 @@ We would like to change our stellar model to adopt one of the $^{12}$C$(\alpha,\
 |Look inside your local `changing_rates/rate_tables` directory, which was copied from $MESA_DIR/rates/rates_data/rate_tables.|
 |To change the rate you are reading you'll have to modify the `rate_list.txt` file|
 
-When your model has finished running, try to make a movie of your `&pgstar` diagram so you can watch the movie instead of re-running your MESA model. In your `Lab1_binary` directory you can execute the `images_to_movie` command to convert your saved `&pgstar` pngs into a movie. Here is an example that produces a .mp4 movie named `movie.mp4`.
+When your model has finished running, try to make a movie of your `&pgstar` diagram so you can watch the movie instead of re-running your MESA model. In your `changing_rates` directory you can execute the `images_to_movie` command to convert your saved `&pgstar` pngs into a movie. Here is an example that produces a .mp4 movie named `movie.mp4`.
 
 ```shell-session
 $ images_to_movie "png/Grid1*.png" movie.mp4

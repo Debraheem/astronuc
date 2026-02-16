@@ -511,7 +511,7 @@ While 127 isotopes seems to be the benchmark for simulating massive stars evolvi
 <!--![The mesa_206.net isotope network visualized](Figures/farag_206_network_plot.png)-->
 <img src="Figures/farag_206_network_plot.png" alt="The mesa_206.net isotope network visualized" width="50%">
 
-For resolving specific proccesses such as the Urca cooling process, leading to electron capture supernova pregenitors, one might opt for a network which includes specific isotopes and nuclear reactions. A minimal network for resolving such a process is shown below:
+For resolving specific proccesses such as the Urca cooling process, leading to electron capture supernova pregenitors, one might opt for a network which includes specific isotopes and nuclear reactions. A minimal network for resolving such a process is shown below, See  [Schawb et al. 2017](https://ui.adsabs.harvard.edu/abs/2017ApJ...851..105S/abstract), [Josiah's last Hurrah](https://arxiv.org/abs/2111.00132) for more details on the convective Urca Process.
 
 ```
       add_isos_and_reactions(
@@ -541,4 +541,4 @@ add_reactions(
          r_mg27_wk-minus_al27
 )
 ```
-See also  [Schawb et al. 2017](https://ui.adsabs.harvard.edu/abs/2017ApJ...851..105S/abstract), [Josiah's last Hurrah](https://arxiv.org/abs/2111.00132) for more details on the convective Urca Process. 
+
