@@ -93,7 +93,7 @@ All relevent files are briefly described in the table below
 ## Helium Burning Nuclear Reactions
 
 Nuclear Reaction rate uncertainties have a non-negliggable impact on stellar evolution models and their nucleosynthetic products.
-See [Iliadis et al. 2011] (https://ui.adsabs.harvard.edu/abs/2011ApJS..193...16I/abstract),[Laird](https://ui.adsabs.harvard.edu/abs/2023JPhG...50c3002L/abstract), [Fields et al. 2018](https://ui.adsabs.harvard.edu/abs/2018ApJS..234...19F/abstract),[Farmer et al. 2019](https://ui.adsabs.harvard.edu/abs/2019ApJ...887...53F/abstract) , [Farag et al. 2022](https://ui.adsabs.harvard.edu/abs/2022ApJ...937..112F/abstract), [Pignatari et al. 2023](https://ui.adsabs.harvard.edu/abs/2023EPJA...59..302P/abstract)
+See [Iliadis et al. 2011](https://ui.adsabs.harvard.edu/abs/2011ApJS..193...16I/abstract),[Laird](https://ui.adsabs.harvard.edu/abs/2023JPhG...50c3002L/abstract), [Fields et al. 2018](https://ui.adsabs.harvard.edu/abs/2018ApJS..234...19F/abstract),[Farmer et al. 2019](https://ui.adsabs.harvard.edu/abs/2019ApJ...887...53F/abstract) , [Farag et al. 2022](https://ui.adsabs.harvard.edu/abs/2022ApJ...937..112F/abstract), [Pignatari et al. 2023](https://ui.adsabs.harvard.edu/abs/2023EPJA...59..302P/abstract)
 
 For massive star evolution, four of the most uncertain rates are illustrated below (Figure from [Fields et al. 2018](https://ui.adsabs.harvard.edu/abs/2018ApJS..234...19F/abstract))
 
@@ -189,15 +189,15 @@ Definitions:
 
 Using Fryer+2022, the baryonic remnant mass is
 
-$$
+$
 M_{\mathrm{rem}}^{(\mathrm{raw})} = 1.2 + 0.05\,f_{\mathrm{mix}} + 0.01\left(\frac{M_{\mathrm{CO}}}{f_{\mathrm{mix}}}\right)^2 + \exp\!\left[f_{\mathrm{mix}}(M_{\mathrm{CO}}-M_{\mathrm{crit}})\right]
-$$
+$
 
 and then
 
-$$
+$
 M_{\mathrm{rem}} = \min\!\left(M_{\mathrm{rem}}^{(\mathrm{raw})},\,M_{\mathrm{collapse}}\right)
-$$
+$
 
 This is the quantity we plot below. In this lab, changing the $^{12}$C$(\alpha,\gamma)^{16}$O rate shifts the final core structure (especially $M_{\mathrm{CO}}$), which then shifts $M_{\mathrm{rem}}$. That is the direct link from reaction-rate uncertainty to compact-remnant predictions used in population synthesis.
 
