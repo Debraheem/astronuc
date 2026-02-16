@@ -13,8 +13,6 @@ nav_order: 2
 
 [Google drive link to download Lab materials Materials](https://drive.google.com/drive/folders/1yFy2I7kBh6UZPYmhFxkZswQVPI0Qavjc?usp=share_link)
 
-[Link to Lab Solutions](https://drive.google.com/drive/folders/11WEpwn17_XuxKugH0B57OHMjby-jomUj?usp=share_link)
-
 ## Goal of this Session
 
 This session will cover basic usage of the MESA software instrument in the context of nuclear astrophysics. The session will focus on demonstrating how a user can setup a MESA stellar model, alter specific nuclear reaction rates, evolve the stellar model. In the next section we will experiment will attack a science case and try to interpret our results in the context of stellar evolutionary theory.
@@ -512,3 +510,35 @@ An exploration of a variety of networks and their impact on massive star evoluti
 While 127 isotopes seems to be the benchmark for simulating massive stars evolving to core-collapse. For studying neutrino emission and capturing the energy generation rate correctly, even larger networks such as the 206 isotope network provide even more fidelity, and might even be necessary for finding convergence in model behavior. Similar to `mesa_204.net`, an illustration of the `mesa_206.net` network (my usual workhorse) is shown below.
 <!--![The mesa_206.net isotope network visualized](Figures/farag_206_network_plot.png)-->
 <img src="Figures/farag_206_network_plot.png" alt="The mesa_206.net isotope network visualized" width="50%">
+
+For resolving specific proccesses such as the Urca cooling process, leading to electron capture supernova pregenitors, one might opt for a network which includes specific isotopes and nuclear reactions. A minimal network for resolving such a process is shown below:
+
+```
+      add_isos_and_reactions(
+         h1,
+         he4,
+         c12,
+         n14,
+         o16,
+         ne20,
+         ne23,
+         na23,
+         na25,
+         mg24,
+         mg25,
+         mg27,
+         al27,
+         fe56)
+
+
+! Urca process reactions
+add_reactions(
+         r_na23_wk_ne23
+         r_ne23_wk-minus_na23
+         r_mg25_wk_na25
+         r_na25_wk-minus_mg25
+         r_al27_wk_mg27
+         r_mg27_wk-minus_al27
+)
+```
+See also  [Schawb et al. 2017](https://ui.adsabs.harvard.edu/abs/2017ApJ...851..105S/abstract), [Josiah's last Hurrah](https://arxiv.org/abs/2111.00132) for more details on the convective Urca Process. 

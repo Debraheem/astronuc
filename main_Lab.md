@@ -90,8 +90,30 @@ All relevent files are briefly described in the table below
 
 
 
+## Helium Burning Nuclear Reactions
 
-### Changing nuclear reaction rates
+Nuclear Reaction rate uncertainties have a non-negliggable impact on stellar evolution models and their nucleosynthetic products.
+See [Iliadis et al. 2011] (https://ui.adsabs.harvard.edu/abs/2011ApJS..193...16I/abstract),[Laird](https://ui.adsabs.harvard.edu/abs/2023JPhG...50c3002L/abstract), [Fields et al. 2018](https://ui.adsabs.harvard.edu/abs/2018ApJS..234...19F/abstract),[Farmer et al. 2019](https://ui.adsabs.harvard.edu/abs/2019ApJ...887...53F/abstract) , [Farag et al. 2022](https://ui.adsabs.harvard.edu/abs/2022ApJ...937..112F/abstract), [Pignatari et al. 2023](https://ui.adsabs.harvard.edu/abs/2023EPJA...59..302P/abstract)
+
+For massive star evolution, four of the most uncertain rates are illustrated below (Figure from [Fields et al. 2018](https://ui.adsabs.harvard.edu/abs/2018ApJS..234...19F/abstract))
+
+
+Some of the most uncertain nuclear reaction rates in nuclear astrophysics are the rates that occur during Helium burning [Deboer et al. 2017](https://ui.adsabs.harvard.edu/abs/2017RvMP...89c5007D/abstract)
+![rate uncertainty](Figures/rate_uncertainty.png)
+
+
+That is the triple-$\alpha$ nuclear reaction rates converting Helium into Carbon competes with the c12ag nuclear reaction rate
+to set the final Carbon and Oxygen abundance in the stellar core at the end of Helium burning
+![rate uncertainty](Figures/3alpha.png)
+![rate uncertainty](Figures/c12ag.png)
+
+The amount of Carbon and Oxygen in the stellar core is important as it fundamentally changes the nature of Carbon and Oxygen burning, and can have far reaching implications for the resulting presupernova stellar structure and the resulting neutron star, black hole initial mass function. 
+
+The uncertainties in the $^{12}$C$(\alpha,\gamma)^{16}$O reaction rate are among the largest (visualized below)
+![rate uncertainty](Figures/c12ag_uncertainty.png)
+
+
+## Changing the $^{12}$C$(\alpha,\gamma)^{16}$O rate
 
 MESA's nuclear reaction rates come from 
 
@@ -102,27 +124,31 @@ For hardcoded nuclear reaction rates, the definitions are set and called inside 
 
 
 
+|:clipboard: TASK|
+|:--|
+|Change the $^{12}$C$(\alpha,\gamma)^{16}$O reaction rate to one of the Deboer et al. 2017 rates shown in the figure above. Look inside your local `changing_rates/rate_tables` directory, which was copied from $MESA_DIR/rates/rates_data/rate_tables.|
+
+
+
+
+![rate uncertainty](Figures/c12ag_profile.png)
+![rate uncertainty](Figures/Core_mass.png)
+![rate uncertainty](Figures/c_o_fraction.png)
+
+
+
+
 
 
 |:clipboard: TASK|
 |:--|
-|Now choose a value for the initial period and $\beta$ of the binary system from this table. |
+|Compute M$_{rem}$ follwing the relations above from Fryer et al. 2022|
 
 
 
 
 
-
-
-|:clipboard: TASK|
-|:--|
-|Now choose a value for the initial period and $\beta$ of the binary system from this table. |
-
-
-
-
-
-
+![rate uncertainty](Figures/sigma_vs_Mrem_Fryer2022.png)
 
 
 
