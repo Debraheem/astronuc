@@ -72,15 +72,15 @@ All relevent files are briefly described in the table below
 |:------------------------|:------------------|
 | `clean`                 | A bash file for cleaning the model directory.       |
 | `inlist`                | The header inlist which points to all other inlists to determine which inlists are read and in what order. |
-| `inlist_mass_Z_wind_rotation`                | The header inlist which points to all other inlists to determine which inlists are read and in what order. |
-| `inlist_project`               | The main inlist which contains controls for the stellar evolution of the `m1`  |
-| `inlist_common`               | The main inlist which contains controls for the stellar evolution of the `m2`     |
+| `inlist_mass_Z_wind_rotation`                | A supplemental inlist where the mass, metallicity, and mass loss are set. |
+| `inlist_project`               | The main inlist which contains controls for the stellar evolution of the model.  |
+| `inlist_common`               | The common inlist which contains most of the stellar model physics.     |
 | `inlist_pgstar`         | The inlist which controls the pgstar output for each single star.      |
 | `make/`                  | A directory containing the makefile.   |
-| `mk`                    | A bash file for compiling MESA binary and Star in the model directory.      |
+| `mk`                    | A bash file for compiling MESA Star in the model directory.      |
 | `history_columns.list`  | A log file which determines which history values are saved in data files as a function of model timestep. |
 | `profile_columns.list`  | A log file which determines which profiles values are saved in data files as a function of Mass/radius.     |
-| `re`                    | A bash file for restarting the binary/star model executable from photos      |
+| `re`                    | A bash file for restarting the star model executable from photos      |
 | `run_lab`                    | A bash file for running the star model executable.      |
 | `src/`                   | A directory containing the three files listed below.      |
 | `run_star_extras.f90`   | A fortran file which can be modified to agument the stellar evolution routines.     |
