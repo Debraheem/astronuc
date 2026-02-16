@@ -214,15 +214,43 @@ a:hover {
 /* Keep MathJax readable in light main-content areas. */
 .main-content .MathJax,
 .main-content .MathJax_Display,
-.main-content mjx-container {
+.main-content .MathJax *,
+.main-content mjx-container,
+.main-content mjx-container * {
   color: #000000 !important;
+}
+
+.main-content .MathJax_SVG svg,
+.main-content .MathJax_SVG_Display svg,
+.main-content mjx-container svg,
+.main-content mjx-container svg * {
+  fill: #000000 !important;
+  stroke: #000000 !important;
 }
 
 /* Preserve contrast inside dark answer/details panels. */
 .main-content details .MathJax,
 .main-content details .MathJax_Display,
-.main-content details mjx-container {
+.main-content details .MathJax *,
+.main-content details mjx-container,
+.main-content details mjx-container *,
+.main-content details .MathJax_SVG svg,
+.main-content details .MathJax_SVG_Display svg,
+.main-content details mjx-container svg,
+.main-content details mjx-container svg * {
   color: #f7fbff !important;
+  fill: #f7fbff !important;
+  stroke: #f7fbff !important;
+}
+
+/* Make selected text readable (including MathJax) on light pages. */
+.main-content ::selection,
+.main-content .MathJax::selection,
+.main-content .MathJax *::selection,
+.main-content mjx-container::selection,
+.main-content mjx-container *::selection {
+  color: #000000;
+  background: #9db9d8;
 }
 
 .main-content {
