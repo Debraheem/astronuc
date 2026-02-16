@@ -7,10 +7,6 @@ nav_order: 2
 <script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax:{inlineMath:[['\$','\$'],['\\(','\\)']],processEscapes:true},CommonHTML: {matchFontHeight:false}});</script>
 <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 
-![](Figures/star_image.png)
-
-credit: [Chiavassa et al. 2022](https://ui.adsabs.harvard.edu/abs/2022A%26A...661L...1C/abstract)
-
 # 1. Changing Nuclear Reaction Networks
 
 <!-- [HELP LINK for website building](./help.html) -->
@@ -474,7 +470,7 @@ When building a network file for your stellar evolution model, one should always
 
 When MESA solves the stellar structure equations, each equation is discretized and solved by forming a jacobian matrix for each stellar model zone. The tridiagonal block matrix is then solved implicitly using as a multidimensional Newton Raphson solve.
 
-The struture of MESA's jacobian matrix is shown below for the case of the `basic.net` nuclear reaction network.
+The struture of MESA's jacobian matrix in a single zone is shown below for the case of the `basic.net` nuclear reaction network. Note that these three blocks of matrices are fully coupled and solved simultaniously in each zone of the stellar model. 
 ![The mesa jacobian visualized](Figures/mesa_jacobian_illustrated.png)
 
 <!--<object data="Figures/mesa_jacobian_illustrated.pdf" type="application/pdf" width="100%" height="700">-->
@@ -484,7 +480,7 @@ The struture of MESA's jacobian matrix is shown below for the case of the `basic
 
 Each additional isotope adds an additional equation that must be solved, and hence another row and column to the matrix in each stellar model zone. For $n_{iso}$ isotopes, the total jacobian size therefore scales with $n_{iso}^{2}$. 
 
-Below the Jacobian matrix for a single zone 127 isotope network is visualized. Notice how the sparisty in the matrix grows with an increasing number of isotopes, leading to larger condition numbers, hence a more numerically stiff nonlinear system. Therefore, the increase in computational time associated with solving large nuclear reaction networks not only comes from the size of the jacobian matrix, but also the difficulity with which it is solved. All things being equal,a larger nuclear reaction network by nature of being more numerically stiff, tends to take extra newton iterations to solve inside MESA.  
+The Jacobian matrix for a single zone 127 isotope network is visualized below. Notice how the sparsity in the matrix grows with an increasing number of isotopes. The increase in computational time associated with solving large nuclear reaction networks not only comes from the size of the jacobian matrix, but also the difficulity with which it is solved. All things being equal,a larger nuclear reaction network by nature of being more numerically stiff, tends to take extra newton iterations to solve inside MESA.  
 ![127 isotope jacobian visualized](Figures/torch127_jac.png)
 
 <!---->
@@ -498,10 +494,9 @@ Below the Jacobian matrix for a single zone 127 isotope network is visualized. N
 
 For later phases of stellar evolution, such as silicon burning in a massive stellar core, the temperature sensitivity of specific nuclear reaction rates can also grow substantially. For example, during Silicon burning the temperature sensitivity for energy generation is orders of magnitude larger, $\epsilon_{Si} \propto T^{47}$.
 
- The large temperature sensitivity and sparsity in the matrix, can make accurate calculations of massive star evolution extremely challenging and prone to a variety of numerical pitfalls.
+ The large temperature sensitivity and sparsity in the matrix can lead to larger condition numbers, hence a more numerically stiff nonlinear system. This can make accurate nucleosynthesis calculations of massive star evolution extremely challenging and prone to a variety of numerical pitfalls.
 
-
-For this reason, MESA also contains approximate networks for late burning phases. Below we highlight `approx21.net`, which includes all the necessary alpha chain reactions up through $^{56}$ Fe. This network is the workhorse network that MESA more or less uses everywhere by default, and is an extension of `basic.net`.
+For this reason, MESA also contains approximate networks for late burning phases. Below we highlight `approx21.net`, which includes all the necessary alpha chain reactions up through $^{56}$ Fe. This network is the workhorse network that MESA more or less uses everywhere by default, and is an extension of `basic.net`. `approx21.net` and it's varient exist to allow one capture most of the nuclear processes that dominate energy generation rate in a stellar model, while forgoing many nucleosynthetic processes. 
 
 ![The approx21.net isotope network visualized](Figures/aprox21.svg)
 

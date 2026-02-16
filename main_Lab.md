@@ -7,18 +7,22 @@ nav_order: 3
 <script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax:{inlineMath:[['\$','\$'],['\\(','\\)']],processEscapes:true},CommonHTML: {matchFontHeight:false}});</script>
 <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 
-In this section, we will graduate from using our `Intro_MESA_model` model directory, and instead use the provided work directory.  [Changing_rates](https://drive.google.com/file/d/1p7A4C0r1Be3CPxPLLIVNXZTVtVWccvze/view?usp=share_link) MESA work directory, but make sure `pgbinary_flag` is set to true in `inlist_project` as we did in the introduction.
+![](Figures/star_image.png)
+
+credit: [Chiavassa et al. 2022](https://ui.adsabs.harvard.edu/abs/2022A%26A...661L...1C/abstract)
+
+In this section, we will graduate from using our `Intro_MESA_model` model directory, and instead use the provided work directory.  [Changing_rates](https://drive.google.com/file/d/19_R2QITiDjMbPmCc-rnObhKKcITtbohT/view?usp=sharing) MESA work directory, but make sure `pgbinary_flag` is set to true in `inlist_project` as we did in the introduction.
 
 
 # 2. Changing Nuclear Reaction Rates
 
 ## Science goal
 
-In this lab, we will look at how stars stripped by binary interactions evolve compared to their single star counterparts. We will look at how the appearance (e.g. luminosity, temperature), structure (e.g. core mass) of the *donor star* changes depending on the binary orbital parameters and mass transfer efficiency. These properties are very important when we compare stellar models to observed pre-supernova progenitors.
-
-### Bonus goal
-
-If you'd like to prepare for Lab3, you can start running a simulation with both stars and leave it running over lunch.
+In this lab, we will focus on the evolution of a 20 M$\_{\odot}$ stellar model from the zero age main-sequence through to core-Helium depletion. We will explore which nuclear reaction rates MESA uses, how to change the rates MESA reads in, and finally we explore the impact of changing the $^{12}$C$(\alpha,\gamma)^{16}$O helium burning reaction rate, and its effect on the core properties of stellar model at core-Helium depletion. These properties are extremely important as the Carbon/Oxygen core mass, M$\_{CO}$, is often used in population synthesis calculations as an input into expressions for the final proxy for the ultimate fate of the stellar model. 
+<!---->
+<!--### Bonus goal-->
+<!---->
+<!--If you'd like to prepare for Lab3, you can start running a simulation with both stars and leave it running over lunch.-->
 
 
 ## The evolution of the primary star
@@ -31,7 +35,7 @@ Since here we are primarily interested in the evolution of the primary, to save 
 Let's begin by using the downloaded `Lab1_binary` directory from the introduction. We will begin by modeling this system as a star + point mass. To do this, open `inlist_project` and make sure to set `evolve_both_stars = .false.`.
 
 
-To begin, please download a copy of the desired [Lab1](https://drive.google.com/file/d/1p7A4C0r1Be3CPxPLLIVNXZTVtVWccvze/view?usp=share_link) MESA work directory.
+To begin, please make sure to download a copy of the desired [change_rates](https://drive.google.com/file/d/19_R2QITiDjMbPmCc-rnObhKKcITtbohT/view?usp=sharing) MESA work directory.
 This work directory is a slightly modified version of the `$MESA_DIR/star/test_suite/20M_pre_ms_to_cc` test_suite.
 
 Once downloaded, you can decompress the file by
@@ -92,6 +96,19 @@ All relevent files are briefly described in the table below
 | `run_star_extras.f90`   | A fortran file which can be modified to agument the stellar evolution routines.     |
 
 `inlist_project`, `inlist_common`, and `inlist_mass_Z_wind_rotation` are the three main files that contain the microphysics information of our stellar evolution simulation.
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
