@@ -11,7 +11,7 @@ nav_order: 3
 
 credit: [Chiavassa et al. 2022](https://ui.adsabs.harvard.edu/abs/2022A%26A...661L...1C/abstract)
 
-In this section, we will graduate from using our `Intro_MESA_model` model directory, and instead use the provided work directory.  [Changing_rates](https://drive.google.com/file/d/19_R2QITiDjMbPmCc-rnObhKKcITtbohT/view?usp=sharing) MESA work directory, but make sure `pgbinary_flag` is set to true in `inlist_project` as we did in the introduction.
+In this section, we will graduate from using our `Intro_MESA_model` model directory, and instead use the provided work directory.  [Changing_rates](https://drive.google.com/file/d/19_R2QITiDjMbPmCc-rnObhKKcITtbohT/view?usp=sharing) MESA work directory.
 
 
 # 2. Changing Nuclear Reaction Rates
@@ -115,51 +115,107 @@ The uncertainties in the $^{12}$C$(\alpha,\gamma)^{16}$O reaction rate are among
 
 ## Changing the $^{12}$C$(\alpha,\gamma)^{16}$O rate
 
-MESA's nuclear reaction rates come from 
-
+MESA's nuclear reaction rates are a combination of NACRE [Angulo et al. 1999](https://ui.adsabs.harvard.edu/abs/1999NuPhA.656....3A/abstract) and JINA REACLIB [Cyburt et al. 2010](https://ui.adsabs.harvard.edu/abs/2010ApJS..189..240C/abstract). Reaction rate screening corrections are from [Chugunov et al. 2007](https://ui.adsabs.harvard.edu/abs/2007PhRvD..76b5028C/abstract), a dynamic screening method which includes a physical parametrization for the intermediate screening regime and reduces to the weak [DeWitt et al. 1973](https://ui.adsabs.harvard.edu/abs/1973ApJ...181..439D/abstract), [Graboske et al. 1973](https://ui.adsabs.harvard.edu/abs/1973ApJ...181..457G/abstract) and strong [Alastuey and Jancovici 1978](https://ui.adsabs.harvard.edu/abs/1978ApJ...226.1034A/abstract), [Itoh et al. 1979](https://ui.adsabs.harvard.edu/abs/1979ApJ...234.1079I/abstract) screening limits at small and large values of the plasma coupling parameter. Weak reaction rates are based, in order of precedence, on [Langanke and Martinez-Pinedo 2000](https://ui.adsabs.harvard.edu/abs/2000NuPhA.673..481L/abstract), [Oda et al. 1994](https://ui.adsabs.harvard.edu/abs/1994ADNDT..56..231O/abstract), and [Fuller et al. 1985](https://ui.adsabs.harvard.edu/abs/1985ApJ...293....1F/abstract).
 
 For hardcoded nuclear reaction rates, the definitions are set and called inside `$MESA_DIR/rates/private/raw_rates.f90`, with definitions for each rate contained inside `$MESA_DIR/rates/private/ratelib.f90`, or drawn from JINA Reaclib / weaklib.
 
-
-
-
+We would like to change our stellar model to adopt one of the $^{12}$C$(\alpha,\gamma)^{16}$O reaction rates provided by `Deboer et al. 2017`. These high resolution nuclear reaction rates are available inside `./rate_tables` or `$MESA_DIR/data/rates_data/rates_tables` directories. By varying this rate, we can explore the temperature dependant uncertainty in this nuclear reaction. 
 
 |:clipboard: TASK|
 |:--|
-|Change the $^{12}$C$(\alpha,\gamma)^{16}$O reaction rate to one of the Deboer et al. 2017 rates shown in the figure above. Look inside your local `changing_rates/rate_tables` directory, which was copied from $MESA_DIR/rates/rates_data/rate_tables.|
+|Pick a value of $\sigma$ for the $^{12}$C$(\alpha,\gamma)^{16}$O rate shown in the figure above. Use a different value than those sitting next you.|
+|Change the $^{12}$C$(\alpha,\gamma)^{16}$O reaction rate to one of the Deboer et al. 2017 rates shown in the figure above.|
+|Run your model to completion, and report your values in the google sheets document [here](https://docs.google.com/spreadsheets/d/13_nOw6fDVWArYquJWmh0mro1liEgC7_uCfqQcIMxsS0/edit?usp=sharing)|
 
-
-
-
-![rate uncertainty](Figures/c12ag_profile.png)
-![rate uncertainty](Figures/Core_mass.png)
-![rate uncertainty](Figures/c_o_fraction.png)
-
-
-
-
-
-
-|:clipboard: TASK|
+|:information_source: HINT|
 |:--|
-|Compute M$_{rem}$ follwing the relations above from Fryer et al. 2022|
-
-
-
-
-
-![rate uncertainty](Figures/sigma_vs_Mrem_Fryer2022.png)
-
-
-
-
-
-|:information_source: INFO |
-|:--|
-|If the command doesn't work, make sure to update your MESA SDK. |
+|Look inside your local `changing_rates/rate_tables` directory, which was copied from $MESA_DIR/rates/rates_data/rate_tables.|
+|To change the rate you are reading you'll have to modify the `rate_list.txt` file|
 
 When your model has finished running, try to make a movie of your `&pgstar` diagram so you can watch the movie instead of re-running your MESA model. In your `Lab1_binary` directory you can execute the `images_to_movie` command to convert your saved `&pgstar` pngs into a movie. Here is an example that produces a .mp4 movie named `movie.mp4`.
 
 ```shell-session
 $ images_to_movie "png/Grid1*.png" movie.mp4
 ```
+
+<details markdown="block">
+<summary>Answers: Changing the $^{12}$C$(\alpha,\gamma)^{16}$O reaction rate</summary>
+
+uncomment the rate file you would like to read into MESA inside `change_rates/rate_tables/rate_list.txt`
+```
+! c12ag rates from debeor et al. 2017 improved with high resolution (mehta et al. 2022) 
+! 0 sigma (median c12ag rate)
+r_c12_ag_o16   'c12ag_deboer_sigma_0p0_2000_Tgrid.dat'
+
+! positive sigmas (high c12ag)
+!r_c12_ag_o16   'c12ag_deboer_sigma_0p5_2000_Tgrid.dat'
+!r_c12_ag_o16   'c12ag_deboer_sigma_1p0_2000_Tgrid.dat'
+!r_c12_ag_o16   'c12ag_deboer_sigma_1p5_2000_Tgrid.dat'
+!r_c12_ag_o16   'c12ag_deboer_sigma_2p0_2000_Tgrid.dat'
+!r_c12_ag_o16   'c12ag_deboer_sigma_2p5_2000_Tgrid.dat'
+!r_c12_ag_o16   'c12ag_deboer_sigma_3p0_2000_Tgrid.dat'
+
+! negative sigmas  (lo c12ag)
+!r_c12_ag_o16   'c12ag_deboer_sigma_m0p5_2000_Tgrid.dat'
+!r_c12_ag_o16   'c12ag_deboer_sigma_m1p0_2000_Tgrid.dat'
+!r_c12_ag_o16   'c12ag_deboer_sigma_m1p5_2000_Tgrid.dat'
+!r_c12_ag_o16   'c12ag_deboer_sigma_m2p0_2000_Tgrid.dat'
+!r_c12_ag_o16   'c12ag_deboer_sigma_m2p5_2000_Tgrid.dat'
+!r_c12_ag_o16   'c12ag_deboer_sigma_m3p0_2000_Tgrid.dat'
+```
+
+The results in the exell document should look something like this
+![core_mass](Figures/Core_mass.png)
+![co_fraction](Figures/c_o_fraction.png)
+
+Below are profiles of the same stellar model at core-Helium depletion, with differing $^{12}$C$(\alpha,\gamma)^{16}$O rates
+![c12ag_profile](Figures/c12_o16_profile.png)
+</details>
+
+
+
+
+
+## Connecting to Population synthesis models
+
+Population-synthesis calculations usually do not evolve full stellar structure for every binary. Instead, they map pre-collapse core properties to compact-remnant masses using analytic prescriptions. Here we connect our MESA models to the smooth remnant-mass prescription in [Fryer et al. 2022](https://ui.adsabs.harvard.edu/abs/2022ApJ...931...94F/abstract), which is also used in population-synthesis studies such as [Olejak et al. 2022](https://ui.adsabs.harvard.edu/abs/2022MNRAS.516.2252O/abstract).
+
+Define:
+
+- $M_{\mathrm{CO}}$: CO-core mass at collapse (from your MESA model),
+- $f_{\mathrm{mix}}$: mixing parameter in the Fryer+2022 fit,
+- $M_{\mathrm{crit}}$: critical CO-core mass scale (use $M_{\mathrm{crit}} = 5.75\,M_\odot$),
+- $M_{\mathrm{collapse}}$: total mass at collapse (optional cap; if unavailable, do not cap).
+
+Using Fryer+2022, the baryonic remnant mass is
+
+$$
+M_{\mathrm{rem,bar}}^{(\mathrm{raw})}
+=
+1.2
++0.05\,f_{\mathrm{mix}}
++0.01\left(\frac{M_{\mathrm{CO}}}{f_{\mathrm{mix}}}\right)^2
++\exp\!\left[f_{\mathrm{mix}}(M_{\mathrm{CO}}-M_{\mathrm{crit}})\right],
+$$
+
+and then
+
+$$
+M_{\mathrm{rem,bar}}
+=
+\min\!\left(M_{\mathrm{rem,bar}}^{(\mathrm{raw})},\,M_{\mathrm{collapse}}\right).
+$$
+
+This is the quantity we plot below. In this lab, changing the $^{12}$C$(\alpha,\gamma)^{16}$O rate shifts the final core structure (especially $M_{\mathrm{CO}}$), which then shifts $M_{\mathrm{rem,bar}}$. That is the direct link from reaction-rate uncertainty to compact-remnant predictions used in population synthesis.
+
+|:clipboard: TASK|
+|:--|
+|For each $\sigma_{C12}$ model, extract the final $M_{\mathrm{CO}}$ value from your MESA output.|
+|Compute $M_{\mathrm{rem,bar}}$ using the equations above for $f_{\mathrm{mix}}=0.5,\;0.7,\;1.0$.|
+|If you have final total mass at collapse, apply the cap with $M_{\mathrm{collapse}}$; otherwise report the uncapped result.|
+|Plot $M_{\mathrm{rem,bar}}$ vs. $\sigma_{C12}$ and compare how the trend changes with $f_{\mathrm{mix}}$.|
+|Briefly discuss what this implies for NS/BH outcomes in population-synthesis models.|
+
+![Fryer_plot](Figures/sigma_vs_Mrem_Fryer2022.png)
+
+

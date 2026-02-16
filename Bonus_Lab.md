@@ -33,6 +33,7 @@ The goal of this lab is to evolve our stellar model from Helium depletion to cor
 |:--|
 |If the stellar model struggles during late burning and stalls, consider operator splitting the nuclear reaction network to improve the numerical stability of the stellar model `op_split_burn = .true.`|
 |Keep in mind, this will change the results!|
+Figure from [MESA VI](https://ui.adsabs.harvard.edu/abs/2023ApJS..265...15J/abstract)
 ![rate uncertainty](Figures/op_split.png)
 
 
