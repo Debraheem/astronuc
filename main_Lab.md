@@ -185,32 +185,32 @@ Definitions:
 - $M_{\mathrm{CO}}$: CO-core mass at collapse (from your MESA model),
 - $f_{\mathrm{mix}}$: mixing parameter in the Fryer+2022 fit,
 - $M_{\mathrm{crit}}$: critical CO-core mass scale (use $M_{\mathrm{crit}} = 5.75\,M_\odot$),
-- $M_{\mathrm{collapse}}$: total mass at collapse (optional cap; if unavailable, do not cap).
+- $M_{\mathrm{collapse}}$: total mass at collapse.
 
 Using Fryer+2022, the baryonic remnant mass is
 
-\[
-M_{\mathrm{rem,bar}}^{(\mathrm{raw})} = 1.2 + 0.05\,f_{\mathrm{mix}} + 0.01\left(\frac{M_{\mathrm{CO}}}{f_{\mathrm{mix}}}\right)^2 + \exp\!\left[f_{\mathrm{mix}}(M_{\mathrm{CO}}-M_{\mathrm{crit}})\right]
-\]
+$$
+M_{\mathrm{rem}}^{(\mathrm{raw})} = 1.2 + 0.05\,f_{\mathrm{mix}} + 0.01\left(\frac{M_{\mathrm{CO}}}{f_{\mathrm{mix}}}\right)^2 + \exp\!\left[f_{\mathrm{mix}}(M_{\mathrm{CO}}-M_{\mathrm{crit}})\right]
+$$
 
 and then
 
-\[
-M_{\mathrm{rem,bar}} = \min\!\left(M_{\mathrm{rem,bar}}^{(\mathrm{raw})},\,M_{\mathrm{collapse}}\right)
-\]
+$$
+M_{\mathrm{rem}} = \min\!\left(M_{\mathrm{rem}}^{(\mathrm{raw})},\,M_{\mathrm{collapse}}\right)
+$$
 
-This is the quantity we plot below. In this lab, changing the $^{12}$C$(\alpha,\gamma)^{16}$O rate shifts the final core structure (especially $M_{\mathrm{CO}}$), which then shifts $M_{\mathrm{rem,bar}}$. That is the direct link from reaction-rate uncertainty to compact-remnant predictions used in population synthesis.
+This is the quantity we plot below. In this lab, changing the $^{12}$C$(\alpha,\gamma)^{16}$O rate shifts the final core structure (especially $M_{\mathrm{CO}}$), which then shifts $M_{\mathrm{rem}}$. That is the direct link from reaction-rate uncertainty to compact-remnant predictions used in population synthesis.
 
 |:clipboard: TASK|
 |:--|
 |For each $\sigma_{C12}$ model, extract the final $M_{\mathrm{CO}}$ value from your MESA output.|
-|Compute $M_{\mathrm{rem,bar}}$ using the equations above for $f_{\mathrm{mix}}=0.5,\;0.7,\;1.0$.|
+|Compute $M_{\mathrm{rem}}$ using the equations above for $f_{\mathrm{mix}}=0.5,\;0.7,\;1.0$.|
 |If you have final total mass at collapse, apply the cap with $M_{\mathrm{collapse}}$; otherwise report the uncapped result.|
-|Plot $M_{\mathrm{rem,bar}}$ vs. $\sigma_{C12}$ and compare how the trend changes with $f_{\mathrm{mix}}$.|
+|Plot $M_{\mathrm{rem}}$ vs. $\sigma_{C12}$ and compare how the trend changes with $f_{\mathrm{mix}}$.|
 |Briefly discuss what this implies for NS/BH outcomes in population-synthesis models.|
 
 
 <details markdown="block">
-<summary>Answers: $M_{\mathrm{rem,bar}}$ for $^{12}$C$(\alpha,\gamma)^{16}$O reaction rate</summary>
+<summary>Answers: $M_{\mathrm{rem}}$ for $^{12}$C$(\alpha,\gamma)^{16}$O reaction rate</summary>
 ![Fryer_plot](Figures/sigma_vs_Mrem_Fryer2022.png)
 </details>
