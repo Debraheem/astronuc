@@ -22,15 +22,15 @@ This session will cover basic usage of the MESA software instrument in the conte
 To begin, first make a project directory for this session. 
 
 ```shell-session
-$ mkdir astronuc_MESA_labs
-$ cd astronuc_MESA_labs
+mkdir astronuc_MESA_labs
+cd astronuc_MESA_labs
 ```
 
 Next, to familiarize ourself with a MESA, let's copy the standard Star work directory from our local MESA installation into our local directory and navigate into it. Feel Free to give it a name, like `Intro_MESA_model`. 
 
 ```shell-session
-$ cp -r $MESA_DIR/star/work Intro_MESA_model
-$ cd Intro_MESA_model
+cp -r $MESA_DIR/star/work Intro_MESA_model
+cd Intro_MESA_model
 ```
 
 To get an idea of what is inside `Intro_MESA_model` we can use the `tree` command.
@@ -40,11 +40,11 @@ The `tree` command shows the files contained in the `Intro_MESA_model` directory
 If your terminal does not have `tree` installed, you  can do it by executing
 
 ```shell-session
-$ brew install tree # on mac
+brew install tree # on mac
 ```
 or
 ```shell-session
-$ sudo apt-get install tree # on linux
+sudo apt-get install tree # on linux
 ```
 It's alright if you don't have `tree` or cannot download it, `ls` should suffice.
 
@@ -200,8 +200,8 @@ If you would like to change any of these default values, just copy them to `inli
 Here, we will run our first stellar model. To do this execute the below commands in your terminal
 
 ```shell-session
-$ ./mk
-$ ./rn
+./mk
+./rn
 ```
 
 ### Terminal Output
@@ -542,4 +542,3 @@ add_reactions(
          r_mg27_wk-minus_al27
 )
 ```
-

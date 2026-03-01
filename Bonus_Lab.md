@@ -12,7 +12,7 @@ nav_order: 4
 This lab will continue using the downloaded `changing_rates` directory from the previous lab, where we evolved our stellar model until the end of core-Helium burning. Let's copy over the directory with a new name or redownload it from here: [Changing_rates](https://drive.google.com/file/d/19_R2QITiDjMbPmCc-rnObhKKcITtbohT/view?usp=sharing).
 
 ```shell-session
-$ cp -r changing_rates evolving_to_cc
+cp -r changing_rates evolving_to_cc
 ```
 <!--In `inlist_project` and make sure you are running in single star mode: `evolve_both_stars = .false.`.-->
 
@@ -47,5 +47,4 @@ Figure from [MESA VI](https://ui.adsabs.harvard.edu/abs/2023ApJS..265...15J/abst
 </video>
 
 </details>
-
 
