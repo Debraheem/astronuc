@@ -150,7 +150,7 @@ a:hover {
 
 @media (max-width: 66.499rem) {
   .side-bar .site-header {
-    min-height: 16rem;
+    min-height: 17.5rem;
     padding-bottom: 1.2rem;
     align-items: flex-start;
   }
