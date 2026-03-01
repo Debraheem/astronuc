@@ -481,8 +481,10 @@ code,
   }
 
   .main-content table th,
-  .main-content table td,
-  .main-content table:has(> tbody > tr > td:only-child) tbody td,
+  .main-content table td {
+    color: #f7fbff;
+  }
+
   .main-content table:has(> tbody > tr > td:only-child) thead th,
   .main-content table:has(> tbody > tr > td:only-child) thead th p {
     color: #1f2731;
