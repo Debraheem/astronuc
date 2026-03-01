@@ -474,4 +474,95 @@ code,
       radial-gradient(900px 500px at 90% -20%, #e9ecfa 0%, transparent 62%),
       var(--bg);
   }
+
+  .main-content h2,
+  .main-content h3 {
+    border-left-color: #8aa3c2;
+  }
+
+  .main-content table th,
+  .main-content table td,
+  .main-content table:has(> tbody > tr > td:only-child) tbody td,
+  .main-content table:has(> tbody > tr > td:only-child) thead th,
+  .main-content table:has(> tbody > tr > td:only-child) thead th p {
+    color: #1f2731;
+  }
+
+  .main-content thead {
+    background: #e7eef8;
+  }
+
+  .main-content table:has(> tbody > tr > td:only-child),
+  .main-content details {
+    box-shadow: 0 8px 18px rgba(32, 48, 74, 0.08);
+  }
+
+  .main-content details > summary {
+    background: #e8f4eb;
+    color: #173320;
+  }
+
+  .main-content details > *:not(summary),
+  .main-content details > *:not(summary) p,
+  .main-content details > *:not(summary) li,
+  .main-content details > *:not(summary) blockquote {
+    color: #1f2731;
+  }
+
+  pre,
+  .main-content pre,
+  .highlighter-rouge .highlight {
+    color: #18212d;
+    box-shadow: 0 0 0 1px rgba(19, 88, 200, 0.03), 0 8px 18px rgba(32, 48, 74, 0.08);
+  }
+
+  code,
+  .main-content code,
+  .highlighter-rouge .highlight .k,
+  .highlighter-rouge .highlight .kc,
+  .highlighter-rouge .highlight .kd,
+  .highlighter-rouge .highlight .kn,
+  .highlighter-rouge .highlight .kp,
+  .highlighter-rouge .highlight .kr,
+  .highlighter-rouge .highlight .kt {
+    color: #9a4d00;
+  }
+
+  .highlighter-rouge .highlight .s,
+  .highlighter-rouge .highlight .s1,
+  .highlighter-rouge .highlight .s2,
+  .highlighter-rouge .highlight .sa,
+  .highlighter-rouge .highlight .sb,
+  .highlighter-rouge .highlight .sc,
+  .highlighter-rouge .highlight .sd,
+  .highlighter-rouge .highlight .se,
+  .highlighter-rouge .highlight .sh,
+  .highlighter-rouge .highlight .si,
+  .highlighter-rouge .highlight .sx {
+    color: #1f6b3b;
+  }
+
+  .highlighter-rouge .highlight .c,
+  .highlighter-rouge .highlight .c1,
+  .highlighter-rouge .highlight .cm {
+    color: #66758a;
+  }
+
+  .highlighter-rouge .highlight .nf,
+  .highlighter-rouge .highlight .nc {
+    color: #1358c8;
+  }
+
+  .main-content ::selection,
+  .main-content .MathJax::selection,
+  .main-content .MathJax *::selection,
+  .main-content mjx-container::selection,
+  .main-content mjx-container *::selection,
+  .main-content pre::selection,
+  .main-content pre *::selection,
+  .main-content code::selection,
+  .main-content code *::selection {
+    color: #102033;
+    background: #c6daf7;
+  }
 }
