@@ -148,6 +148,14 @@ a:hover {
   color: #e8edf2;
 }
 
+@media (max-width: 66.499rem) {
+  .side-bar .site-header {
+    min-height: 16rem;
+    padding-bottom: 1.2rem;
+    align-items: flex-start;
+  }
+}
+
 .nav-list .nav-list-link {
   font-size: 1.08rem;
   line-height: 1.5;
