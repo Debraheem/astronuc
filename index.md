@@ -212,6 +212,7 @@ Here, we will run our first stellar model. To do this execute the below commands
 On executing the above commands, MESA will print the model output on the terminal. After each step the new updated values of the binaries parameters would be printed to the display. An example output is shown below.
 
 ![An example of the output printed on the terminal](Figures/terminal_output.png)
+![An example of the output printed on the terminal later](Figures/terminal_output2.png)
 
 Notice one of the first things you should see is a line indicating the stellar model is 15 M$_{\odot}$ (to double precision), and the nuclear reaction network MESA has adopted contains 8 isotopes. The model should begin with a numerical relaxation routine to generate the intial model, and then be followed by periodic terminal output describing global properties of the stellar model as it evolves and contracts.  
 
@@ -234,8 +235,6 @@ When you run the script a Hertzsprung-Russel diagram should appear along with a 
 
     
 A picture is worth a thousand words! For this lab, rather staring at the output from the terminal and running plotting scripts after the fact for individual quantities. Let's make  use of the `Pgstar` module to help give ourselves an intuitive understanding of models while they run. The `Pgstar` module plots the model output in real-time - depending on the chosen step size. The `Pgstar` module also produces png files which can be combined into movies we can interpret relatively easily.
-
-![An example of the output printed on the terminal](Figures/terminal_output2.png)
 
 The `pgstar` plots are switched on via the following flag in `&star_job` in the file `inlist_project`.
 
@@ -293,8 +292,10 @@ Let's use a more detailed pgstar for the evolution of this model.
 You can download this `inlist_pgstar` here. This pgstar requires us to add a couple history columns to history output file, So mixing regions are added to our history files, allowing us to visualize the Kippenhahn diagram. 
 
 <details markdown="block">
-<summary>inlist_pgstar: Copy and paste this pgstar into your `inlist_pgstar` file</summary>
-Comment out the following in `&controls` inside `inlist_project`
+<summary>inlist_pgstar: Copy and paste this pgstar into your `inlist\_pgstar` file</summary>
+
+Copy and paste this pgstar into your `inlist_pgstar`.
+
 ```plaintext
 &pgstar
    !pause = .true.
@@ -531,10 +532,10 @@ images_to_movie "png/*.png" movie.mp4
 
 The answers below will become more clear in the following section.
 
-1. Before the model reaches the main-sequence the $^{12}$C is rapidly converted into $^{14}$N through proton captures, CN burning.
-2. During the main sequence, the star produces energy through both pp-chain proton proton ,$^{1}$H fusion reactions, and Proton captures via the full CNO proton capture cycle. 
-3. CN burning converts $^{12}$C in the core into $^{14}$N. On the main-sequence CNO and pp fusion deplete $^{1}$H, and convert it into $^{4}$He. However, since $^{14}$N$(p,\gamma)^{15}$O is the weakest reaction in the CNO cycle, much of the isotopes involved in this process pile up into $^{14}$N which is undergoes alpha captures later on during core-Helium burning.
-4. Yes, we miss many key process, including some weak reactions supplied by intermediate isotopes, for example $^{7}$Be electron captures. Other Fuels sources on the pre-main sequence such as Deuterium $^{2}$H and $^{7}$Li are omitted entirely, so we do not capture their contributions to the energy generation rate. We also lose insight into much of the nucleosynthesis from key elements such as $^{13}$C.
+1. Before the model reaches the main-sequence the <sup>12</sup>C is rapidly converted into <sup>14</sup>N through proton captures, CN burning. <sup>3</sup>He fuses with itself and is quickly converted into <sup>4</sup>He.
+2. During the main sequence, the star produces energy through both pp-chain proton proton ,<sup>1</sup>H fusion reactions, and Proton captures via the full CNO proton capture cycle. 
+3. CN burning converts <sup>12</sup>C in the core into <sup>14</sup>N. On the main-sequence CNO and pp fusion deplete <sup>1</sup>H, and convert it into <sup>4</sup>He. However, since <sup>14</sup>N$(p,\gamma)$<sup>15</sup>O is the weakest reaction in the CNO cycle, much of the isotopes involved in this process pile up into <sup>14</sup>N which is undergoes alpha captures later on during core-Helium burning.
+4. Yes, we miss many key process, including some weak reactions supplied by intermediate isotopes, for example <sup>7</sup>Be electron captures. Other Fuels sources on the pre-main sequence such as Deuterium <sup>2</sup>H and <sup>7</sup>Li are omitted entirely, so we do not capture their contributions to the energy generation rate. We also lose insight into much of the nucleosynthesis from key elements such as <sup>13</sup>C.
 
 
 <video width="640" height="480" controls>
