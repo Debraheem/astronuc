@@ -20,17 +20,15 @@ In this section, we will graduate from using our `Intro_MESA_model` model direct
 
 ## Science goal
 
-In this lab, we will focus on the evolution of a 20 M$\_{\odot}$ stellar model from the zero age main-sequence through to core-Helium depletion. We will explore which nuclear reaction rates MESA uses, how to change the rates MESA reads in, and finally we explore the impact of changing the $^{12}$C$(\alpha,\gamma)^{16}$O helium burning reaction rate, and its effect on the core properties of stellar model at core-Helium depletion. These properties are extremely important as the Carbon/Oxygen core mass, M$\_{CO}$, is often used in population synthesis calculations as an input into expressions for determining if the stellar model will form a neutron star to a black hole, and the corresponding remenant mass after the model undergoes core-collapse. See [Fryer et al. 2012](https://ui.adsabs.harvard.edu/abs/2012ApJ...749...91F/abstract), and [Fryer et al. 2022](https://ui.adsabs.harvard.edu/abs/2022ApJ...931...94F/abstract)
-<!---->
-<!--### Bonus goal-->
-<!---->
-<!--If you'd like to prepare for Lab3, you can start running a simulation with both stars and leave it running over lunch.-->
+In this lab, we will focus on the evolution of a 20 M$\_{\odot}$ stellar model from the zero age main-sequence through to core-Helium depletion. We will explore which nuclear reaction rates MESA uses, how to change the rates MESA reads in, and finally we explore the impact of changing the $^{12}$C$(\alpha,\gamma)^{16}$O helium burning reaction rate, and its effect on the core properties of stellar model at core-Helium depletion. These properties are extremely important as the Carbon/Oxygen core mass, $M\_{CO}$, is often used in population synthesis calculations as an input into expressions for determining if the stellar model will form a neutron star to a black hole, and the corresponding remenant mass after the model undergoes core-collapse. See [Fryer et al. 2012](https://ui.adsabs.harvard.edu/abs/2012ApJ...749...91F/abstract),[Ilya et al. 2020](https://ui.adsabs.harvard.edu/abs/2020MNRAS.499.3214M/abstract), [Fryer et al. 2022](https://ui.adsabs.harvard.edu/abs/2022ApJ...931...94F/abstract).
 
+
+   In this lab we only evolve our stellar models to core-Helium depletion, hence we are $M\_{CO}$ at core-Helium depletion as a proxy for $M\_{CO}$ at core-collapse. These two are not identical, and one must evolve their stellar model to core-collapse if they intend to generate a realistic presupernova stellar structures which can be used to determine the model's final fate. Note that, most population synthesis prescriptions for stellar model fates are based on stellar models run to core collapse with small nuclear reaction networks, which could problematic as the structure of stellar models computed with small approximate networks are not identical those computed with larger, more physically accurate networks.
 
 ## Evolving to Core-Helium Depletion
 
 To begin, please make sure to download a copy of the desired [changing_rates](https://drive.google.com/file/d/19_R2QITiDjMbPmCc-rnObhKKcITtbohT/view?usp=sharing) MESA work directory.
-This work directory is a slightly modified version of the `\$MESA_DIR/star/test_suite/20M_pre_ms_to_cc` test_suite.
+This work directory is a slightly modified version of the `$MESA_DIR/star/test_suite/20M_pre_ms_to_cc` test_suite.
 
 Once downloaded, you can decompress the file by
 ```shell-session
@@ -134,12 +132,6 @@ We would like to change our stellar model to adopt one of the $^{12}$C$(\alpha,\
 |Look inside your local `changing_rates/rate_tables` directory, which was copied from $MESA_DIR/rates/rates_data/rate_tables.|
 |To change the rate you are reading you'll have to modify the `rate_list.txt` file|
 
-When your model has finished running, try to make a movie of your `&pgstar` diagram so you can watch the movie instead of re-running your MESA model. In your `changing_rates` directory you can execute the `images_to_movie` command to convert your saved `&pgstar` pngs into a movie. Here is an example that produces a .mp4 movie named `movie.mp4`.
-
-```shell-session
-images_to_movie "png/Grid1*.png" movie.mp4
-```
-
 <details markdown="block">
 <summary>Answers: Changing the $^{12}$C$(\alpha,\gamma)^{16}$O reaction rate</summary>
 
@@ -207,12 +199,18 @@ This is the quantity we plot below. In this lab, changing the $^{12}$C$(\alpha,\
 |:--|
 |For each $\sigma_{C12}$ model, extract the final $M_{\mathrm{CO}}$ value from your MESA output.|
 |Compute $M_{\mathrm{rem}}$ using the equations above for $f_{\mathrm{mix}}=0.5,\;0.7,\;1.0$.|
-|If you have final total mass at collapse, apply the cap with $M_{\mathrm{collapse}}$; otherwise report the uncapped result.|
 |Plot $M_{\mathrm{rem}}$ vs. $\sigma_{C12}$ and compare how the trend changes with $f_{\mathrm{mix}}$.|
 |Briefly discuss what this implies for NS/BH outcomes in population-synthesis models.|
 
 
+|:information_source:|
+|:--|
+|The actual final value of $M\_{CO}$ at core-collapse can be influenced heavily by the occurence of shell mergers during Carbon or Oxygen burning. See [Laplace et al. 2025](https://ui.adsabs.harvard.edu/abs/2025A%26A...695A..71L/abstract)|
+|$M\_{CO}$ is not a self consistent proxy for the Chandrasekar mass of the collapsing core. Instead one must actually look at the structure, and specifically the electron fraction $Y\_{e}$ of the collapsing core [Boccioli et al. 2024](https://ui.adsabs.harvard.edu/abs/2024PhRvD.110b3007B/abstract). The actual relation between $M\_{CO}$ and $M\_{ch}$ and the final remenant mass $M\_{rem}$ is more complicated than the simplified picture presented in this lab (and often assumed in population synthesis codes). Even then, accurately capturing the mapping between $M\_{CO}$,$M\_{ch}$, and $M\_{rem}$ remains an active area of research.|
+
 <details markdown="block">
 <summary>Answers: $M_{\mathrm{rem}}$ for $^{12}$C$(\alpha,\gamma)^{16}$O reaction rate</summary>
 ![Fryer_plot](Figures/sigma_vs_Mrem_Fryer2022.png)
+![Fryer_plot](Figures/f_rem_0p7_sigma_vs_Mrem_Fryer2022.png)
+
 </details>

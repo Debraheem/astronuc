@@ -80,12 +80,15 @@ All relevent files are briefly described in the table below
 | `inlist`                | The header inlist which points to all other inlists to determine which inlists are read and in what order. |
 | `inlist_project`               | The main inlist which contains controls for the stellar evolution of the `m1`  |
 | `inlist_pgstar`         | The inlist which controls the pgstar output for the star.      |
+| `plot.py`         | A simple python script for plotting output from the `LOGS/` directory.      |
+
 | `make/`                  | A directory containing the makefile.   |
 | `mk`                    | A bash file for compiling MESA Star executable in the model directory.      |
 | `re`                    | A bash file for restarting the star model executable from photos      |
 | `rn`                    | A bash file for running the star model executable.      |
 | `src/`                   | A directory containing the three files listed below.      |
 | `run_star_extras.f90`   | A fortran file which can be modified to agument the stellar evolution routines.     |
+
 
 `inlist_project` is the main files that contain the microphysics information of our stellar evolution simulation.
 
@@ -213,9 +216,24 @@ On executing the above commands, MESA will print the model output on the termina
 Notice one of the first things you should see is a line indicating the stellar model is 15 M$_{\odot}$ (to double precision), and the nuclear reaction network MESA has adopted contains 8 isotopes. The model should begin with a numerical relaxation routine to generate the intial model, and then be followed by periodic terminal output describing global properties of the stellar model as it evolves and contracts.  
 
 
-### Pgstar Output
+### Visualizing MESA Output with Pgstar and Python Scripts.
 
-A picture is worth a thousand words! Rather than reading the output from the terminal, at times, an intuitive understanding of stellar evolution can be grasped from a diagram. The `Pgstar` module does exactly that. It plots the model output in real-time - depending on the chosen step size.
+MESA default mode is to output data to the `LOGS` directory. This directory typically contains two main types of files, the `history.data` file containing global properties of the model at each timestep and the `profile.data` files each containing radial snapshots of the stellar structure at given times. We reccomend you stop here and read the [MESA Output documentation](https://docs.mesastar.org/en/25.12.1/using_mesa/output.html). A python file `plot.py` is available in the your directory which can read in your mesa output and produce plots. You are welcome to use this script and play with plotting different quantites from the mesa. You likely have python installed since it is a necesary component to installing MESA,
+    
+    
+|:clipboard: TASK|
+|:--|
+|Run the python script `python plot.py` or `python3 plot.py` .|
+
+<details markdown="block">
+<summary>Answers: Run the python script </summary>
+When you run the script a Hertzsprung-Russel diagram should appear along with a profile plot of the stellar density versus mass.
+![plot of history](Figures/history.png)
+![plot of profile](Figures/profile.png)
+</details>
+
+    
+A picture is worth a thousand words! For this lab, rather staring at the output from the terminal and running plotting scripts after the fact for individual quantities. Let's make  use of the `Pgstar` module to help give ourselves an intuitive understanding of models while they run. The `Pgstar` module plots the model output in real-time - depending on the chosen step size. The `Pgstar` module also produces png files which can be combined into movies we can interpret relatively easily.
 
 ![An example of the output printed on the terminal](Figures/terminal_output2.png)
 
@@ -252,15 +270,6 @@ We want the stellar model to evolve through core-Hydrogen burning, and we want t
 |:--|
 |instead of running your model from the beginning with `./rn`, try restarting from the last binary photo, with `./re x207`|
 
-|&#10067; Question|
-|---|
-|Below are some questions to think about and discuss while your model evolves.|
-|1. Which isotopes or reactions dominate the energy production in the stellar model during core-Hydrogen burning?|
-|2. How do these reactions alter the central composition?|
-|3. Do we miss any reactions with our simplified 8 isotope network?|
-
-
-
 
 <details markdown="block">
 <summary>Answers: Change the stopping condition</summary>
@@ -275,13 +284,265 @@ Add the following to `&pgstar` inside `inlist_pgstar`
    Abundance_win_flag = .true. ! turn on abundance window
    Power_win_flag = .true. ! turn on Power window
 ```
-
 ![pgstar of Hydrogen burning](Figures/intro_hr.png)
-
-
-
 </details>
 
+Notice, when the run completes, the pgstar window closes, making it difficult to analyze our stellar models, without directly plotting the outputs saved in the `LOGS` directory.
+
+Let's use a more detailed pgstar for the evolution of this model.
+You can download this `inlist_pgstar` here. This pgstar requires us to add a couple history columns to history output file, So mixing regions are added to our history files, allowing us to visualize the Kippenhahn diagram. 
+
+<details markdown="block">
+<summary>inlist_pgstar: Copy and paste this pgstar into your `inlist_pgstar` file</summary>
+Comment out the following in `&controls` inside `inlist_project`
+```plaintext
+&pgstar
+   !pause = .true.
+   !pgstar_show_log_age_in_years = .true.
+   pgstar_show_age_in_years = .true.
+   ! if true, the code waits for user to enter a RETURN on the command line
+
+   file_white_on_black_flag = .true. 
+   win_white_on_black_flag = .true.
+
+   file_device = 'png'
+
+   Grid2_win_flag = .true.
+   Grid2_num_cols = 7 ! divide plotting region into this many equal width cols
+   Grid2_num_plots = 7
+   Grid2_num_rows = 7
+   Grid2_win_width = 10 ! controls the size of the window 
+   !Grid2_win_aspect_ratio = 0.5 ! aspect_ratio = height/width
+   Grid2_xleft = 0.05 ! fraction of full window width for margin on left
+   Grid2_xright = 0.99 ! fraction of full window width for margin on right
+   Grid2_ybot = 0.17 ! fraction of full window width for margin on bottom
+   Grid2_ytop = 0.96 ! fraction of full window width for margin on top
+   show_TRho_Profile_eos_regions = .true.
+
+   Grid2_file_flag = .true.
+   Grid2_file_dir = 'png'
+   Grid2_file_prefix = 'Grid'
+   Grid2_file_interval = 1
+
+   Grid2_file_width = 27
+
+   !Grid2_file_aspect_ratio = 0.7
+
+
+
+   Grid2_plot_name(1) = 'TRho_Profile'
+   Grid2_plot_row(1) = 1
+   Grid2_plot_rowspan(1) =5
+   Grid2_plot_col(1) = 1
+   Grid2_plot_colspan(1) = 4
+   Grid2_plot_pad_left(1) = 0.02
+   Grid2_plot_pad_right(1) = 0.0
+   Grid1_plot_pad_top(1) = 0.025
+   Grid2_plot_pad_bot(1) = 0.15
+   Grid2_txt_scale_factor(1) = 0.65
+
+   Grid2_plot_name(2) = 'HR'
+   Grid2_plot_row(2) = 5
+   Grid2_plot_rowspan(2) = 3
+   Grid2_plot_col(2) = 1
+   Grid2_plot_colspan(2) = 2
+
+   Grid2_plot_pad_left(2) = 0.01
+   Grid2_plot_pad_right(2) = 0.02
+   Grid2_plot_pad_top(2) = 0.04
+   Grid2_plot_pad_bot(2) = 0.00
+   Grid2_txt_scale_factor(2) = 0.5
+
+
+   Grid2_plot_name(3) = 'Abundance'
+   Grid2_plot_row(3) = 1
+   Grid2_plot_rowspan(3) = 4
+   Grid2_plot_col(3) = 5
+   Grid2_plot_colspan(3) = 3
+
+
+   Grid2_plot_pad_left(3) = 0.08
+   Grid2_plot_pad_right(3) = 0.005
+   Grid2_plot_pad_top(3) = 0.00
+   Grid2_plot_pad_bot(3) = 0.08
+   Grid2_txt_scale_factor(3) = 0.5
+   Abundance_legend_max_cnt = 0
+   Abundance_legend_txt_scale_factor = 0.7
+
+
+   show_TRho_annotation1 = .true.
+   show_TRho_annotation2 = .true.
+   show_TRho_annotation3 = .true.
+   show_TRho_degeneracy_line = .true.
+
+
+   Grid2_plot_name(4) = 'Text_Summary1'
+   Grid2_plot_row(4) = 7
+   Grid2_plot_rowspan(4) = 2
+   Grid2_plot_col(4) = 1
+   Grid2_plot_colspan(4) = 7
+   Grid2_plot_pad_left(4) = -0.05
+   Grid2_plot_pad_right(4) = 0.0
+   Grid2_plot_pad_top(4) = 0.21
+   Grid2_plot_pad_bot(4) = -0.07
+   Grid2_txt_scale_factor(4) = 0.18
+   Text_Summary1_num_rows = 4 ! <= 20
+
+   Text_Summary1_num_cols = 4 ! <= 20
+   Text_Summary1_name(:,:) = ''
+
+   Text_Summary1_name(1,1) = 'photosphere_r'
+   ! Text_Summary1_name(1,2) = 'surf_avg_v_rot'
+   ! Text_Summary1_name(1,3) = 'surf_avg_v_div_v_crit'
+   Text_Summary1_name(1,4) = 'star_mass'
+
+   Text_Summary1_name(2,1) = 'num_zones'
+   Text_Summary1_name(2,2) = ''
+   Text_Summary1_name(2,3) = 'star_age'
+   Text_Summary1_name(2,4) = 'model_number'
+
+   !  Text_Summary1_name(3,1) = 'log_total_angular_momentum'
+
+
+
+
+
+   Grid2_plot_name(5) = 'History_Panels1'
+   Grid2_plot_row(5) = 1
+   Grid2_plot_rowspan(5) = 9
+   Grid2_plot_col(5) = 8
+   Grid2_plot_colspan(5) = 3
+   Grid2_plot_pad_left(5) = 0.075
+   Grid2_plot_pad_right(5) = 0.04
+   Grid2_plot_pad_top(5) = 0.0
+   Grid2_plot_pad_bot(5) = 0.05
+   Grid2_txt_scale_factor(5) = 0.5
+
+   History_Panels1_num_panels = 1
+
+   History_Panels1_xaxis_name = 'model_number'
+   History_Panels1_yaxis_name(1) = 'log_L'
+   History_Panels1_yaxis_reversed(1) = .false.
+   History_Panels1_ymin(1) = -101d0
+   History_Panels1_ymax(1) = -101d0
+   History_Panels1_max_width = 500
+   History_Panels1_dymin(1) = -1
+   History_Panels1_other_yaxis_name(1) = 'log_R'
+   History_Panels1_other_yaxis_reversed(1) = .false.
+   History_Panels1_other_ymin(1) = -101d0
+   History_Panels1_other_ymax(1) = -101d0
+   History_Panels1_other_dymin(1) = -1
+
+
+
+   History_Panels1_yaxis_name(2) = ''
+   History_Panels1_yaxis_reversed(2) = .false.
+   History_Panels1_ymin(2) = -101d0
+   History_Panels1_ymax(2) = -101d0
+   History_Panels1_dymin(2) = -1
+   History_Panels1_other_yaxis_name(2) = ''
+   History_Panels1_other_yaxis_reversed(2) = .false.
+   History_Panels1_other_ymin(2) = -101d0
+   History_Panels1_other_ymax(2) = -101d0
+   History_Panels1_other_dymin(2) = -1
+
+
+   History_Panels1_yaxis_name(3) = ''
+   History_Panels1_yaxis_reversed(3) = .false.
+   History_Panels1_ymin(3) = -101d0
+   History_Panels1_ymax(3) = -101d0
+   History_Panels1_dymin(3) = -1
+   History_Panels1_other_yaxis_name(3) = ''
+   History_Panels1_other_yaxis_reversed(3) = .false.
+   History_Panels1_other_ymin(3) = -101d0
+   History_Panels1_other_ymax(3) = -101d0
+   History_Panels1_other_dymin(3) = -1
+
+   History_Panels1_yaxis_name(4) = 'log_L'
+   History_Panels1_yaxis_reversed(4) = .false.
+   History_Panels1_ymin(4) = -101d0
+   History_Panels1_ymax(4) = -101d0
+   History_Panels1_dymin(4) = -1
+   History_Panels1_other_yaxis_name(4) = '' 
+   History_Panels1_other_yaxis_reversed(4) = .false.
+   History_Panels1_other_ymin(4) = -101d0
+   History_Panels1_other_ymax(4) = -101d0
+   History_Panels1_other_dymin(4) = -1
+
+
+   Grid2_plot_name(6) = 'Kipp'
+   Grid2_plot_row(6) = 5
+   Grid2_plot_rowspan(6) = 5
+   Grid2_plot_col(6) = 5
+   Grid2_plot_colspan(6) = 4
+   Grid2_plot_pad_left(6) = 0.11
+   Grid2_plot_pad_right(6) = 0.155
+   Grid1_plot_pad_top(6) = 0.2
+   Grid2_plot_pad_bot(6) = 0.2
+   Grid2_txt_scale_factor(6) = 0.5
+   Kipp_max_width = 2000
+   Kipp_mix_interval = 1
+
+
+   Grid2_plot_name(7) = 'Power'
+   Grid2_plot_row(7) = 5     ! number from 1 at top
+   Grid2_plot_rowspan(7) = 3    ! plot spans this number of rows
+   Grid2_plot_col(7) = 3     ! number from 1 at left
+   Grid2_plot_colspan(7) = 2    ! plot spans this number of columns
+   Power_legend_txt_scale_factor = 1.8 ! relative to other text
+
+
+   Grid2_plot_pad_left(7) = 0.04
+   Grid2_plot_pad_right(7) = 0.02
+   Grid2_plot_pad_top(7) = 0.04
+   Grid2_plot_pad_bot(7) = 0.00
+   Grid2_txt_scale_factor(7) = 0.5
+
+/ ! end of pgstar namelist
+
+```
+</details>
+
+|:clipboard: TASK|
+|:--|
+|Copy the provided `inlist_pgstar` from above and paste it into your local `inlist_pgstar`.|
+|Add additional output to history file for plotting by copying the `$MESA_DIR/star/defaults/history_columns.list` file into your local directory.|
+|Add the following two lines: `mixing_regions 20` and `burning_regions 20` to the `history_columns.list` file.|
+|Run the model again!|
+
+
+When your model has finished running, try to make a movie of your `&pgstar` diagram so you can watch the movie instead of re-running your MESA model. In your directory you can execute the `images_to_movie` command to convert your saved `&pgstar` pngs into a movie. Here is an example that produces a .mp4 movie named `movie.mp4`.
+
+```shell-session
+images_to_movie "png/*.png" movie.mp4
+```
+
+|&#10067; Question|
+|---|
+|Below are some questions to think about using the pgstar movie output from you stellar model.|
+|1. Which isotopes or reactions dominate the energy production before the main sequence begins.|
+|2. Which isotopes or reactions dominate the energy production in the stellar model during core-Hydrogen burning along the main sequence?|
+|3. How do these reactions alter the central composition?|
+|4. Do we miss any reactions with our simplified 8 isotope network?|
+
+
+<details>
+<summary>Answers: pgstar movie from pre-main sequence to core-H depletion </summary>
+
+The answers below will become more clear in the following section.
+
+1. Before the model reaches the main-sequence the $^{12}$C is rapidly converted into $^{14}$N through proton captures, CN burning.
+2. During the main sequence, the star produces energy through both pp-chain proton proton ,$^{1}$H fusion reactions, and Proton captures via the full CNO proton capture cycle. 
+3. CN burning converts $^{12}$C in the core into $^{14}$N. On the main-sequence CNO and pp fusion deplete $^{1}$H, and convert it into $^{4}$He. However, since $^{14}$N$(p,\gamma)^{15}$O is the weakest reaction in the CNO cycle, much of the isotopes involved in this process pile up into $^{14}$N which is undergoes alpha captures later on during core-Helium burning.
+4. Yes, we miss many key process, including some weak reactions supplied by intermediate isotopes, for example $^{7}$Be electron captures. Other Fuels sources on the pre-main sequence such as Deuterium $^{2}$H and $^{7}$Li are omitted entirely, so we do not capture their contributions to the energy generation rate. We also lose insight into much of the nucleosynthesis from key elements such as $^{13}$C.
+
+
+<video width="640" height="480" controls>
+  <source src="Figures/intro_mesa_movie.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+
+</details>
 ## Nuclear Reaction Networks for core-Hydrogen burning
 
 The `net` module in MESA  implements nuclear reaction networks and is derived from publicly available code (made available thanks to [Frank Timmes](https://cococubed.com/code_pages/burn.shtml)). It includes a "basic" network of 8 isotopes: $^{1}$H, $^{3}$Не, $^{4}$He, $^{12}$C, $^{14}$N, $^{16}$O, $^{20}$Ne, and $^{24}$Mg. MESA also provides extended networks for more detailed calculations including coverage of hot CNO reactions, a-capture chains, (a,p) +(p, y) reactions, and heavy-ion reactions (See [Timmes 1999](https://ui.adsabs.harvard.edu/abs/1999ApJS..124..241T/abstract)). In addition to using existing networks, the user can create a new network by listing the desired isotopes and reactions in a data file that is read at run time, the `.net` file. 
@@ -429,18 +690,10 @@ Are there any notable changes in your model's properties or behavior? How does t
 
 
 ### Generalized Networks
-
-|&#10067; Question|
-|---|
-|How do you adopt a general network? See [MESA nuclear reaction network documentation](https://docs.mesastar.org/en/25.12.1/net/nets.html).|
-
-
-|:clipboard: Bonus TASK|
-|:--|
-|Try switching to a generalized network.|
-|change the nuclear reaction network in `&starjob` to adopt `mesa_28.net`!See [MESA &star_job nuclear reaction network documentation](https://docs.mesastar.org/en/25.12.1/reference/star_job.html#change-initial-net).|
-|Run the model again, and take note of the run time difference!|
-
+All the previous networks (hydrogen burners, α-chains) are examples of hardwired networks. Such networks are carefully crafted by hand and have the advantage of being fast and lightweight. The main disadvantage is that they are inflexable with respect to adding or removing isotopes. In this section we will explore general soft-wired networks, capable of doing any reaction network. General networks in MESA typically have titles such as 
+    `mesa_28.net`, or `mesa_151.net`, or `mesa_206.net`
+    
+    
 Below are the contents of `mesa_28.net`.
 ```plaintext
 
@@ -460,6 +713,18 @@ add_isos_and_reactions(
    )
 ```
 
+|&#10067; Question|
+|---|
+|How do you adopt a general network?|
+
+
+|:clipboard: Bonus TASK|
+|:--|
+|Try switching to a generalized network.|
+|change the nuclear reaction network in `&starjob` to adopt `mesa_28.net`!See [MESA &star_job nuclear reaction network documentation](https://docs.mesastar.org/en/25.12.1/reference/star_job.html#change-initial-net).|
+|Run the model again, and take note of the run time difference!|
+
+When changing nuclear reaction networks `change_initial_net` only operates when loading from an initial model whereas `change_net` operates any time the inlist is read. This means that if you restart from a photo `./re x200`, your stellar model will not adjust the network if `change_initial_net = .true,`, rather the network will only be modified if `change_net = .true.`
 
 |:information_source: Building your own network file|
 |:--|
@@ -469,7 +734,7 @@ When building a network file for your stellar evolution model, one should always
 
 When MESA solves the stellar structure equations, each equation is discretized and solved by forming a jacobian matrix for each stellar model zone. The tridiagonal block matrix is then solved implicitly using as a multidimensional Newton Raphson solve.
 
-The struture of MESA's jacobian matrix in a single zone is shown below for the case of the `basic.net` nuclear reaction network. Note that these three blocks of matrices are fully coupled and solved simultaniously in each zone of the stellar model. 
+The structure of MESA's jacobian matrix in a single zone is shown below for the case of the `basic.net` nuclear reaction network. Note that these three blocks of matrices are fully coupled and solved simultaniously in each zone of the stellar model. 
 ![The mesa jacobian visualized](Figures/mesa_jacobian_illustrated.png)
 
 <!--<object data="Figures/mesa_jacobian_illustrated.pdf" type="application/pdf" width="100%" height="700">-->
