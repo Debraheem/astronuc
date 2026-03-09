@@ -237,7 +237,7 @@ This is the quantity we plot below. In this lab, changing the $^{12}$C$(\alpha,\
 
 |:information_source: Warning!|
 |:--|
-|The actual final value of $M\_{CO}$ at core-collapse can be influenced heavily by the occurence of shell mergers during Carbon or Oxygen burning. See [Laplace et al. 2025](https://ui.adsabs.harvard.edu/abs/2025A%26A...695A..71L/abstract)|
+|The actual final value of $M\_{CO}$ at core-collapse can be influenced heavily by the shell mergers during Carbon or Oxygen burning, if they occur. See [Laplace et al. 2025](https://ui.adsabs.harvard.edu/abs/2025A%26A...695A..71L/abstract). See also the comments for the convective overshooting `&controls` in `inlist_common`.|
 |$M\_{CO}$ is not a self consistent proxy for the Chandrasekar mass of the collapsing core. Instead one must actually look at the structure, and specifically the electron fraction $Y\_{e}$ of the collapsing core [Boccioli et al. 2024](https://ui.adsabs.harvard.edu/abs/2024PhRvD.110b3007B/abstract). The actual relation between $M\_{CO}$ and $M\_{ch}$ and the final remenant mass $M\_{rem}$ is more complicated than the simplified picture presented in this lab (and often assumed in population synthesis codes). Even then, accurately capturing the mapping between $M\_{CO}$, $M\_{ch}$, and $M\_{rem}$ remains an active area of research.|
 
 <details markdown="block">

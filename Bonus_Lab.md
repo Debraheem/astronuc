@@ -30,10 +30,7 @@ $M\_{CO}$ is not a self consistent proxy for the Chandrasekar mass of the collap
 |:clipboard: TASK|
 |:--|
 |change the stopping condition in the `&controls` such that the stellar model evolves until the core-Carbon depletion when the central mass fraction of Carbon drops below $10^{-3}$. See [MESA &controls documentation: When to stop](https://docs.mesastar.org/en/release-r25.012.1/reference/controls.html#when-to-stop).|
-|Run the model|
-
-
-
+|Run the model and look to see if Carbon ignited radiatively or convectively.|
 
 ### Evolving to Oxygen depletion 
 
@@ -42,6 +39,18 @@ $M\_{CO}$ is not a self consistent proxy for the Chandrasekar mass of the collap
 |change the stopping condition in the `&controls` such that the stellar model evolves until the core-Oxygen depletion when the central mass fraction of Oxygen drops below $10^{-3}$. See [MESA &controls documentation: When to stop](https://docs.mesastar.org/en/release-r25.012.1/reference/controls.html#when-to-stop).|
 |Run the model, consider restarting from your last saved photo!|
 
+
+
+<details>
+<summary>Answers: Evolving through CO burning</summary>
+   
+Below is a pgstar ilustrating the evolution through Carbon and Oxygen burning (and Neon melting), for $\sigma\_{C12} = 0$
+<video width="640" height="480" controls>
+  <source src="Figures/co_burning.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+
+</details>
 
 ### Evolving to core-collapse
 |:clipboard: TASK|
