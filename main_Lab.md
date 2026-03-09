@@ -203,7 +203,7 @@ In lower mass models which form C/O white dwarfs, the change in composition resu
 
 ## Connecting to Population synthesis models
 
-Population-synthesis calculations usually do not evolve full stellar structure for every stellar model. Instead, they map pre-collapse core properties (typical at core-C depletion) to compact-remnant masses using analytic prescriptions. Here we connect our MESA models to the smooth remnant-mass prescription in [Fryer et al. 2022](https://ui.adsabs.harvard.edu/abs/2022ApJ...931...94F/abstract), which is also used in population-synthesis studies such as [Olejak et al. 2022](https://ui.adsabs.harvard.edu/abs/2022MNRAS.516.2252O/abstract). Other 
+Many population-synthesis calculations do not evolve full stellar structure for every stellar model. Instead, they map pre-collapse core properties (typical at core-C depletion) to compact-remnant masses using analytic prescriptions. Here we connect our MESA models to the smooth remnant-mass prescription in [Fryer et al. 2022](https://ui.adsabs.harvard.edu/abs/2022ApJ...931...94F/abstract), which is also used in population-synthesis studies such as [Olejak et al. 2022](https://ui.adsabs.harvard.edu/abs/2022MNRAS.516.2252O/abstract).  
 
 Definitions:
 
