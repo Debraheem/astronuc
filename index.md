@@ -2,6 +2,7 @@
 layout: default
 title: "1. Changing Nuclear Reaction Networks"
 nav_order: 2
+permalink: /introduction/
 ---
 
 <script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax:{inlineMath:[['\$','\$'],['\\(','\\)']],processEscapes:true},CommonHTML: {matchFontHeight:false}});</script>
