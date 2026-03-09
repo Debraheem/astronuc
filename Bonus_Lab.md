@@ -28,14 +28,14 @@ $M\_{CO}$ is not a self consistent proxy for the Chandrasekar mass of the collap
 ### Evolving to Carbon depletion 
 
 |:clipboard: TASK|
-|:--|
+|:---------------|
 |change the stopping condition in the `&controls` such that the stellar model evolves until the core-Carbon depletion when the central mass fraction of Carbon drops below $10^{-3}$. See [MESA &controls documentation: When to stop](https://docs.mesastar.org/en/release-r25.012.1/reference/controls.html#when-to-stop).|
 |Run the model and look to see if Carbon ignited radiatively or convectively.|
 
 ### Evolving to Oxygen depletion 
 
 |:clipboard: TASK|
-|:--|
+|:---------------|
 |change the stopping condition in the `&controls` such that the stellar model evolves until the core-Oxygen depletion when the central mass fraction of Oxygen drops below $10^{-3}$. See [MESA &controls documentation: When to stop](https://docs.mesastar.org/en/release-r25.012.1/reference/controls.html#when-to-stop).|
 |Run the model, consider restarting from your last saved photo!|
 
@@ -53,14 +53,15 @@ Below is a pgstar ilustrating the evolution through Carbon and Oxygen burning (a
 </details>
 
 ### Evolving to core-collapse
+
 |:clipboard: TASK|
-|:--|
+|:---------------|
 |change the stopping condition in the `&controls` such that the stellar model evolves until the Fe core is infalling at 100 km/s. See [MESA &controls documentation: When to stop](https://docs.mesastar.org/en/release-r25.012.1/reference/controls.html#when-to-stop).|
 |Run the model|
 
 
 |:information_source: HINT|
-|:--|
+|:------------------------|
 |If the stellar model struggles during late burning and stalls, consider operator splitting the nuclear reaction network to improve the numerical stability of the stellar model `op_split_burn = .true.`|
 |Keep in mind, this will change the results!|
 
