@@ -838,7 +838,7 @@ add_reactions(
 )
 ```
 
-### A few process-specific network choices
+### Process specific network choices
 
 If you want to design a process focused network for specific stellar evolution scenarios, here are some practical starting points.
 
