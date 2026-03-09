@@ -11,20 +11,9 @@ nav_order: 3
 <!--![](Figures/star_image.png)-->
 <!--credit: [Chiavassa et al. 2022](https://ui.adsabs.harvard.edu/abs/2022A%26A...661L...1C/abstract) -->
 
-
-For a new MESA user, in no particular order, Some ways to learn more about MESA controls are to:
-Read the instrument papers (Paxton et al. 2011, 2013, 2015, 2018, 2019, Jermyn et al. 2023)
-Read the documentation https://docs.mesastar.org/en/25.12.1/reference.html (and look at how the controls are implemented internally)
-Attend (or work through a previous) MESA Summer school for hands on training and engagement with the broader community https://mesastar.org/summer-schools/
-(most importantly), run MESA and investigate things directly yourself. Check out the test_suite examples in `$MESA_DIR/star/test_suite` and `$MESA_DIR/binary/test_suite`.
-
-There is no monolithic method to learn MESA and it is a very large software instrument. One method is to narrow down on a particular science problem you are interested in studying, and then to find test_cases inside mesa which study similar problems, and investigate those controls. Read literature which studies said topic using MESA, and then investigate what those authors adopt in their inlists to study those types of problems. Inlists from published works can be found on MESA-contrib https://mesastar.org/marketplace/inlists/ , and the MESA-zenodo https://zenodo.org/communities/mesa/records?q=&l=list&p=1&s=10
- 
 # 2. Changing Nuclear Reaction Rates
 
-
 In this section, we will graduate from using our `Intro_MESA_model` model directory, and instead use the provided work directory.  [Changing_rates](https://drive.google.com/file/d/19_R2QITiDjMbPmCc-rnObhKKcITtbohT/view?usp=sharing) MESA work directory.
-
 
 ## Science goal
 
