@@ -8,13 +8,13 @@ nav_order: 2
 <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 
 
-For a new MESA user, in no particular order, Some ways to learn more about MESA controls are to:
-Read the instrument papers (Paxton et al. 2011, 2013, 2015, 2018, 2019, Jermyn et al. 2023)
-Read the documentation https://docs.mesastar.org/en/25.12.1/reference.html (and look at how the controls are implemented internally)
-Attend (or work through a previous) MESA Summer school for hands on training and engagement with the broader community https://mesastar.org/summer-schools/
+For a new MESA user, in no particular order, some ways to learn more about MESA controls are to:
+Read the instrument papers ([Paxton et al. 2011](https://ui.adsabs.harvard.edu/abs/2011ApJS..192....3P/abstract), [Paxton et al. 2013](https://ui.adsabs.harvard.edu/abs/2013ApJS..208....4P/abstract), [Paxton et al. 2015](https://ui.adsabs.harvard.edu/abs/2015ApJS..220...15P/abstract), [Paxton et al. 2018](https://ui.adsabs.harvard.edu/abs/2018ApJS..234...34P/abstract), [Paxton et al. 2019](https://ui.adsabs.harvard.edu/abs/2019ApJS..243...10P/abstract), [Jermyn et al. 2023](https://ui.adsabs.harvard.edu/abs/2023ApJS..265...15J/abstract))
+Read the [MESA reference documentation](https://docs.mesastar.org/en/25.12.1/reference.html) (and look at how the controls are implemented internally)
+Attend (or work through a previous) [MESA Summer School](https://mesastar.org/summer-schools/) for hands-on training and engagement with the broader community
 (most importantly), run MESA and investigate things directly yourself. Check out the test_suite examples in `$MESA_DIR/star/test_suite` and `$MESA_DIR/binary/test_suite`.
 
-There is no monolithic method to learn MESA and it is a very large software instrument. One method is to narrow down on a particular science problem you are interested in studying, and then to find test_cases inside mesa which study similar problems, and investigate those controls. Read literature which studies said topic using MESA, and then investigate what those authors adopt in their inlists to study those types of problems. Inlists from published works can be found on MESA-contrib https://mesastar.org/marketplace/inlists/ , and the MESA-zenodo https://zenodo.org/communities/mesa/records?q=&l=list&p=1&s=10
+There is no monolithic method to learn MESA and it is a very large software instrument. One method is to narrow down on a particular science problem you are interested in studying, and then to find test_cases inside MESA which study similar problems, and investigate those controls. Read literature which studies said topic using MESA, and then investigate what those authors adopt in their inlists to study those types of problems. Inlists from published works can be found on [MESA-contrib](https://mesastar.org/marketplace/inlists/) and [MESA-Zenodo](https://zenodo.org/communities/mesa/records?q=&l=list&p=1&s=10).
  
  
 # 1. Changing Nuclear Reaction Networks
@@ -657,15 +657,15 @@ The proton-proton chain:
  
 PP I, II, II, and pep chains are visualized here
 
-<img src="Figures/pp_chains.svg" alt="PP I, II, II, and pep chains are visualized here" width="50%">
-<!--![PP I, II, II, and pep chains are visualized here](Figures/pp_chains.svg)-->
+<!--<img src="Figures/pp_chains.svg" alt="PP I, II, II, and pep chains are visualized here" width="50%">-->
+![PP I, II, II, and pep chains are visualized here](Figures/pp_chains.svg)
  
 and the Carbon-Nitrogen-Oxygen (CNO) Cyles:
  
 CNO I, II, III, and IV cycles visualized here
 
-<img src="Figures/cno_cycles_white.svg" alt="CNO I, II, III, and IV cycles visualized here" width="50%">
-<!--![CNO I, II, III, and IV cycles visualized here](Figures/cno_cycles_white.svg)-->
+<!--<img src="Figures/cno_cycles_white.svg" alt="CNO I, II, III, and IV cycles visualized here" width="50%">-->
+![CNO I, II, III, and IV cycles visualized here](Figures/cno_cycles_white.svg)
 
 
 Because the temperature sensitivity of the CNO cycle nuclear reactions increase more steeply with temperature $\epsilon_{CNO} \propto T^{17}$, as opposed to $\epsilon_{pp} \propto T^{4}$, Hotter stellar models are dominated by CNO cycle nuclear reactions. 
@@ -674,8 +674,8 @@ Because the temperature sensitivity of the CNO cycle nuclear reactions increase 
 |---|
 |Where does our stellar model lie in the diagram below?|
 
-<img src="Figures/ppcno_sdot.svg" alt="PP versus CNO energy generation rates" width="50%">
-<!--![PP versus CNO energy generation rates](Figures/ppcno_sdot.svg)-->
+<!--<img src="Figures/ppcno_sdot.svg" alt="PP versus CNO energy generation rates" width="50%">-->
+![PP versus CNO energy generation rates](Figures/ppcno_sdot.svg)
 
 
 <details markdown="block">
@@ -687,11 +687,11 @@ At hotter temperatures, additional proton-capture pathways, the hot CNO cycles, 
 
 For H-burning regions that reach high temperatures (for example hot AGB/SAGB envelopes), the Ne-Na cycle turns on and can strongly affect Na and Ne abundances. Related Ne/Mg/Na channels are also important in massive-star evolution during advanced burning (especially C, Ne, and O burning), where they influence both composition and neutrino losses (see [Farag et al. 2024](https://ui.adsabs.harvard.edu/abs/2024ApJS..273..28F/abstract)).
 
-<img src="Figures/hot_cno_cycles_white.png" alt="Hot CNO cycles" width="50%">
-<img src="Figures/neon_sodium_cycles.png" alt="Neon-Sodium cycles" width="50%">
+<!--<img src="Figures/hot_cno_cycles_white.png" alt="Hot CNO cycles" width="50%">-->
+<!--<img src="Figures/neon_sodium_cycles.png" alt="Neon-Sodium cycles" width="50%">-->
 
-<!--![Hot CNO cycles](Figures/hot_cno_cycles_white.png)-->
-<!--![<!--Neon-Sodium cycles-->](Figures/neon_sodium_cycles.png)-->
+![Hot CNO cycles](Figures/hot_cno_cycles_white.png)
+![Neon-Sodium cycles](Figures/neon_sodium_cycles.png)
 
 ### Other Hardwired networks
 
