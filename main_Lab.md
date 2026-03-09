@@ -225,7 +225,7 @@ This is the quantity we plot below. In this lab, changing the $^{12}$C$(\alpha,\
 
 |:clipboard: TASK|
 |:--|
-|For each $\sigma_{C12}$ model, extract the final $M_{\mathrm{CO}}$ value from your MESA output.|
+|For your chosen $\sigma\_{C12}$ model, extract the final values for `co_core_mass`, `he_core_mass`, `center_c12`, and `center_o16` from your MESA output.|
 |Compute $M_{\mathrm{rem}}$ using the equations above for $f_{\mathrm{mix}}=0.7$ and add it to the [google spreadsheet](https://docs.google.com/spreadsheets/d/13_nOw6fDVWArYquJWmh0mro1liEgC7_uCfqQcIMxsS0/edit?usp=sharing).|
 |Look at the plot of $M\_{\mathrm{rem}}$ vs. $\sigma\_{C12}$ in the [google spreadsheet](https://docs.google.com/spreadsheets/d/13_nOw6fDVWArYquJWmh0mro1liEgC7_uCfqQcIMxsS0/edit?usp=sharing).|
 |Briefly discuss what this implies for NS/BH outcomes in population-synthesis models.|
@@ -243,3 +243,17 @@ This is the quantity we plot below. In this lab, changing the $^{12}$C$(\alpha,\
 ![Fryer_plot](Figures/f_rem_0p7_sigma_vs_Mrem_Fryer2022.png)
 
 </details>
+
+
+|:clipboard: Bonus TASK|
+|:--|
+|Change the initial mass of your stellar model in the range between (15,25) M\_\odot$ and run to core-Helium depletion again.|
+|For your chosen $\sigma\_{C12}$ model, extract the final values for `co_core_mass`, `he_core_mass`, `center_c12`, and `center_o16` from your MESA output.|
+|Compute $M_{\mathrm{rem}}$ using the equations for $f_{\mathrm{mix}}=0.7$ and add it to the [google spreadsheet](https://docs.google.com/spreadsheets/d/13_nOw6fDVWArYquJWmh0mro1liEgC7_uCfqQcIMxsS0/edit?usp=sharing).|
+
+
+|:information_source: HINT|
+|:--|
+|Since we have been loading in a a 15 M\_\odot$ ZAMS model, you'll need to instead create a new model by commenting out `load_saved_model = .true.` or change it to `.false.` in the `&star_job` section of `inlist_project`|
+|you'll also want to add the following line to your inlist in the `&star_job` section of `inlist_project`: `create_pre_main_sequence_model = .true.`|
+
