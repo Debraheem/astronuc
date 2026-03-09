@@ -716,6 +716,7 @@ Are there any notable changes in your model's properties or behavior? How does t
   <source src="Figures/movie_pp_cno.mp4" type="video/mp4">
   Your browser does not support the video tag.
 </video>
+</details>
 
 
 ### Generalized Networks
