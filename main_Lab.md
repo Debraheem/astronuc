@@ -96,18 +96,24 @@ For massive star evolution, four of the most uncertain rates are illustrated bel
 
 
 Some of the most uncertain nuclear reaction rates in nuclear astrophysics are the rates that occur during Helium burning [Deboer et al. 2017](https://ui.adsabs.harvard.edu/abs/2017RvMP...89c5007D/abstract)
-![rate uncertainty](Figures/rate_uncertainty.png)
+<!--![rate uncertainty](Figures/rate_uncertainty.png)-->
+<img src="Figures/rate_uncertainty.png" alt="rate uncertainty" width="50%">
 
 
 That is the triple-$\alpha$ nuclear reaction rates converting Helium into Carbon competes with the c12ag nuclear reaction rate
 to set the final Carbon and Oxygen abundance in the stellar core at the end of Helium burning
-![rate uncertainty](Figures/3alpha.png)
-![rate uncertainty](Figures/c12ag.png)
+<img src="Figures/3alpha.png" alt="rate uncertainty" width="50%">
+<img src="Figures/c12ag.png" alt="rate uncertainty" width="50%">
+
+<!--![rate uncertainty](Figures/3alpha.png)-->
+<!--![rate uncertainty](Figures/c12ag.png)-->
 
 The amount of Carbon and Oxygen in the stellar core is important as it fundamentally changes the nature of Carbon and Oxygen burning, and can have far reaching implications for the resulting presupernova stellar structure and the resulting neutron star, black hole initial mass function. 
 
 The uncertainties in the $^{12}$C$(\alpha,\gamma)^{16}$O reaction rate are among the largest (visualized below)
-![rate uncertainty](Figures/c12ag_uncertainty.png)
+
+<img src="Figures/c12ag_uncertainty.png" alt="rate uncertainty" width="50%">
+<!--![rate uncertainty](Figures/c12ag_uncertainty.png)-->
 
 
 ## Changing the $^{12}$C$(\alpha,\gamma)^{16}$O rate

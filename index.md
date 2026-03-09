@@ -656,12 +656,16 @@ Core-Hydrogen burning is characterized by two key processes:
 The proton-proton chain: 
  
 PP I, II, II, and pep chains are visualized here
-![PP I, II, II, and pep chains are visualized here](Figures/pp_chains.svg)
+
+<img src="Figures/pp_chains.svg" alt="PP I, II, II, and pep chains are visualized here" width="50%">
+<!--![PP I, II, II, and pep chains are visualized here](Figures/pp_chains.svg)-->
  
 and the Carbon-Nitrogen-Oxygen (CNO) Cyles:
  
 CNO I, II, III, and IV cycles visualized here
-![CNO I, II, III, and IV cycles visualized here](Figures/cno_cycles_white.svg)
+
+<img src="Figures/cno_cycles_white.svg" alt="CNO I, II, III, and IV cycles visualized here" width="50%">
+<!--![CNO I, II, III, and IV cycles visualized here](Figures/cno_cycles_white.svg)-->
 
 
 Because the temperature sensitivity of the CNO cycle nuclear reactions increase more steeply with temperature $\epsilon_{CNO} \propto T^{17}$, as opposed to $\epsilon_{pp} \propto T^{4}$, Hotter stellar models are dominated by CNO cycle nuclear reactions. 
@@ -670,13 +674,24 @@ Because the temperature sensitivity of the CNO cycle nuclear reactions increase 
 |---|
 |Where does our stellar model lie in the diagram below?|
 
-![PP versus CNO energy generation rates](Figures/ppcno_sdot.svg)
+<img src="Figures/ppcno_sdot.svg" alt="PP versus CNO energy generation rates" width="50%">
+<!--![PP versus CNO energy generation rates](Figures/ppcno_sdot.svg)-->
 
 
 <details markdown="block">
 <summary>Answers: Where does our model live in the diagram </summary>
 Our model lives far to the right at high core temperatures $T \sim 30 $ MK, and is dominated by CNO cycle nuclear reactions.
 </details>
+
+At hotter temperatures, additional proton-capture pathways, the hot CNO cycles, begin to dominate. In the hot CNO regime (\(0.2 \lesssim T_9 \lesssim 0.5\)), beta-limited CNO cycling and breakout channels become more important, and at still higher temperatures (\(T_9 \gtrsim 0.5\)) the flow moves toward the rp-process.
+
+For H-burning regions that reach high temperatures (for example hot AGB/SAGB envelopes), the Ne-Na cycle turns on and can strongly affect Na and Ne abundances. Related Ne/Mg/Na channels are also important in massive-star evolution during advanced burning (especially C, Ne, and O burning), where they influence both composition and neutrino losses (see [Farag et al. 2024](https://ui.adsabs.harvard.edu/abs/2024ApJS..273..28F/abstract)).
+
+<img src="Figures/hot_cno_cycles_white.png" alt="Hot CNO cycles" width="50%">
+<img src="Figures/neon_sodium_cycles.png" alt="Neon-Sodium cycles" width="50%">
+
+<!--![Hot CNO cycles](Figures/hot_cno_cycles_white.png)-->
+<!--![<!--Neon-Sodium cycles-->](Figures/neon_sodium_cycles.png)-->
 
 ### Other Hardwired networks
 
@@ -866,8 +881,8 @@ If you want to design a process focused network for specific stellar evolution s
 - **Electron capture SN progenitors and Urca cooling:** include Urca pairs (`na23/ne23`, `mg25/na25`, `al27/mg27`) and ONeMg-core species (`o16, ne20, mg24`).  
   Example ADS papers: [Schwab et al. 2017](https://ui.adsabs.harvard.edu/abs/2017ApJ...851..105S/abstract), [Boccioli et al. 2024](https://ui.adsabs.harvard.edu/abs/2024PhRvD.110b3007B/abstract).
 
-- **Type I X ray bursts (rp-process on accreting neutron stars):** use detailed proton-rich networks (typically hundreds to \(\sim 10^3\) isotopes) spanning hot-CNO breakout and rp-process flow up to the Sn-Sb-Te region; at minimum include breakout species and many weak interactions, e.g. `h1, he4, c12, n13, o14, o15, ne18, na21, mg22, si26 ...` up through proton-rich nuclei near \(A\sim 100\).  
-  Example ADS papers: [Schatz et al. 2001](https://ui.adsabs.harvard.edu/abs/2001PhRvL..86.3471S/abstract), [Woosley et al. 2004](https://ui.adsabs.harvard.edu/abs/2004ApJS..151...75W/abstract).
+- **Type I X ray bursts (hot-CNO breakout + rp-process on accreting neutron stars):** no single network size is always required. For many burst studies, a moderate hot-CNO + breakout network can be sufficient (e.g. `h1, he4, c12, c13, n13, n14, n15, o14, o15, o16, o17, o18, f17, f18, f19, ne18, ne19, ne20, na21, na22, na23, mg22, mg23, mg24`). For detailed predictions of the final post-burst composition and the heaviest nuclei produced, use larger proton-rich networks (often hundreds of isotopes) up to \(A\sim 100\) and include many weak interactions.  
+  Example ADS papers: [Wallace & Woosley 1981](https://ui.adsabs.harvard.edu/abs/1981ApJS...45..389W/abstract), [Schatz et al. 2001](https://ui.adsabs.harvard.edu/abs/2001PhRvL..86.3471S/abstract), [Woosley et al. 2004](https://ui.adsabs.harvard.edu/abs/2004ApJS..151...75W/abstract).
 
 - **Network convergence studies for core-collapse progenitors:** use multiple network sizes (e.g. approx21, 127-isotope, 204/206-isotope) to test structural and nucleosynthesis convergence.  
   Example ADS paper: [Farmer et al. 2016](https://ui.adsabs.harvard.edu/abs/2016ApJS..227...22F/abstract).
