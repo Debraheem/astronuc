@@ -125,7 +125,7 @@ We would like to change our stellar model to adopt one of the $^{12}$C$(\alpha,\
 |:--|
 |Pick a value of $\sigma$ for the $^{12}$C$(\alpha,\gamma)^{16}$O rate shown in the figure above. Use a different value than those sitting next you.|
 |Change the $^{12}$C$(\alpha,\gamma)^{16}$O reaction rate to one of the Deboer et al. 2017 rates shown in the figure above.|
-|Run your model to completion, and report your values in the google sheets document [here](https://docs.google.com/spreadsheets/d/13_nOw6fDVWArYquJWmh0mro1liEgC7_uCfqQcIMxsS0/edit?usp=sharing)|
+|Run your model to completion, and report your values in the [google spreadsheet document here](https://docs.google.com/spreadsheets/d/13_nOw6fDVWArYquJWmh0mro1liEgC7_uCfqQcIMxsS0/edit?usp=sharing)|
 
 |:information_source: HINT|
 |:--|
@@ -226,9 +226,10 @@ This is the quantity we plot below. In this lab, changing the $^{12}$C$(\alpha,\
 |:clipboard: TASK|
 |:--|
 |For each $\sigma_{C12}$ model, extract the final $M_{\mathrm{CO}}$ value from your MESA output.|
-|Compute $M_{\mathrm{rem}}$ using the equations above for $f_{\mathrm{mix}}=0.7$.|
-|Plot $M_{\mathrm{rem}}$ vs. $\sigma_{C12}$ and compare how the trend changes with $f_{\mathrm{mix}} = 0.7$.|
+|Compute $M_{\mathrm{rem}}$ using the equations above for $f_{\mathrm{mix}}=0.7$ and add it to the [google spreadsheet](https://docs.google.com/spreadsheets/d/13_nOw6fDVWArYquJWmh0mro1liEgC7_uCfqQcIMxsS0/edit?usp=sharing).|
+|Look at the plot of $M\_{\mathrm{rem}}$ vs. $\sigma\_{C12}$ in the [google spreadsheet](https://docs.google.com/spreadsheets/d/13_nOw6fDVWArYquJWmh0mro1liEgC7_uCfqQcIMxsS0/edit?usp=sharing).|
 |Briefly discuss what this implies for NS/BH outcomes in population-synthesis models.|
+|Compare the results from the spreadsheet with the plots in the Answers block below.|
 
 
 |:information_source: Warning!|
