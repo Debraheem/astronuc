@@ -132,6 +132,15 @@ We would like to change our stellar model to adopt one of the $^{12}$C$(\alpha,\
 |Look inside your local `changing_rates/rate_tables` directory, which was copied from $MESA_DIR/rates/rates_data/rate_tables.|
 |To change the rate you are reading you'll have to modify the `rate_list.txt` file|
 
+
+|&#10067; Questions|
+|---|
+|Below are some questions to think about using the pgstar movie output from you stellar model.|
+|1. During core-Helium burning, what happens to $^{14}$N leftover from core-H burning?|
+|2. What do you think should happen to $^{14}$N?|
+|3. How does the your chosen c12ag rate effect the final C/O in the core at core-Helium depletion?|
+|4. Are we missing any reactions with our simplified approx21 network?|
+
 <details markdown="block">
 <summary>Answers: Changing the $^{12}$C$(\alpha,\gamma)^{16}$O reaction rate</summary>
 
@@ -158,6 +167,19 @@ r_c12_ag_o16   'c12ag_deboer_sigma_0p0_2000_Tgrid.dat'
 !r_c12_ag_o16   'c12ag_deboer_sigma_m3p0_2000_Tgrid.dat'
 ```
 
+A typical evolution of the stellar model should look something like the following
+
+<video width="640" height="480" controls>
+  <source src="Figures/0sigma_to_he_deplete.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+
+The $^{14}$N in the stellar core is quickly converted into $^{20}$Ne, however this is not completely correct. A more detailed nuclear reaction network would accurately capture that  $^{14}$N should convert to $^{22}$Ne via the reaction sequence $^{14}$N$(\alpha,\gamma)^{18}$F$(e^{+},\nu)^{18}$O$(\alpha,\gamma)^{22}$Ne. 
+
+This remaining $^{22}$Ne persists in stellar models that evolve to become C/O white dwarfs, and is potentially detectible in their pulsation periods, see [Chidester et al. 2021](https://ui.adsabs.harvard.edu/abs/2021ApJ...910...24C/abstract).
+ 
+In massive stellar models, this Ne is provides the neutron excess necessary for a variety of s-process reactions, and influences the budget of Neutrons available for weak nuclear reactions during advanced burning.
+
 The results in the exell document should look something like this
 ![core_mass](Figures/Core_mass.png)
 ![co_fraction](Figures/c_o_fraction.png)
@@ -166,13 +188,19 @@ Below are profiles of the same stellar model at core-Helium depletion, with diff
 ![c12ag_profile](Figures/c12_o16_profile.png)
 </details>
 
+It is important to highlight that while the CO and He core masses are not substantially different, the mass fraction of Carbon available for carbon burning is substantially altered, and this could have larger consequences for the manner in which Carbon ignites in these massive stellar cores. It has long been thought that the nature in which Carbon ignites, radiative versus convectively, is coupled intimately with the resulting presupernova structure of stellars models, and ultimately whether they will collapse into a neutron star or black hole. See [Timmes & Woosley 2021] (https://ui.adsabs.harvard.edu/abs/1996ApJ...457..834T/abstract),
+[Sukhbold & Woosley 2014](https://ui.adsabs.harvard.edu/abs/2014ApJ...783...10S/abstract),
+[Sukhbold et al. 2018](https://ui.adsabs.harvard.edu/abs/2018ApJ...860...93S/abstract),
+[Sukhbold & Adams 2020](https://ui.adsabs.harvard.edu/abs/2020MNRAS.492.2578S/abstract).
 
 
+In lower mass models which form C/O white dwarfs, the change in composition resulting from uncertainties in the c12ag nuclear reaction rate can be constrained through asteroseismology of gravity modes in white dwarfs. See [Chidester et al. 2022](https://ui.adsabs.harvard.edu/abs/2022ApJ...935...21C/abstract)
+[Chidester et al. 2023](https://ui.adsabs.harvard.edu/abs/2023ApJ...954...51C/abstract). 
 
 
 ## Connecting to Population synthesis models
 
-Population-synthesis calculations usually do not evolve full stellar structure for every stellar model. Instead, they map pre-collapse core properties to compact-remnant masses using analytic prescriptions. Here we connect our MESA models to the smooth remnant-mass prescription in [Fryer et al. 2022](https://ui.adsabs.harvard.edu/abs/2022ApJ...931...94F/abstract), which is also used in population-synthesis studies such as [Olejak et al. 2022](https://ui.adsabs.harvard.edu/abs/2022MNRAS.516.2252O/abstract).
+Population-synthesis calculations usually do not evolve full stellar structure for every stellar model. Instead, they map pre-collapse core properties (typical at core-C depletion) to compact-remnant masses using analytic prescriptions. Here we connect our MESA models to the smooth remnant-mass prescription in [Fryer et al. 2022](https://ui.adsabs.harvard.edu/abs/2022ApJ...931...94F/abstract), which is also used in population-synthesis studies such as [Olejak et al. 2022](https://ui.adsabs.harvard.edu/abs/2022MNRAS.516.2252O/abstract). Other 
 
 Definitions:
 

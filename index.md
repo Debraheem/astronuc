@@ -224,10 +224,17 @@ MESA default mode is to output data to the `LOGS` directory. This directory typi
     
 |:clipboard: TASK|
 |:--|
-|Run the python script `python plot.py` or `python3 plot.py` .|
+|Run the python script.|
+
+shell-session
+```python plot.py``` 
+or 
+shell-session
+```python3 plot.py```
 
 <details markdown="block">
 <summary>Answers: Run the python script </summary>
+
 When you run the script a Hertzsprung-Russel diagram should appear along with a profile plot of the stellar density versus mass.
 ![plot of history](Figures/history.png)
 ![plot of profile](Figures/profile.png)
