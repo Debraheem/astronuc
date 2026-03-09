@@ -12,7 +12,7 @@ For a new MESA user, in no particular order, some ways to learn more about MESA 
 Read the instrument papers ([Paxton et al. 2011](https://ui.adsabs.harvard.edu/abs/2011ApJS..192....3P/abstract), [Paxton et al. 2013](https://ui.adsabs.harvard.edu/abs/2013ApJS..208....4P/abstract), [Paxton et al. 2015](https://ui.adsabs.harvard.edu/abs/2015ApJS..220...15P/abstract), [Paxton et al. 2018](https://ui.adsabs.harvard.edu/abs/2018ApJS..234...34P/abstract), [Paxton et al. 2019](https://ui.adsabs.harvard.edu/abs/2019ApJS..243...10P/abstract), [Jermyn et al. 2023](https://ui.adsabs.harvard.edu/abs/2023ApJS..265...15J/abstract))
 Read the [MESA reference documentation](https://docs.mesastar.org/en/25.12.1/reference.html) (and look at how the controls are implemented internally)
 Attend (or work through a previous) [MESA Summer School](https://mesastar.org/summer-schools/) for hands-on training and engagement with the broader community
-(most importantly), run MESA and investigate things directly yourself. Check out the test_suite examples in `$MESA_DIR/star/test_suite` and `$MESA_DIR/binary/test_suite`.
+(most importantly), run MESA and investigate things directly yourself. Check out the test_suite examples in `$MESA_DIR/star/test_suite` and `$MESA_DIR/binary/test_suite`. Keep in mind, the test_suite examples are optimized for speed, not science, so one must be careful in mapping the test cases to a particular science application.
 
 There is no monolithic method to learn MESA and it is a very large software instrument. One method is to narrow down on a particular science problem you are interested in studying, and then to find test_cases inside MESA which study similar problems, and investigate those controls. Read literature which studies said topic using MESA, and then investigate what those authors adopt in their inlists to study those types of problems. Inlists from published works can be found on [MESA-contrib](https://mesastar.org/marketplace/inlists/) and [MESA-Zenodo](https://zenodo.org/communities/mesa/records?q=&l=list&p=1&s=10).
  
@@ -47,7 +47,7 @@ To get an idea of what is inside `Intro_MESA_model` we can use the `tree` comman
 
 The `tree` command shows the files contained in the `Intro_MESA_model` directory and its subdirectories.
 
-If your terminal does not have `tree` installed, you  can do it by executing
+OPTIONAL: If your terminal does not have `tree` installed, you  can do it by executing
 
 ```shell-session
 brew install tree # on mac
@@ -91,7 +91,6 @@ All relevent files are briefly described in the table below
 | `inlist_project`               | The main inlist which contains controls for the stellar evolution of the `m1`  |
 | `inlist_pgstar`         | The inlist which controls the pgstar output for the star.      |
 | `plot.py`         | A simple python script for plotting output from the `LOGS/` directory.      |
-
 | `make/`                  | A directory containing the makefile.   |
 | `mk`                    | A bash file for compiling MESA Star executable in the model directory.      |
 | `re`                    | A bash file for restarting the star model executable from photos      |
@@ -100,7 +99,7 @@ All relevent files are briefly described in the table below
 | `run_star_extras.f90`   | A fortran file which can be modified to agument the stellar evolution routines.     |
 
 
-`inlist_project` is the main files that contain the microphysics information of our stellar evolution simulation.
+`inlist_project` is the main file that contain the microphysics information of our stellar evolution simulation, and the one you will be working with most.
 
 ## Running MESA
 
@@ -229,10 +228,27 @@ Notice one of the first things you should see is a line indicating the stellar m
 
 ### Visualizing MESA Output with Pgstar and Python Scripts.
 
-MESA default mode is to output data to the `LOGS` directory. This directory typically contains two main types of files, the `history.data` file containing global properties of the model at each timestep and the `profile.data` files each containing radial snapshots of the stellar structure at given times. We reccomend you stop here and read the [MESA Output documentation](https://docs.mesastar.org/en/25.12.1/using_mesa/output.html). A python file `plot.py` is available in the your directory which can read in your mesa output and produce plots. You are welcome to use this script and play with plotting different quantites from the mesa. You likely have python installed since it is a necesary component to installing MESA,
+MESA default mode is to output data to the `LOGS` directory. This directory typically contains two main types of files, the `history.data` file containing global properties of the model at each timestep and the `profile.data` files each containing radial snapshots of the stellar structure at given times. We reccomend you stop here and read the [MESA Output documentation](https://docs.mesastar.org/en/25.12.1/using_mesa/output.html). A python file `plot.py` is available in the your directory which can read in your mesa output and produce plots. You are welcome to use this script and play with plotting different quantites from the mesa. You likely have python installed since it is a necesary component to installing MESA, however you might not have the necessary python packages. The `plot.py` scripts uses both [matplotlib](https://matplotlib.org/) and [py_mesa_reader](https://billwolf.space/py_mesa_reader/). These packages can be installed via `pip install` or `conda install` if you have anaconda installed. 
     
+    You can also easily set up a virtual environment with anaconda: 
     
-|:clipboard: TASK|
+shell-session
+```
+conda create -n mesa_plot python=3.11 matplotlib mesa_reader
+conda activate mesa_plot
+```
+
+or without anaconda
+
+shell-session
+```
+python3 -m venv mesa_plot_env
+source mesa_plot_env/bin/activate
+pip install matplotlib mesa_reader
+```
+
+    
+|:clipboard: OPTIONAL TASK (for those with mesa_reader and matplotlib installed)|
 |:--|
 |Run the python script.|
 
@@ -530,7 +546,7 @@ Copy and paste this pgstar into your `inlist_pgstar`.
 |Run the model again!|
 
 
-When your model has finished running, try to make a movie of your `&pgstar` diagram so you can watch the movie instead of re-running your MESA model. In your directory you can execute the `images_to_movie` command to convert your saved `&pgstar` pngs into a movie. Here is an example that produces a .mp4 movie named `movie.mp4`.
+When your model has finished running, try to make a movie of your `&pgstar` diagram so you can watch the movie instead of re-running your MESA model. In your directory you can execute the `images_to_movie` command to convert your saved `&pgstar` pngs into a movie. Here is an example that produces a .mp4 movie named `movie.mp4`. The `images_to_movie` command is available to us because ffmpeg is wrapped into the MESA-SDK.
 
 ```shell-session
 images_to_movie "png/*.png" movie.mp4
@@ -773,7 +789,7 @@ When changing nuclear reaction networks `change_initial_net` only operates when 
 
 |:information_source: Building your own network file|
 |:--|
-| If you make your own network, the .net file can be does not need to live inside `$MESA_DIR/nets/data/net_data`. You can place the network file inside your local MESA model directory.|
+| If you make your own network, the .net file can but does not need to live inside `$MESA_DIR/nets/data/net_data`. You can choose to place the network file inside your local MESA model directory.|
 
 When building a network file for your stellar evolution model, one should always consider specific processes you are trying to resolve, as larger networks are more time consuming and numerically challenging to solve. 
 
@@ -789,7 +805,7 @@ The structure of MESA's jacobian matrix in a single zone is shown below for the 
 
 Each additional isotope adds an additional equation that must be solved, and hence another row and column to the matrix in each stellar model zone. For $n_{iso}$ isotopes, the total jacobian size therefore scales with $n_{iso}^{2}$. 
 
-The Jacobian matrix for a single zone 127 isotope network is visualized below. Notice how the sparsity in the matrix grows with an increasing number of isotopes. The increase in computational time associated with solving large nuclear reaction networks not only comes from the size of the jacobian matrix, but also the difficulity with which it is solved. All things being equal,a larger nuclear reaction network by nature of being more numerically stiff, tends to take extra newton iterations to solve inside MESA.  
+The Jacobian matrix for a single zone 127 isotope network is visualized below. Notice how the sparsity in the matrix grows with an increasing number of isotopes. The increase in computational time associated with solving large nuclear reaction networks not only comes from the size of the jacobian matrix, but also the difficulty with which it is solved. All things being equal,a larger nuclear reaction network by nature of being more numerically stiff, tends to take extra newton iterations to solve inside MESA.  
 ![127 isotope jacobian visualized](Figures/torch127_jac.png)
 
 <!---->
@@ -822,7 +838,7 @@ While 127 isotopes seems to be the benchmark for simulating massive stars evolvi
 <!--![The mesa_206.net isotope network visualized](Figures/farag_206_network_plot.png)-->
 <img src="Figures/farag_206_network_plot.png" alt="The mesa_206.net isotope network visualized" width="50%">
 
-For resolving specific proccesses such as, for example the convective Urca cooling process, leading to electron capture supernova pregenitors, one might opt for a network which includes specific isotopes and nuclear reactions. A minimal network for resolving such a process is shown below, See  [Schawb et al. 2017](https://ui.adsabs.harvard.edu/abs/2017ApJ...851..105S/abstract), [Josiah's last Hurrah](https://arxiv.org/abs/2111.00132) for more details on the convective Urca Process.
+For resolving specific proccesses such as, for example the convective Urca cooling process, leading to electron capture supernova pregenitors, one might opt for a network which includes specific isotopes and nuclear reactions. A minimal network for resolving such a process is shown below, See  [Schawb et al. 2017](https://ui.adsabs.harvard.edu/abs/2017ApJ...851..105S/abstract), [Schawb 2021](https://arxiv.org/abs/2111.00132) for more details on the convective Urca Process.
 
 ```
       add_isos_and_reactions(
@@ -853,7 +869,7 @@ add_reactions(
 )
 ```
 
-### Some example process specific network choices (with some help from an llm)
+### Some example process specific network choices (with some help from chatgpt)
 
 If you want to design a process focused network for specific stellar evolution scenarios, here are some practical starting points.
 
