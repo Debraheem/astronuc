@@ -188,7 +188,7 @@ Below are profiles of the same stellar model at core-Helium depletion, with diff
 ![c12ag_profile](Figures/c12_o16_profile.png)
 </details>
 
-It is important to highlight that while the CO and He core masses are not substantially different, the mass fraction of Carbon available for carbon burning is substantially altered, and this could have larger consequences for the manner in which Carbon ignites in these massive stellar cores. It has long been thought that the nature in which Carbon ignites, radiative versus convectively, is coupled intimately with the resulting presupernova structure of stellars models, and ultimately whether they will collapse into a neutron star or black hole. See [Timmes & Woosley 2021] (https://ui.adsabs.harvard.edu/abs/1996ApJ...457..834T/abstract),
+It is important to highlight that while the CO and He core masses are not substantially different, the mass fraction of Carbon available for carbon burning is substantially altered, and this could have larger consequences for the manner in which Carbon ignites in these massive stellar cores. It has long been thought that the nature in which Carbon ignites, radiative versus convectively, is coupled intimately with the resulting presupernova structure of stellars models, and ultimately whether they will collapse into a neutron star or black hole. See [Timmes & Woosley 2021](https://ui.adsabs.harvard.edu/abs/1996ApJ...457..834T/abstract),
 [Sukhbold & Woosley 2014](https://ui.adsabs.harvard.edu/abs/2014ApJ...783...10S/abstract),
 [Sukhbold et al. 2018](https://ui.adsabs.harvard.edu/abs/2018ApJ...860...93S/abstract),
 [Sukhbold & Adams 2020](https://ui.adsabs.harvard.edu/abs/2020MNRAS.492.2578S/abstract).
