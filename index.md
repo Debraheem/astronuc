@@ -786,7 +786,7 @@ The Jacobian matrix for a single zone 127 isotope network is visualized below. N
 ### Network choice during advanced burning
 
 
-For later phases of stellar evolution, such as silicon burning in a massive stellar core, the temperature sensitivity of specific nuclear reaction rates can also grow substantially. For example, during Silicon burning the temperature sensitivity for energy generation is orders of magnitude larger, $\epsilon_{Si} \propto T^{47}$.
+For later phases of stellar evolution, such as silicon burning in a massive stellar core, the temperature sensitivity of specific nuclear reaction rates can also grow substantially. For example, during Silicon burning the temperature sensitivity for energy generation is orders of magnitude larger, $\epsilon\_{Si} \propto T^{47}$ [Timmes & Woosley 1992](https://ui.adsabs.harvard.edu/abs/1992ApJ...396..649T/abstract).
 
  The large temperature sensitivity and sparsity in the matrix can lead to larger condition numbers, hence a more numerically stiff nonlinear system. This can make accurate nucleosynthesis calculations of massive star evolution extremely challenging and prone to a variety of numerical pitfalls.
 
@@ -807,7 +807,7 @@ While 127 isotopes seems to be the benchmark for simulating massive stars evolvi
 <!--![The mesa_206.net isotope network visualized](Figures/farag_206_network_plot.png)-->
 <img src="Figures/farag_206_network_plot.png" alt="The mesa_206.net isotope network visualized" width="50%">
 
-For resolving specific proccesses such as the Urca cooling process, leading to electron capture supernova pregenitors, one might opt for a network which includes specific isotopes and nuclear reactions. A minimal network for resolving such a process is shown below, See  [Schawb et al. 2017](https://ui.adsabs.harvard.edu/abs/2017ApJ...851..105S/abstract), [Josiah's last Hurrah](https://arxiv.org/abs/2111.00132) for more details on the convective Urca Process.
+For resolving specific proccesses such as, for example the convective Urca cooling process, leading to electron capture supernova pregenitors, one might opt for a network which includes specific isotopes and nuclear reactions. A minimal network for resolving such a process is shown below, See  [Schawb et al. 2017](https://ui.adsabs.harvard.edu/abs/2017ApJ...851..105S/abstract), [Josiah's last Hurrah](https://arxiv.org/abs/2111.00132) for more details on the convective Urca Process.
 
 ```
       add_isos_and_reactions(
@@ -837,3 +837,31 @@ add_reactions(
          r_mg27_wk-minus_al27
 )
 ```
+
+### A few process-specific network choices
+
+If you want to design a process focused network for specific stellar evolution scenarios, here are some practical starting points.
+
+- **Hot-bottom burning (AGB/SAGB envelopes):** include CNO + NeNa + MgAl chains, e.g. `h1, he3, he4, c12, c13, n13, n14, n15, o15, o16, o17, o18, ne20, ne21, ne22, na23, mg24, mg25, mg26, al26, al27`.  
+  Example ADS papers: [Ventura & D'Antona 2011](https://ui.adsabs.harvard.edu/abs/2011MNRAS.410.2760V/abstract), [Karakas & Lattanzio 2014](https://ui.adsabs.harvard.edu/abs/2014PASA...31...30K/abstract).
+
+- **Thermohaline mixing on the RGB:** include light-element tracers of extra mixing, e.g. `h1, he3, he4, li7, be7, c12, c13, n14, o16`.  
+  Example ADS paper: [Charbonnel & Zahn 2007](https://ui.adsabs.harvard.edu/abs/2007A%26A...467L..15C/abstract).
+
+- **Rotation-induced mixing in massive stars:** include H/He burning plus alpha-chain species through Fe-group, e.g. `h1, he4, c12, n14, o16, ne20, mg24, si28, s32, ar36, ca40, fe56`.  
+  Example ADS paper: [Heger, Langer, & Woosley 2000](https://ui.adsabs.harvard.edu/abs/2000ApJ...528..368H/abstract).
+
+- **Convective boundary mixing and AGB dredge-up / s-process seeds:** minimally track `c12, c13, n14, o16, ne22, mg25, fe56`; for yields, add heavy species (Sr-Y-Zr and beyond).  
+  Example ADS paper: [Herwig 2000](https://ui.adsabs.harvard.edu/abs/2000A%26A...360..952H/abstract).
+
+- **Advanced-burning shell mergers (late massive-star evolution):** include extended alpha-chain + weak reactions with Fe-group coverage, e.g. up to `ni56` with neutron-rich neighbors.  
+  Example ADS paper: [Laplace et al. 2025](https://ui.adsabs.harvard.edu/abs/2025A%26A...695A..71L/abstract).
+
+- **Electron-capture SN progenitors and Urca-dominated cooling:** include Urca pairs (`na23/ne23`, `mg25/na25`, `al27/mg27`) and ONeMg-core species (`o16, ne20, mg24`).  
+  Example ADS papers: [Schwab et al. 2017](https://ui.adsabs.harvard.edu/abs/2017ApJ...851..105S/abstract), [Boccioli et al. 2024](https://ui.adsabs.harvard.edu/abs/2024PhRvD.110b3007B/abstract).
+
+- **Network-convergence studies for core-collapse progenitors:** use multiple network sizes (e.g. approx21, 127-isotope, 204/206-isotope) to test structural and nucleosynthesis convergence.  
+  Example ADS paper: [Farmer et al. 2016](https://ui.adsabs.harvard.edu/abs/2016ApJS..227...22F/abstract).
+
+- **C/O-core and white-dwarf asteroseismology constraints:** include at least `c12, o16, ne22` and relevant weak/alpha channels that set final core composition profiles.  
+  Example ADS papers: [Chidester et al. 2022](https://ui.adsabs.harvard.edu/abs/2022ApJ...935...21C/abstract), [Chidester et al. 2023](https://ui.adsabs.harvard.edu/abs/2023ApJ...954...51C/abstract).
