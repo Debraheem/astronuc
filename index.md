@@ -838,12 +838,18 @@ add_reactions(
 )
 ```
 
-### Process specific network choices
+### Some example process specific network choices (with some help from an llm)
 
 If you want to design a process focused network for specific stellar evolution scenarios, here are some practical starting points.
 
 - **Hot bottom burning (AGB/SAGB envelopes):** include CNO + NeNa + MgAl chains, e.g. `h1, he3, he4, c12, c13, n13, n14, n15, o15, o16, o17, o18, ne20, ne21, ne22, na23, mg24, mg25, mg26, al26, al27`.  
   Example ADS papers: [Ventura & D'Antona 2011](https://ui.adsabs.harvard.edu/abs/2011MNRAS.410.2760V/abstract), [Karakas & Lattanzio 2014](https://ui.adsabs.harvard.edu/abs/2014PASA...31...30K/abstract).
+
+- **Massive star yields and rotation (Marco Limongi et al.):** include at least full H/He/C/Ne/O/Si burning plus Fe-group and weak channels, e.g. `h1, he4, c12, n14, o16, ne20, mg24, si28, s32, ar36, ca40, ti44, cr48, fe52, ni56`, and for heavy-element studies extend to a large generalized network.  
+  Example ADS papers: [Limongi & Chieffi 2018](https://ui.adsabs.harvard.edu/abs/2018ApJS..237...13L/abstract), [Roberti, Limongi, & Chieffi 2024](https://ui.adsabs.harvard.edu/abs/2024ApJS..270...28R/abstract).
+
+- **Metal poor abundance constraints (incl. Madeleine McKenzie co-authorship):** include isotopes that control CNO-F and light odd-Z yields, e.g. `c12, c13, n14, o16, o17, o18, f19, ne20, na23, mg24, mg25, mg26, al27`.  
+  Example ADS links: [Mura-Guzman et al. 2025 (Fluorine abundances in CEMP stars)](https://ui.adsabs.harvard.edu/search/q=doi%3A10.1093%2Fmnras%2Fstaf464), [Madeleine McKenzie ADS author record](https://ui.adsabs.harvard.edu/search/q=author%3A%22McKenzie%2C%20Madeleine%22).
 
 - **Thermohaline mixing on the RGB:** include light element tracers of extra mixing, e.g. `h1, he3, he4, li7, be7, c12, c13, n14, o16`.  
   Example ADS paper: [Charbonnel & Zahn 2007](https://ui.adsabs.harvard.edu/abs/2007A%26A...467L..15C/abstract).
@@ -859,6 +865,9 @@ If you want to design a process focused network for specific stellar evolution s
 
 - **Electron capture SN progenitors and Urca cooling:** include Urca pairs (`na23/ne23`, `mg25/na25`, `al27/mg27`) and ONeMg-core species (`o16, ne20, mg24`).  
   Example ADS papers: [Schwab et al. 2017](https://ui.adsabs.harvard.edu/abs/2017ApJ...851..105S/abstract), [Boccioli et al. 2024](https://ui.adsabs.harvard.edu/abs/2024PhRvD.110b3007B/abstract).
+
+- **Type I X ray bursts (rp-process on accreting neutron stars):** use detailed proton-rich networks (typically hundreds to \(\sim 10^3\) isotopes) spanning hot-CNO breakout and rp-process flow up to the Sn-Sb-Te region; at minimum include breakout species and many weak interactions, e.g. `h1, he4, c12, n13, o14, o15, ne18, na21, mg22, si26 ...` up through proton-rich nuclei near \(A\sim 100\).  
+  Example ADS papers: [Schatz et al. 2001](https://ui.adsabs.harvard.edu/abs/2001PhRvL..86.3471S/abstract), [Woosley et al. 2004](https://ui.adsabs.harvard.edu/abs/2004ApJS..151...75W/abstract).
 
 - **Network convergence studies for core-collapse progenitors:** use multiple network sizes (e.g. approx21, 127-isotope, 204/206-isotope) to test structural and nucleosynthesis convergence.  
   Example ADS paper: [Farmer et al. 2016](https://ui.adsabs.harvard.edu/abs/2016ApJS..227...22F/abstract).
