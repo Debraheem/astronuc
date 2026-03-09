@@ -254,6 +254,6 @@ This is the quantity we plot below. In this lab, changing the $^{12}$C$(\alpha,\
 
 |:information_source: HINT|
 |:--|
-|Since we have been loading in a a 15 M\_\odot$ ZAMS model, you'll need to instead create a new model by commenting out `load_saved_model = .true.` or change it to `.false.` in the `&star_job` section of `inlist_project`|
+|Since we have been loading in a a 15 M$\_\odot$ ZAMS model, you'll need to instead create a new model by commenting out `load_saved_model = .true.` or change it to `.false.` in the `&star_job` section of `inlist_project`|
 |you'll also want to add the following line to your inlist in the `&star_job` section of `inlist_project`: `create_pre_main_sequence_model = .true.`|
 
