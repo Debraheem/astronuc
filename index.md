@@ -292,7 +292,7 @@ Let's use a more detailed pgstar for the evolution of this model.
 You can download this `inlist_pgstar` here. This pgstar requires us to add a couple history columns to history output file, So mixing regions are added to our history files, allowing us to visualize the Kippenhahn diagram. 
 
 <details markdown="block">
-<summary>inlist_pgstar: Copy and paste this pgstar into your `inlist\_pgstar` file</summary>
+<summary>inlist_pgstar: Copy and paste this pgstar into yours</summary>
 
 Copy and paste this pgstar into your `inlist_pgstar`.
 
@@ -527,7 +527,7 @@ images_to_movie "png/*.png" movie.mp4
 |4. Do we miss any reactions with our simplified 8 isotope network?|
 
 
-<details>
+<details markdown="block">
 <summary>Answers: pgstar movie from pre-main sequence to core-H depletion </summary>
 
 The answers below will become more clear in the following section.
@@ -688,6 +688,15 @@ Looking inside `pp_and_cno_extras.net`, we find that this network adopts `basic.
 |Run the model again!|
 
 Are there any notable changes in your model's properties or behavior? How does the run time of your MESA Calculation change?
+
+
+<details markdown="block">
+<summary>Answers: pp_and_cno_extras pgstar movie from pre-main sequence to core-H depletion </summary>
+
+<video width="640" height="480" controls>
+  <source src="Figures/movie_pp_cno.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
 
 
 ### Generalized Networks
