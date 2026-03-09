@@ -11,7 +11,7 @@ nav_order: 2
 
 <!-- [HELP LINK for website building](./help.html) -->
 
-[Google drive link to download Lab materials Materials](https://drive.google.com/drive/folders/1yFy2I7kBh6UZPYmhFxkZswQVPI0Qavjc?usp=share_link)
+[Google drive link to download Lab materials Materials](https://drive.google.com/file/d/19_R2QITiDjMbPmCc-rnObhKKcITtbohT/view?usp=sharing)
 
 ## Goal of this Session
 
