@@ -697,7 +697,7 @@ Because the temperature sensitivity of the CNO cycle nuclear reactions increase 
 
 <details markdown="block">
 <summary>Answers: Where does our model live in the diagram </summary>
-Our model lives far to the right at high core temperatures $T \sim 30 $ MK, and is dominated by CNO cycle nuclear reactions.
+Our model lives far to the right at high core temperatures $T \sim 30 $ MK, and is dominated by CNO cycle nuclear reactions. Look at the Power profile in your `pgstar` and see that the specific energy generation rate for CNO >> PP.
 </details>
 
 At hotter temperatures, additional proton-capture pathways, the hot CNO cycles, begin to dominate. In the hot CNO regime (\(0.2 \lesssim T_9 \lesssim 0.5\)), beta-limited CNO cycling and breakout channels become more important, and at still higher temperatures (\(T_9 \gtrsim 0.5\)) the flow moves toward the rp-process.
@@ -752,7 +752,7 @@ Are there any notable changes in your model's properties or behavior? How does t
 
 
 ### Generalized Networks
-All the previous networks (hydrogen burners, α-chains) are examples of hardwired networks. Such networks are carefully crafted by hand and have the advantage of being fast and lightweight. The main disadvantage is that they are inflexable with respect to adding or removing isotopes. In this section we will explore general soft-wired networks, capable of doing any reaction network. General networks in MESA typically have titles such as 
+All the previous networks (hydrogen burners, α-chains) are examples of hardwired networks. Such networks are carefully crafted by hand and have the advantage of being fast and lightweight. For example. the `approx21` network is designed to minimize computing cost if you only care about energy release, and captures $\gtrsim 95\%$ of the energy generation rate from nuclear of a more detailed network. The main disadvantage is that they are inflexable with respect to adding or removing isotopes. In this section we will explore general soft-wired networks, capable of doing any reaction network. General networks in MESA typically have titles such as 
     `mesa_28.net`, or `mesa_151.net`, or `mesa_206.net`
     
     
