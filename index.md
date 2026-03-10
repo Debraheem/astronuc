@@ -702,7 +702,7 @@ Our model lives far to the right at high core temperatures $T \sim 30 $ MK, and 
 
 At hotter temperatures, additional proton-capture pathways, the hot CNO cycles, begin to dominate. In the hot CNO regime (\(0.2 \lesssim T_9 \lesssim 0.5\)), beta-limited CNO cycling and breakout channels become more important, and at still higher temperatures (\(T_9 \gtrsim 0.5\)) the flow moves toward the rp-process.
 
-For H-burning regions that reach high temperatures (for example hot AGB/SAGB envelopes), the Ne-Na cycle turns on and can strongly affect Na and Ne abundances. Related Ne/Mg/Na channels are also important in massive-star evolution during advanced burning (especially C, Ne, and O burning), where they influence both composition and neutrino losses (see [Farag et al. 2024](https://ui.adsabs.harvard.edu/abs/2024ApJS..273..28F/abstract)).
+For H-burning regions that reach high temperatures (for example in metal poor stars and hot AGB/SAGB envelopes), the Ne-Na and Mg-Al cycles turn on and can strongly affect the abundances, see [see Mckenzie et al. 2024a](https://ui.adsabs.harvard.edu/abs/2024MNRAS.527.7940M/abstract) and [ Mckenzie al. 2024b](https://ui.adsabs.harvard.edu/abs/2024MNRAS.534L..35M/abstract). These channels are also important in massive-star evolution during advanced burning (especially C, Ne, and O burning), where they influence both composition and neutrino losses (see [Farag et al. 2024](https://ui.adsabs.harvard.edu/abs/2024ApJS..273..28F/abstract)).
 
 <!--<img src="Figures/hot_cno_cycles_white.png" alt="Hot CNO cycles" width="50%">-->
 <!--<img src="Figures/neon_sodium_cycles.png" alt="Neon-Sodium cycles" width="50%">-->
