@@ -177,11 +177,11 @@ A typical evolution of the stellar model should look something like the followin
   Your browser does not support the video tag.
 </video>
 
-The $^{14}$N in the stellar core is quickly converted into $^{20}$Ne, however this is not completely correct. A more detailed nuclear reaction network would accurately capture that  $^{14}$N should convert to $^{22}$Ne via the reaction sequence $^{14}$N$(\alpha,\gamma)^{18}$F$(e^{+},\nu)^{18}$O$(\alpha,\gamma)^{22}$Ne. 
+The $^{14}$N in the stellar core is quickly converted into $^{20}$Ne, however this is not completely correct. A more detailed nuclear reaction network would accurately capture that  $^{14}$N should convert to $^{22}$Ne via the reaction sequence $^{14}$N$(\alpha,\gamma)^{18}$F$(e^{+},\nu)^{18}$O$(\alpha,\gamma)^{22}$Ne.
 
-This remaining $^{22}$Ne persists in stellar models that evolve to become C/O white dwarfs, and is potentially detectible in their pulsation periods, see [Chidester et al. 2021](https://ui.adsabs.harvard.edu/abs/2021ApJ...910...24C/abstract).
+This remaining $^{22}$Ne persists in low mass stellar models that evolve to become C/O white dwarfs, and is potentially detectible in their pulsation periods, see [Chidester et al. 2021](https://ui.adsabs.harvard.edu/abs/2021ApJ...910...24C/abstract). 
  
-In massive stellar models, this Ne is provides the neutron excess necessary for a variety of s-process reactions, and influences the budget of Neutrons available for weak nuclear reactions during advanced burning.
+In massive stellar models, $^{22}$Ne provides the neutron excess necessary for a variety of s-process reactions, and directly influences the budget of neutrons available for weak nuclear reactions during advanced burning, see [Farag et al. 2024](https://ui.adsabs.harvard.edu/abs/2024ApJS..273..28F/abstract).
 
 The results in the exell document should look something like this
 ![core_mass](Figures/Core_mass.png)
