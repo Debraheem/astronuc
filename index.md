@@ -236,8 +236,9 @@ MESA default mode is to output data to the `LOGS` directory. This directory typi
     
 shell-session
 ```
-conda create -n mesa_plot python=3.11 matplotlib mesa_reader
+conda create -n mesa_plotting python=3.11
 conda activate mesa_plot
+pip install matplotlib mesa_reader
 ```
 
 or without anaconda
