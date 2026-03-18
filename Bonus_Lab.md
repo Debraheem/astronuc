@@ -7,6 +7,8 @@ nav_order: 4
 <script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax:{inlineMath:[['\$','\$'],['\\(','\\)']],processEscapes:true},CommonHTML: {matchFontHeight:false}});</script>
 <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 
+(This LAB uses version r25.12.1 of MESA)
+
 # 3. Evolving to Core-collapse (BONUS)
 
 This lab will continue using the downloaded `changing_rates` directory from the previous lab, where we evolved our stellar model until the end of core-Helium burning. Let's copy over the directory with a new name or redownload it from here: [Changing_rates](https://drive.google.com/file/d/19_R2QITiDjMbPmCc-rnObhKKcITtbohT/view?usp=sharing).
